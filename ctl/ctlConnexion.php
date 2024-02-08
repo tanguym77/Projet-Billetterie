@@ -7,7 +7,7 @@ switch ($action) {
 
     // L'Utilisateur accès au formulaire de connexion
     case 'FormLogin':
-        include('./vue/UI/Header.php');
+        include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
         break;
 
@@ -28,11 +28,11 @@ switch ($action) {
 
                 // L'utilisateur est un admin
                 if($_SESSION['status'] == 1){
-                    header("Location: index.php?");
+                    header("Location: index.php?ctl=Organisateur&action=Accueil");
                 }
                 // L'utilisateur n'est pas admin
                 else{ 
-                    header("Location: index.php");
+                    header("Location: index.php?ctl=Utilisateur&action=Accueil");
                 }
                 
             }

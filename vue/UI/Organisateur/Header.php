@@ -18,6 +18,5 @@
     
     <title>Billetterie</title>
 </head>
-
 <body>
     
