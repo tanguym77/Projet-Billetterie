@@ -76,6 +76,52 @@
                 </div>
             </div>
             <!-- Ajouter d'autres matchs ici au besoin -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
+                        <p class="card-text">Équipes: 
+                            <div class="equipe-container">
+                                <img class="equipe-img" src="vue/img/qatar.jpg" alt="Équipe C">
+                                <span>Équipe C</span>
+                            </div>
+                            <span>-</span>
+                            <div class="equipe-container">
+                                <img class="equipe-img" src="vue/img/jordan.png" alt="Équipe D">
+                                <span>Équipe D</span>
+                            </div>
+                        </p>
+                        <p class="card-text">Date: 03/03/2024</p>
+                        <p class="card-text">Heure: 18:00</p>
+                        <p class="card-text">Stade: Stade ...</p>
+                        <button class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-danger">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
+                        <p class="card-text">Équipes: 
+                            <div class="equipe-container">
+                                <img class="equipe-img" src="vue/img/qatar.jpg" alt="Équipe C">
+                                <span>Équipe C</span>
+                            </div>
+                            <span>-</span>
+                            <div class="equipe-container">
+                                <img class="equipe-img" src="vue/img/jordan.png" alt="Équipe D">
+                                <span>Équipe D</span>
+                            </div>
+                        </p>
+                        <p class="card-text">Date: 03/03/2024</p>
+                        <p class="card-text">Heure: 18:00</p>
+                        <p class="card-text">Stade: Stade ...</p>
+                        <button class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-danger">Supprimer</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Bootstrap JS and jQuery (optional) -->
