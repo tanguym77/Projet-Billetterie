@@ -11,6 +11,8 @@
         .card {
             background-image: url('vue/img/fondblanc.jpg');
             background-size: cover;
+            max-width: 300px; /* Définir la largeur maximale des billets */
+            margin: 0 auto; /* Centrer les billets */
         }
         .equipe-img {
             max-width: 50px;
