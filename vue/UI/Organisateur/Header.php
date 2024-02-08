@@ -38,7 +38,7 @@
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lien 3</a>
+                    <a class="nav-link" href="#">Paramètres</a>
                 </li>
             </ul>
             <!-- CONNEXION DECONNEXION -->
