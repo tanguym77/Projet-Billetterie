@@ -27,7 +27,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Matchs de football - Billets</h1>
+        <center><h1 class="my-4">Matchs de football - Billets</h1></center>
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
@@ -82,7 +82,7 @@
                         <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
                         <p class="card-text">Équipes: 
                             <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/qatar.jpg" alt="Équipe C">
+                                <img class="equipe-img" src="vue/img/korea.jpg" alt="Équipe C">
                                 <span>Équipe C</span>
                             </div>
                             <span>-</span>
