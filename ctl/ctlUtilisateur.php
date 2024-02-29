@@ -17,6 +17,8 @@ switch ($action) {
         //$result = DbUtilisateur::list_ticket();
         include './vue/UI/Utilisateur/ListMatch.php';
         break;
+
+        
     case "searchUtilisateur":
         {
 
