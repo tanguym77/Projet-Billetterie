@@ -77,7 +77,7 @@
         .custom-div {
             /* border: 2px solid #000;  cadre de 2px de largeur solide noir */
             font-family: cursive;
-            background-color: rgba(255, 255, 255, 0.5); /* fond transparent (blanc avec 50% d'opacité) */
+            background-color: rgba(255, 255, 255, 0.4); /* fond transparent (blanc avec 50% d'opacité) */
             padding: 20px; /* espace intérieur de la div */
             border-radius: 10px; /* arrondi des bords de la div */
             width: 575px;
@@ -112,12 +112,42 @@
         .police {
             font-family : cursive;
         }
+
+        .cadre-div {
+            border: 2px solid #ccc; /* Cadre de 2px avec une couleur grise */
+            padding: 20px; /* Espace intérieur de la div */
+            border-radius: 10px; /* Arrondi des bords */
+            background-color: rgba(255, 255, 255, 0.4);
+            
+        }
     </style>
 </head>
     <!-- CONTENU PAGE -->
 
-    <br><br>
+    <br><br><br><br>
     <center><h1 class = "police"> Bienvenue dans la Billetterie Asian Cup Qatar 2023 </h1></center>
+    <br><br><br><br>
+
+    <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="cadre-div">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="vue/image/coupe.png" class="img-fluid" alt="Votre Image"> <!-- img-fluid rend l'image responsive -->
+            </div>
+            <div class="col-md-6">
+              <div class="description">
+                <h2>Description</h2>
+                <p>Votre texte de description ici.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <br><br><br><br>
 
     <div class="container mt-5">
     <div class="row">
@@ -147,81 +177,81 @@
             </ol>
 			<!-- Wrapper pour les slides -->
 			<div class="carousel-inner">
-				<div class="carousel-item active">
+				<div class="carousel-item active" data-bs-interval="15000">
 					<img src="vue/image/art-islamique.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 1</h5>
-						<p>Description de l'image 1.</p>
+						<h5>Musée d'art islamique</h5>
+						<p>Ce musée emblématique abrite une vaste collection d'art islamique provenant de différentes périodes et régions du monde musulman. L'architecture du musée elle-même est également impressionnante.</p>
 					</div>
 				</div>
 
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/aspire-park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 2</h5>
-						<p>Description de l'image 2.</p>
+						<h5>Aspire Park</h5>
+						<p>L'un des plus grands parcs du Qatar, Aspire Park offre une escapade verte avec des sentiers, des aires de jeux et une vue imprenable sur le complexe sportif Aspire Zone.</p>
 					</div>
 				</div>
 
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/Aspire-Zone.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 3</h5>
-						<p>Description de l'image 3.</p>
+						<h5>Aspire Zone</h5>
+						<p>Un complexe sportif qui abrite le stade Khalifa, l'un des stades de la Coupe du Monde de la FIFA 2022. Vous pouvez également trouver des installations sportives de classe mondiale.</p>
 					</div>
 				</div>
                 
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/Corniche-Doha.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 4</h5>
-						<p>Description de l'image 4.</p>
+						<h5>Corniche de Doha</h5>
+						<p>Profitez d'une promenade le long de la corniche, offrant une vue spectaculaire sur la ligne d'horizon de Doha. Vous trouverez des espaces de détente, des parcs et des lieux pour se restaurer.</p>
 					</div>
 				</div>
                 
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/Cultural-Village.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 5</h5>
-						<p>Description de l'image 5.</p>
+						<h5>Katara Cultural Village</h5>
+						<p>Un complexe culturel qui propose des expositions artistiques, des événements culturels, des restaurants, et des plages artificielles. C'est un excellent endroit pour explorer la diversité culturelle du Qatar.</p>
 					</div>
 				</div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/fort-zubarah.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 6</h5>
-						<p>Description de l'image 6.</p>
+						<h5>Al Zubarah Fort</h5>
+						<p>Situé à environ 100 km au nord-ouest de Doha, ce fort historique est classé au patrimoine mondial de l'UNESCO. Il offre un aperçu fascinant de l'histoire de la région et de son patrimoine architectural.</p>
 					</div>
 				</div>
                 
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/Jazeera-Park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 7</h5>
-						<p>Description de l'image 7.</p>
+						<h5>Al Jazeera Park</h5>
+						<p>Un parc populaire pour les familles avec des aires de jeux, des espaces de pique-nique, et une grande roue qui offre une vue panoramique sur la ville. </p>
 					</div>
 				</div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/MIA-Park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 8</h5>
-						<p>Description de l'image 8.</p>
+						<h5>MIA Park</h5>
+						<p>Adjacent au musée d'art islamique, ce parc offre des espaces verts, des sculptures contemporaines, une vue sur la skyline et constitue un endroit paisible pour se détendre.</p>
 					</div>
 				</div>
                 
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="15000">
 					<img src="vue/image/Pearl-Qatar.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 9</h5>
-						<p>Description de l'image 9.</p>
+						<h5>The Pearl-Qatar</h5>
+						<p>Une île artificielle offrant des boutiques de luxe, des restaurants, des cafés, des plages et une marina. C'est un lieu de vie luxueux et moderne.</p>
 					</div>
 				</div>
 
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="10000">
 					<img src="vue/image/Souq-Waqif.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Titre 10</h5>
-						<p>Description de l'image 10.</p>
+						<h5>Souq Waqif</h5>
+						<p> Explorez ce marché traditionnel où vous pourrez acheter des produits locaux, de l'artisanat, des épices, des tissus et bien plus encore. C'est également un endroit idéal pour découvrir la culture locale.</p>
 					</div>
 				</div>
                 
@@ -240,14 +270,13 @@
 	</div>
 	
 	
-
 	<!-- Liens JavaScript de Bootstrap et jQuery (nécessaire pour les composants Bootstrap, par exemple le slider) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    <?php // include './vue/Footer.php'; ?>
+    <?php  include './vue/Footer.php'; ?>
     <div>
      <div class="wave"></div>
      <div class="wave"></div>

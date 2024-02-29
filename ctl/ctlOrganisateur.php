@@ -14,9 +14,6 @@ switch ($action) {
         break;
 
     case 'newTicket':
-
-        $result = DbOrganisateur::info_form_create();
-
         include './vue/UI/Organisateur/formAjoutBillet.php';
         break;
 

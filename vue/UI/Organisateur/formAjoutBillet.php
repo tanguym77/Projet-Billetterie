@@ -77,7 +77,16 @@
 
     <form action="" method="post">
         <label for="match_name">Evénement :<i class="fas fa-futbol"></i></label>
-        <input type="text" id="match_name" name="match_name" required placeholder="Evénement">
+        <select name="match_name" id="match_name">
+            <option value="">--Choisir un évènement--</option>
+            <?php
+                $result = DbOrganisateur::list_match();
+                for ($i=0; $i < count($result); $i++) { 
+                    echo '<option value='.$result[$i][0].'>'.$result[$i][0].'</option>';
+                }
+            ?>
+        </select>
+        <br><br>
 
         <label for="match_date">Date :  <i class="fas fa-calendar"></i></label>
         <input type="date" id="match_date" name="match_date" required>
@@ -85,8 +94,17 @@
         <label for="match_time">Heure :<i class="fas fa-clock"></i></label>
         <input type="time" id="match_time" name="match_time" required>
 
-        <label for="venue">Stade :<i class="fas fa-location"></i></label>
-        <input type="text" id="venue" name="venue" required placeholder="Stade">
+        <label for="stade">Stade :<i class="fas fa-location"></i></label>
+        <select name="stade" id="stade">
+            <option value="">--Choisir un stade--</option>
+            <?php
+                $result = DbOrganisateur::list_stade();
+                for ($i=0; $i < count($result); $i++) { 
+                    echo '<option value='.$result[$i][0].'>'.$result[$i][0].'</option>';
+                }
+            ?>
+        </select>
+        <br><br>
 
         <label for="price">Prix du billet :<i class="fas fa-euro-sign"></i></label>
         <input type="number" id="price" name="price" min="0" required placeholder="Prix">
