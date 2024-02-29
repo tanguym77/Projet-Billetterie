@@ -34,11 +34,11 @@
                 </li>
                 <!-- LIEN 2 -->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?ctl=Utilisateur&action=ListMatch">Reservation</a>
+                    <a class="nav-link active" href="index.php?ctl=Utilisateur&action=ListMatch">Reservation</a>
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lien 3</a>
+                    <a class="nav-link active" href="#">Lien 3</a>
                 </li>
             </ul>
             <!-- CONNEXION DECONNEXION -->
