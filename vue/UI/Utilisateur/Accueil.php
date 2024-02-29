@@ -1,8 +1,15 @@
 <?php include './vue/UI/Utilisateur/Header.php'; ?>
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
     <style>
         /* Personnalisation du Slider */
+        .custom-div {
+            /* border: 2px solid #000;  cadre de 2px de largeur solide noir */
+            background-color: rgba(152, 206, 214, 0.3); /* fond transparent (blanc avec 50% d'opacité) */
+            padding: 20px; /* espace intérieur de la div */
+            border-radius: 10px; /* arrondi des bords de la div */
+        }
         .slider-personnalise {
             max-width: 64%; /* Ajustez cette valeur selon vos besoins */
             margin: auto; /* Centrer le slider */
@@ -22,7 +29,20 @@
     </style>
 </head>
     <!-- CONTENU PAGE -->
-    
+
+    <br><br>
+    <center><h1> Bienvenue dans la Billetterie Asian Cup Qatar 2023 </h1></center>
+
+    <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="custom-div">
+          Pour votre Séjour à Doha, nous vous proposons divers activités à faire :
+        </div>
+      </div>
+    </div>
+    </div>
+
     <br><br><br>
 	<div class="slider-personnalise">
     <div id="monSlider" class="carousel slide" data-ride="carousel">
