@@ -16,6 +16,11 @@ switch ($action) {
     case 'newTicket':
         include './vue/UI/Organisateur/formAjoutBillet.php';
         break;
+
+
+    case 'vuelisteUser':
+        include './vue/UI/Organisateur/listeUser.php';
+        break;
             
 
 
