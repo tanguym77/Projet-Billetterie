@@ -66,19 +66,19 @@
 <body>
     <h2>Créer un billet de match de football</h2>
     <form action="process_ticket.php" method="post">
-        <label for="match_name">Evénement :</label>
+        <label for="match_name">Evénement :<i class="fas fa-futbol"></i></label>
         <input type="text" id="match_name" name="match_name" required placeholder="Evénement">
 
-        <label for="match_date">Date :</label>
+        <label for="match_date">Date :  <i class="fas fa-calendar"></i></label>
         <input type="date" id="match_date" name="match_date" required>
 
-        <label for="match_time">Heure :</label>
+        <label for="match_time">Heure :<i class="fas fa-clock"></i></label>
         <input type="time" id="match_time" name="match_time" required>
 
-        <label for="venue">Stade :</label>
+        <label for="venue">Stade :<i class="fas fa-location"></i></label>
         <input type="text" id="venue" name="venue" required placeholder="Stade">
 
-        <label for="price">Prix du billet :</label>
+        <label for="price">Prix du billet :<i class="fas fa-euro-sign"></i></label>
         <input type="number" id="price" name="price" min="0" required placeholder="Prix">
 
         <input type="submit" value="Créer le billet">
