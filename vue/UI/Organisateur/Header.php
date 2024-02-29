@@ -30,7 +30,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- LIEN 1 -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Créer Billet</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=newTicket">Créer Billet</a>
                 </li>
                 <!-- LIEN 2 -->
                 <li class="nav-item">

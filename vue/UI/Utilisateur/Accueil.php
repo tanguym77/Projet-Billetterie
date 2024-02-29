@@ -14,6 +14,7 @@
             max-width: 64%; /* Ajustez cette valeur selon vos besoins */
             margin: auto; /* Centrer le slider */
             overflow: hidden; /* Assurez-vous que rien ne dépasse du slider */
+            background-color: grey;
         }
         
         /* Définir la hauteur du slider */
@@ -21,10 +22,18 @@
             height: 70vh; /* 50% de la hauteur de la fenêtre */
             object-fit: cover; /* Assure que les images couvrent le slider sans être déformées */
         }
-
+        .carousel,.carousel-inner,.carousel-item,.carousel-item img {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
         .carousel-caption {
             background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour la légende */
             color: white; /* Couleur du texte */
+        }
+
+        .carousel-item {
+            transition: transform 0.3s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
         }
     </style>
 </head>
@@ -45,7 +54,20 @@
 
     <br><br><br>
 	<div class="slider-personnalise">
-    <div id="monSlider" class="carousel slide" data-ride="carousel">
+        <div id="monSlider" class="carousel slide" data-ride="carousel">
+            <!-- Indicateurs -->
+            <ol class="carousel-indicators">
+                <li data-target="#monSlider" data-slide-to="0" class="active"></li>
+                <li data-target="#monSlider" data-slide-to="1"></li>
+                <li data-target="#monSlider" data-slide-to="2"></li>
+                <li data-target="#monSlider" data-slide-to="3"></li>
+                <li data-target="#monSlider" data-slide-to="4"></li>
+                <li data-target="#monSlider" data-slide-to="5"></li>
+                <li data-target="#monSlider" data-slide-to="6"></li>
+                <li data-target="#monSlider" data-slide-to="7"></li>
+                <li data-target="#monSlider" data-slide-to="8"></li>
+                <li data-target="#monSlider" data-slide-to="9"></li>
+            </ol>
 			<!-- Wrapper pour les slides -->
 			<div class="carousel-inner">
 				<div class="carousel-item active">
