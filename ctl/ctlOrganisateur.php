@@ -13,14 +13,14 @@ switch ($action) {
         include './vue/UI/Organisateur/Accueil.php';
         break;
 
+    case 'newTicket':
+         include './vue/UI/Organisateur/formAjoutBillet.php';
+         break;
+            
+
+
 }
 
-case 'newTicket':
-    {
-
-
-        break;
-    }
 
 
 ?>
