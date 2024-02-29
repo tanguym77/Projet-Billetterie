@@ -20,28 +20,18 @@
     </style>
 </head>
 <body>
-     <!-- Bouton de retour -->
-     <div class="btn-retour mt-2">
-            <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour</a>
-        </div>
-
-        <br><br>
-
-        <center><h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i>Utilisateurs</h1></center>
-        <br><br>
-        <center>
-<form action="index.php?controleur=utilisateur&action=searchUtilisateur" method="post" class="barre-recherche" style="max-width: 400px;">
-  <div class="input-group md-form form-sm form-1 pl-0">
-    <input class="form-control my-0 py-1 font-italic bar" type="text" name="search" id="search" placeholder="Rechercher un utilisateur...">
-    <div class="input-group-append">
-      <button type="submit" class="input-group-text bg-dark text-white font-weight-bold text-center search" id="basic-text1"><i class="fas fa-search text-white"
-          aria-hidden="true"></i></button></span>
+    <!-- Bouton de retour -->
+    <div class="btn-retour mt-2">
+        <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour</a>
     </div>
-  </div>
-</form>
-</center>
 
-<br>
+    <br><br>
+
+    <center><h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i>Utilisateurs</h1></center>
+    <br><br>
+    
+
+    <br>
     <div class="container">
         <div class="card-body">
             <div class="table-responsive">
@@ -49,6 +39,7 @@
                     <thead class="table-dark">
                         <tr>
                             <th>Nom</th>
+                            <th>Prénom</th>
                             <th>Email</th>
                         </tr>
                     </thead>
@@ -56,8 +47,8 @@
                         <?php
                         // Données des utilisateurs (exemple)
                         $listeUtilisateurs = array(
-                            array("nom" => "Pignon", "email" => "1@1.fr"),
-                            array("nom" => "Hale", "email" => "2@2.fr"),
+                            array("nom" => "Pignon", "prenom"=> "Louis", "email" => "1@1.fr"),
+                            array("nom" => "Hales", "prenom"=> "Mathieu", "email" => "2@2.fr"),
                         );
 
                         // Affichage de la liste des utilisateurs sous forme de tableau
@@ -65,6 +56,7 @@
                             foreach ($listeUtilisateurs as $utilisateur) {
                                 echo "<tr>";
                                 echo "<td>" . $utilisateur['nom'] . "</td>";
+                                echo "<td>" . $utilisateur['prenom'] . "</td>";
                                 echo "<td>" . $utilisateur['email'] . "</td>";
                                 echo "</tr>";
                             }
@@ -76,8 +68,6 @@
                 </table>
             </div>
         </div>
-
-       
     </div>
 </body>
 </html>
