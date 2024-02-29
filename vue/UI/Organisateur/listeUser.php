@@ -29,17 +29,7 @@
 
     <center><h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i>Utilisateurs</h1></center>
     <br><br>
-    <center>
-        <form action="index.php?controleur=utilisateur&action=searchUtilisateur" method="post" class="barre-recherche" style="max-width: 400px;">
-            <div class="input-group md-form form-sm form-1 pl-0">
-                <input class="form-control my-0 py-1 font-italic bar" type="text" name="search" id="search" placeholder="Rechercher un utilisateur...">
-                <div class="input-group-append">
-                    <button type="submit" class="input-group-text bg-dark text-white font-weight-bold text-center search" id="basic-text1"><i class="fas fa-search text-white"
-                        aria-hidden="true"></i></button></span>
-                </div>
-            </div>
-        </form>
-    </center>
+    
 
     <br>
     <div class="container">

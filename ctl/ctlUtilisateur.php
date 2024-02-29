@@ -18,20 +18,6 @@ switch ($action) {
         include './vue/UI/Utilisateur/ListMatch.php';
         break;
 
-        
-    case "searchUtilisateur":
-        {
-
-            $search = $_POST['search'];
-            $search = '%' . $search . '%';
-
-            $listeUtilisateur = DbUtilisateur::searchUtilisateur($search);
-            
-            include 'vue/UI/Organisateur/listeUser.php';
-
-            break;
-
-        }
 
 }
 
