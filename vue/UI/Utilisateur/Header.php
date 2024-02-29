@@ -20,9 +20,9 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Page Utilisateur</a>
+            <a class="navbar-brand" href="index.php">GOAL !!!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,11 +30,11 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- LIEN 1 -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Lien 1</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                 </li>
                 <!-- LIEN 2 -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lien 2</a>
+                    <a class="nav-link" href="index.php?ctl=Utilisateur&action=ListMatch">Reservation</a>
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">

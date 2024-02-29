@@ -23,6 +23,11 @@ switch ($action) {
         include './vue/UI/Organisateur/Accueil.php';
         break;
 
+    case 'vuelisteUser':
+        include './vue/UI/Organisateur/listeUser.php';
+        break;
+            
+
 
 }
 

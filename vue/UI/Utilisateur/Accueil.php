@@ -77,7 +77,7 @@
         .custom-div {
             /* border: 2px solid #000;  cadre de 2px de largeur solide noir */
             font-family: cursive;
-            background-color: rgba(255, 255, 255, 0.5); /* fond transparent (blanc avec 50% d'opacité) */
+            background-color: rgba(255, 255, 255, 0.4); /* fond transparent (blanc avec 50% d'opacité) */
             padding: 20px; /* espace intérieur de la div */
             border-radius: 10px; /* arrondi des bords de la div */
             width: 575px;
@@ -112,13 +112,45 @@
         .police {
             font-family : cursive;
         }
+
+        .cadre-div {
+            border: 2px solid #ccc; /* Cadre de 2px avec une couleur grise */
+            padding: 20px; /* Espace intérieur de la div */
+            border-radius: 10px; /* Arrondi des bords */
+            background-color: rgba(255, 255, 255, 0.4);
+            
+        }
     </style>
 </head>
     <!-- CONTENU PAGE -->
 
-    <br><br>
+    <br><br><br><br>
     <center><h1 class = "police"> Bienvenue dans la Billetterie Asian Cup Qatar 2023 </h1></center>
+    <br><br><br><br>
 
+    <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="cadre-div">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="vue/image/coupe.png" class="img-fluid" alt="Votre Image"> <!-- img-fluid rend l'image responsive -->
+            </div>
+            <div class="col-md-6">
+              <div class="description">
+                <h2>Qu'est-ce que l'Asian Cup Qatar ?</h2>
+                <br>
+                <p>L'Asian Cup Qatar est un tournoi de football organisé par la Confédération asiatique de football. 
+                    Le tournoi mettra en vedette 24 équipes qui disputeront 51 matchs. La phase de groupes comprenant trois matchs en une journée, rendra l’atmosphère de compétition passionnante tout au long du mois. 
+                    Doha, la capitale du Qatar, est une ville dynamique qui offre une variété d'activités et de sites à explorer. Vous retrouverez plus bas dix choses incontournables à faire ou à visiter à Doha.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+   
     <div class="container mt-5">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -239,6 +271,7 @@
 		</div>
 	</div>
 	
+    <br><br><br>
 	
 	<!-- Liens JavaScript de Bootstrap et jQuery (nécessaire pour les composants Bootstrap, par exemple le slider) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
