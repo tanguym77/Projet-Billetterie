@@ -64,7 +64,17 @@
     </style>
 </head>
 <body>
+<div class="btn-retour mt-2">
+        <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour </a>
+    </div>
+    <br>
+<span>
+    
     <h2>Créer un billet de match de football</h2>
+</span>
+
+<br><br>
+
     <form action="process_ticket.php" method="post">
         <label for="match_name">Evénement :<i class="fas fa-futbol"></i></label>
         <input type="text" id="match_name" name="match_name" required placeholder="Evénement">
@@ -83,8 +93,6 @@
 
         <input type="submit" value="Créer le billet">
     </form>
-    <div class="btn-retour mt-2">
-        <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour </a>
-    </div>
+    
 </body>
 </html>
