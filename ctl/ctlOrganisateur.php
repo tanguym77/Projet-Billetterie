@@ -15,4 +15,12 @@ switch ($action) {
 
 }
 
+case 'newTicket':
+    {
+
+
+        break;
+    }
+
+
 ?>
