@@ -14,8 +14,8 @@ switch ($action) {
         break;
 
     case 'newTicket':
-         include './vue/UI/Organisateur/formAjoutBillet.php';
-         break;
+        include './vue/UI/Organisateur/formAjoutBillet.php';
+        break;
             
 
 
