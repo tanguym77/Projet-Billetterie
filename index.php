@@ -15,6 +15,7 @@ if(isset($_GET['ctl']))
             if(isset($_SESSION['status']) && $_SESSION['status'] == 1){
                 include 'ctl/ctlOrganisateur.php';
             }else{
+                include './vue/UI/Utilisateur/Header.php';
                 include './vue/UI/Utilisateur/Accueil.php';
             }
             break;
