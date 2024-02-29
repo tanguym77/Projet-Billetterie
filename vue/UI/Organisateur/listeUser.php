@@ -41,14 +41,15 @@
                             <th>Nom</th>
                             <th>Prénom</th>
                             <th>Email</th>
+                            <th>Statut</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         // Données des utilisateurs (exemple)
                         $listeUtilisateurs = array(
-                            array("nom" => "Pignon", "prenom"=> "Louis", "email" => "1@1.fr"),
-                            array("nom" => "Hales", "prenom"=> "Mathieu", "email" => "2@2.fr"),
+                            array("nom" => "Pignon", "prenom"=> "Louis", "email" => "1@1.fr", "status" => "Utilisateur"),
+                            array("nom" => "Hales", "prenom"=> "Mathieu", "email" => "2@2.fr", "status" => "Administrateur"),
                         );
 
                         // Affichage de la liste des utilisateurs sous forme de tableau
@@ -58,6 +59,7 @@
                                 echo "<td>" . $utilisateur['nom'] . "</td>";
                                 echo "<td>" . $utilisateur['prenom'] . "</td>";
                                 echo "<td>" . $utilisateur['email'] . "</td>";
+                                echo "<td>" . $utilisateur['status'] . "</td>";
                                 echo "</tr>";
                             }
                         } else {
