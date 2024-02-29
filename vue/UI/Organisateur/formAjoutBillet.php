@@ -75,7 +75,7 @@
 
 <br><br>
 
-    <form action="process_ticket.php" method="post">
+    <form action="" method="post">
         <label for="match_name">Evénement :<i class="fas fa-futbol"></i></label>
         <select name="match_name" id="match_name">
             <option value="">--Choisir un évènement--</option>

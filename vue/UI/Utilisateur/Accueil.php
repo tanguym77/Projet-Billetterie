@@ -138,8 +138,11 @@
             </div>
             <div class="col-md-6">
               <div class="description">
-                <h2>Description</h2>
-                <p>Votre texte de description ici.</p>
+                <h2>Qu'est-ce que l'Asian Cup Qatar ?</h2>
+                <br>
+                <p>L'Asian Cup Qatar est un tournoi de football organisé par la Confédération asiatique de football. 
+                    Le tournoi mettra en vedette 24 équipes qui disputeront 51 matchs. La phase de groupes comprenant trois matchs en une journée, rendra l’atmosphère de compétition passionnante tout au long du mois. 
+                    Doha, la capitale du Qatar, est une ville dynamique qui offre une variété d'activités et de sites à explorer. Vous retrouverez plus bas dix choses incontournables à faire ou à visiter à Doha.</p>
               </div>
             </div>
           </div>
@@ -269,6 +272,7 @@
 		</div>
 	</div>
 	
+    <br><br><br>
 	
 	<!-- Liens JavaScript de Bootstrap et jQuery (nécessaire pour les composants Bootstrap, par exemple le slider) -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
