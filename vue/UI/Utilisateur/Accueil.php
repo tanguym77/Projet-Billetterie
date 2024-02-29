@@ -26,7 +26,7 @@
         }
 
         .carousel-item {
-            transition: transform 0.5s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
+            transition: transform 0.3s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
         }
     </style>
 </head>
@@ -40,6 +40,13 @@
                 <li data-target="#monSlider" data-slide-to="0" class="active"></li>
                 <li data-target="#monSlider" data-slide-to="1"></li>
                 <li data-target="#monSlider" data-slide-to="2"></li>
+                <li data-target="#monSlider" data-slide-to="3"></li>
+                <li data-target="#monSlider" data-slide-to="4"></li>
+                <li data-target="#monSlider" data-slide-to="5"></li>
+                <li data-target="#monSlider" data-slide-to="6"></li>
+                <li data-target="#monSlider" data-slide-to="7"></li>
+                <li data-target="#monSlider" data-slide-to="8"></li>
+                <li data-target="#monSlider" data-slide-to="9"></li>
             </ol>
 			<!-- Wrapper pour les slides -->
 			<div class="carousel-inner">
