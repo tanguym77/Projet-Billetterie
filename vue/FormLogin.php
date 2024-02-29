@@ -4,7 +4,7 @@
         background: linear-gradient(-45deg, yellow, orange, red);
         background-size: 400% 400%;
         width: 100%;
-        height: 100vh;
+        height: 90vh;
         animation: animate 10s ease infinite;
     }
     
@@ -50,12 +50,11 @@
                             </form>
                             
                             <!-- Message erreur -->
-                            
-                                <?php
-                                    if(isset($_GET['msg'])){
-                                        echo "<div class='mt-3 bg-danger rounded p-2'>".$_GET['msg']."</div>";
-                                    }
-                                ?>
+                            <?php
+                                if(isset($_GET['msg'])){
+                                    echo "<div class='mt-3 bg-danger rounded p-2'>".$_GET['msg']."</div>";
+                                }
+                            ?>
 
                         </div>
                     </div>
