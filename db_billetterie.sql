@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 29 fév. 2024 à 11:50
+-- Généré le : jeu. 29 fév. 2024 à 14:59
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -32,12 +32,32 @@ USE `db_billetterie`;
 DROP TABLE IF EXISTS `billets`;
 CREATE TABLE IF NOT EXISTS `billets` (
   `id_billet` int(11) NOT NULL AUTO_INCREMENT,
-  `date_reservation` varchar(50) DEFAULT NULL,
   `prix` float DEFAULT NULL,
   `id_evenement` int(11) NOT NULL,
   PRIMARY KEY (`id_billet`),
   KEY `fk_1` (`id_evenement`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `billets`
+--
+
+INSERT INTO `billets` (`id_billet`, `prix`, `id_evenement`) VALUES
+(121, 50, 3),
+(122, 50, 3),
+(123, 50, 3),
+(124, 50, 3),
+(125, 50, 3),
+(126, 60, 4),
+(127, 60, 4),
+(128, 60, 4),
+(129, 60, 4),
+(130, 60, 4),
+(131, 60, 4),
+(132, 60, 4),
+(133, 60, 4),
+(134, 60, 4),
+(135, 60, 4);
 
 -- --------------------------------------------------------
 
@@ -47,17 +67,19 @@ CREATE TABLE IF NOT EXISTS `billets` (
 
 DROP TABLE IF EXISTS `equipes`;
 CREATE TABLE IF NOT EXISTS `equipes` (
+  `id_equipe` int(11) NOT NULL AUTO_INCREMENT,
   `nom_equipe` varchar(50) NOT NULL,
-  PRIMARY KEY (`nom_equipe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `logo` text,
+  PRIMARY KEY (`id_equipe`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `equipes`
 --
 
-INSERT INTO `equipes` (`nom_equipe`) VALUES
-('Jordan'),
-('Qatar');
+INSERT INTO `equipes` (`id_equipe`, `nom_equipe`, `logo`) VALUES
+(1, 'Jordan', NULL),
+(2, 'Qatar', NULL);
 
 -- --------------------------------------------------------
 
@@ -70,17 +92,18 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `id_evenement` int(11) NOT NULL AUTO_INCREMENT,
   `nom_match` varchar(50) DEFAULT NULL,
   `date_match` date DEFAULT NULL,
-  `libelle_sta` varchar(50) NOT NULL,
+  `id_stade` int(11) NOT NULL,
   PRIMARY KEY (`id_evenement`),
-  KEY `libelle_sta` (`libelle_sta`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  KEY `id_stade` (`id_stade`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `evenement`
 --
 
-INSERT INTO `evenement` (`id_evenement`, `nom_match`, `date_match`, `libelle_sta`) VALUES
-(1, 'Jordan vs Qatar', '2024-03-14', 'Stade Lusail, Doha, Qatar');
+INSERT INTO `evenement` (`id_evenement`, `nom_match`, `date_match`, `id_stade`) VALUES
+(3, 'Jordan vs Qatar', '2024-02-22', 1),
+(4, 'Jordan vs Qatar 2', '2024-02-23', 1);
 
 -- --------------------------------------------------------
 
@@ -91,18 +114,18 @@ INSERT INTO `evenement` (`id_evenement`, `nom_match`, `date_match`, `libelle_sta
 DROP TABLE IF EXISTS `jouer`;
 CREATE TABLE IF NOT EXISTS `jouer` (
   `id_evenement` int(11) NOT NULL,
-  `nom_equipe` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_evenement`,`nom_equipe`),
-  KEY `nom_equipe` (`nom_equipe`)
+  `id_equipe` int(11) NOT NULL,
+  PRIMARY KEY (`id_evenement`,`id_equipe`),
+  KEY `id_equipe` (`id_equipe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `jouer`
 --
 
-INSERT INTO `jouer` (`id_evenement`, `nom_equipe`) VALUES
-(1, 'Jordan'),
-(1, 'Qatar');
+INSERT INTO `jouer` (`id_evenement`, `id_equipe`) VALUES
+(3, 1),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -114,9 +137,17 @@ DROP TABLE IF EXISTS `reserver`;
 CREATE TABLE IF NOT EXISTS `reserver` (
   `id_utilisateur` int(11) NOT NULL,
   `id_billet` int(11) NOT NULL,
+  `date_reservation` date NOT NULL,
   PRIMARY KEY (`id_utilisateur`,`id_billet`),
   KEY `id_billet` (`id_billet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reserver`
+--
+
+INSERT INTO `reserver` (`id_utilisateur`, `id_billet`, `date_reservation`) VALUES
+(1, 121, '2024-02-13');
 
 -- --------------------------------------------------------
 
@@ -126,17 +157,18 @@ CREATE TABLE IF NOT EXISTS `reserver` (
 
 DROP TABLE IF EXISTS `stades`;
 CREATE TABLE IF NOT EXISTS `stades` (
-  `libelle_sta` varchar(50) NOT NULL,
+  `id_stade` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_stade` varchar(50) NOT NULL,
   `capacite` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`libelle_sta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id_stade`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `stades`
 --
 
-INSERT INTO `stades` (`libelle_sta`, `capacite`) VALUES
-('Stade Lusail, Doha, Qatar', '5000');
+INSERT INTO `stades` (`id_stade`, `nom_stade`, `capacite`) VALUES
+(1, 'Stade Lusail, Doha, Qatar', '5000');
 
 -- --------------------------------------------------------
 
@@ -171,20 +203,21 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mail`, `password`
 
 DROP TABLE IF EXISTS `zones`;
 CREATE TABLE IF NOT EXISTS `zones` (
+  `id_zone` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_zone` varchar(50) NOT NULL,
-  `nb_place` varchar(50) DEFAULT NULL,
-  `libelle_sta` varchar(50) NOT NULL,
-  PRIMARY KEY (`libelle_zone`),
-  KEY `libelle_sta` (`libelle_sta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `nb_place` int(11) DEFAULT NULL,
+  `id_stade` int(11) NOT NULL,
+  PRIMARY KEY (`id_zone`),
+  KEY `id_stade` (`id_stade`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `zones`
 --
 
-INSERT INTO `zones` (`libelle_zone`, `nb_place`, `libelle_sta`) VALUES
-('1', '100', 'Stade Lusail, Doha, Qatar'),
-('2', '200', 'Stade Lusail, Doha, Qatar');
+INSERT INTO `zones` (`id_zone`, `libelle_zone`, `nb_place`, `id_stade`) VALUES
+(1, '1', 100, 1),
+(2, '2', 200, 1);
 
 --
 -- Contraintes pour les tables déchargées
@@ -200,14 +233,14 @@ ALTER TABLE `billets`
 -- Contraintes pour la table `evenement`
 --
 ALTER TABLE `evenement`
-  ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`libelle_sta`) REFERENCES `stades` (`libelle_sta`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`id_stade`) REFERENCES `stades` (`id_stade`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `jouer`
 --
 ALTER TABLE `jouer`
   ADD CONSTRAINT `jouer_ibfk_1` FOREIGN KEY (`id_evenement`) REFERENCES `evenement` (`id_evenement`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `jouer_ibfk_2` FOREIGN KEY (`nom_equipe`) REFERENCES `equipes` (`nom_equipe`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `jouer_ibfk_2` FOREIGN KEY (`id_equipe`) REFERENCES `equipes` (`id_equipe`) ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `reserver`
@@ -220,7 +253,7 @@ ALTER TABLE `reserver`
 -- Contraintes pour la table `zones`
 --
 ALTER TABLE `zones`
-  ADD CONSTRAINT `zones_ibfk_1` FOREIGN KEY (`libelle_sta`) REFERENCES `stades` (`libelle_sta`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `zones_ibfk_1` FOREIGN KEY (`id_stade`) REFERENCES `stades` (`id_stade`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

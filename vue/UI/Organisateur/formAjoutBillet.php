@@ -96,7 +96,7 @@
         <label for="nb_billets">Nombre de billets : <i class="fas fa-layer-group"></i></label>
         <input type="number" id="nb_billets" name="nb_billets" min="0" required placeholder="Nombre de billets">
 
-        <input type="submit" value="Créer le billet">
+        <input type="submit" value="Créer les billets">
     </form>
     
 </body>
