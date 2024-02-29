@@ -77,7 +77,7 @@
         .custom-div {
             /* border: 2px solid #000;  cadre de 2px de largeur solide noir */
             font-family: cursive;
-            background-color: rgba(152, 206, 214, 0.3); /* fond transparent (blanc avec 50% d'opacité) */
+            background-color: rgba(255, 255, 255, 0.5); /* fond transparent (blanc avec 50% d'opacité) */
             padding: 20px; /* espace intérieur de la div */
             border-radius: 10px; /* arrondi des bords de la div */
             width: 575px;
