@@ -75,39 +75,26 @@
 
 <br><br>
 
-    <form action="" method="post">
-        <label for="match_name">Evénement :<i class="fas fa-futbol"></i></label>
-        <select name="match_name" id="match_name">
+    <form action="./index.php?ctl=Organisateur&action=ajout_billet" method="post">
+        <label for="match_id">Evénement : <i class="fas fa-futbol"></i></label>
+        <select name="match_id" id="match_id">
             <option value="">--Choisir un évènement--</option>
             <?php
                 $result = DbOrganisateur::list_match();
                 for ($i=0; $i < count($result); $i++) { 
-                    echo '<option value='.$result[$i][0].'>'.$result[$i][0].'</option>';
+                    echo '<option value='.$result[$i][0].'>'.$result[$i][1].'</option>';
                 }
             ?>
         </select>
         <br><br>
 
-        <label for="match_date">Date :  <i class="fas fa-calendar"></i></label>
-        <input type="date" id="match_date" name="match_date" required>
+        <!-- PRIX -->
+        <label for="prix">Prix du billet : <i class="fas fa-euro-sign"></i></label>
+        <input type="number" id="prix" name="prix" min="0" required placeholder="Prix">
 
-        <label for="match_time">Heure :<i class="fas fa-clock"></i></label>
-        <input type="time" id="match_time" name="match_time" required>
-
-        <label for="stade">Stade :<i class="fas fa-location"></i></label>
-        <select name="stade" id="stade">
-            <option value="">--Choisir un stade--</option>
-            <?php
-                $result = DbOrganisateur::list_stade();
-                for ($i=0; $i < count($result); $i++) { 
-                    echo '<option value='.$result[$i][0].'>'.$result[$i][0].'</option>';
-                }
-            ?>
-        </select>
-        <br><br>
-
-        <label for="price">Prix du billet :<i class="fas fa-euro-sign"></i></label>
-        <input type="number" id="price" name="price" min="0" required placeholder="Prix">
+        <!-- NB BILLETS -->
+        <label for="nb_billets">Nombre de billets : <i class="fas fa-layer-group"></i></label>
+        <input type="number" id="nb_billets" name="nb_billets" min="0" required placeholder="Nombre de billets">
 
         <input type="submit" value="Créer le billet">
     </form>

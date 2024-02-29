@@ -15,14 +15,19 @@
         <!-- JS -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    
+        <style>
+        .navbar-brand img {
+            height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
+        }
+        </style>
     <title>Billetterie</title>
 </head>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">GOAL !!!</a>
+            <a class="navbar-brand" href="index.php">GOAL !!!
+            <img src="vue/image/ballon-de-football.png"  alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,4 +55,3 @@
             </div>
         </div>
     </nav>
-    
