@@ -1,0 +1,11 @@
+/* Ce fichier CSS contient les styles pour la mise en forme et la présentation de votre page HTML. */
+
+/* Exemple de style pour un élément avec l'ID "element" */
+#element {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    border: 1px solid black;
+}
+
+/* Autres styles peuvent être ajoutés ici */
