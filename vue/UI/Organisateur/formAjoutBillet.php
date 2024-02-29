@@ -66,8 +66,8 @@
 <body>
     <h2>Créer un billet de match de football</h2>
     <form action="process_ticket.php" method="post">
-        <label for="match_name">Nom du match :</label>
-        <input type="text" id="match_name" name="match_name" required>
+        <label for="match_name">Evénement :</label>
+        <input type="text" id="match_name" name="match_name" required placeholder="Evénement">
 
         <label for="match_date">Date :</label>
         <input type="date" id="match_date" name="match_date" required>
@@ -75,11 +75,11 @@
         <label for="match_time">Heure :</label>
         <input type="time" id="match_time" name="match_time" required>
 
-        <label for="venue">Lieu :</label>
-        <input type="text" id="venue" name="venue" required>
+        <label for="venue">Stade :</label>
+        <input type="text" id="venue" name="venue" required placeholder="Stade">
 
         <label for="price">Prix du billet :</label>
-        <input type="number" id="price" name="price" min="0" required>
+        <input type="number" id="price" name="price" min="0" required placeholder="Prix">
 
         <input type="submit" value="Créer le billet">
     </form>
