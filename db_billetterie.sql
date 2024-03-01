@@ -197,6 +197,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mail`, `password`, `status`) VALUES
 (1, 'Pignion', 'Louis', '1@1.fr', '1', '0'),
 (2, 'Hales', 'Mathieu', '2@2.fr', '2', '1');
+(4, 'Jacques', 'Henry', '3@3.fr', '3', '0');
+
 
 -- --------------------------------------------------------
 

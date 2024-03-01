@@ -91,8 +91,8 @@
                             ?>
                             <td><?php echo $user['mail'] ?></td>
                             <td><?php echo $user['mail'] ?></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td><a href="index.php?ctl=Organisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                     <?php
                     }
