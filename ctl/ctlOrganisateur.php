@@ -60,6 +60,34 @@ switch ($action) {
     
                 }
 
+
+                case "deleteUser":
+                    {
+        
+                            $id = $_GET['id'];
+        
+                            $deleteUser = DbOrganisateur::deleteUser($id);
+        
+        ?>
+                <script>document.location="index.php?ctl=Organisateur&action=vuelisteUser&message=delete"</script>
+                <?php
+                        break;
+        
+                    }
+
+                    case "vuelisteUser":
+                        {
+                            if ($_SESSION['status'] == 'Administrateur') {
+                            $listeUserU = DbOrganisateur::listeUtilisateurU();
+                            $listeUserA = DbOrganisateur::listeUtilisateurA();
+            
+                            include './vue/UI/Utilisateur/listeUser.php';
+            
+                            }
+                            break;
+            
+                        }
+
 }
 
 

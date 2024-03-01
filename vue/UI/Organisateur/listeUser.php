@@ -35,13 +35,29 @@
     </center>
     <br><br>
 
-    <center>
-        <div class="mb-3 p-1">
-            <div class="btn-group me-2 btnAjout">
-                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?ctl=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
-            </div>
+
+    <?php
+  if(isset($_GET['message'])){
+      if($_GET['message'] == 'success'){ ?>
+        <div class="alert alert-success fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Succès</strong> L'utilisateur a bien été ajouté
         </div>
-    </center>
+      <?php } else if($_GET['message'] == 'delete'){ ?>
+        <div class="alert alert-danger fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Attention !</strong> L'utilisateur a bien été supprimé
+        </div>
+      <?php } else if($_GET['message'] == 'update'){ ?>
+        <div class="alert alert-success fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Succès</strong> L'utilisateur a bien été modifié
+        </div>
+     <?php }
+  }
+?>
+
+  
 
 
     <br>
@@ -92,7 +108,7 @@
                             <td><?php echo $user['mail'] ?></td>
                             <td><?php echo $user['mail'] ?></td>
                             <td><a href="index.php?ctl=Organisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                     <?php
                     }
