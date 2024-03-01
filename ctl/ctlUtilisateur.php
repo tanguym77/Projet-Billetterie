@@ -1,6 +1,6 @@
 <?php
 include './model/DbUtilisateur.php';
-
+include './model/DbOrganisateur.php';
 $action = $_GET['action'];
 
 switch ($action) {
@@ -25,11 +25,11 @@ switch ($action) {
                 $status = $_GET['s'];
                 if ($status == 0)
                 {
-                    $infoI = DbUtilisateur::infoUserU($id);
+                    $infoI = DbOrganisateur::infoUserU($id);
                 }
                 else
                 {
-                    $infoUserU = DbUtilisateur::infoUserA($id);
+                    $infoUserU = DbOrganisateur::infoUserA($id);
                 }
             
             
@@ -41,8 +41,8 @@ switch ($action) {
             case "vueUtilisateur":
                 {
     
-                    $listeUserU = DbUtilisateur::listeUserU();
-                    //$listeUserA = DbUtilisateur::listeUserA();
+                    $listeUserU = DbOrganisateur::listeUserU();
+                    //$listeUserA = DbOrganisateur::listeUserA();
     
                     include './vue/UI/Utilisateur/listeUser.php';
     
