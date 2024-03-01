@@ -34,7 +34,7 @@
   margin: 0 auto;
   position: relative;
   display: block;
-  width: 800px;
+  width: 50vw;
   height: 150px;
   overflow: hidden;
   border-bottom: 3px solid #fff;
@@ -190,7 +190,7 @@
         <center><h1 class="my-4">Matchs de football - Billets</h1></center>
         <br><br><br>
 
-        <div class="row">
+        <div class="row m-0">
             <!-- CARDS -->
             <?php
             for ($i=0; $i < count($result); $i++) {
