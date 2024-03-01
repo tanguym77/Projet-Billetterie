@@ -67,7 +67,7 @@ class DbOrganisateur{
 public static function infoUserU($id)
     {
         try {
-            $sql = "SELECT * FROM utilisateur WHERE status ==0";
+            $sql = "SELECT * FROM utilisateur WHERE status = 0";
             $result = connectPdo::getObjPdo()->prepare($sql);
             $result->bindValue(':id', $id);
             $result->execute();
@@ -82,7 +82,7 @@ public static function infoUserU($id)
 	public static function infoUserA($id)
     {
         try {
-            $sql = "SELECT * FROM utilisateur WHERE status ==1";
+            $sql = "SELECT * FROM utilisateur WHERE status = 1";
             $result =connectPdo::getObjPdo()->prepare($sql);
             $result->bindValue(':id', $id);
             $result->execute();

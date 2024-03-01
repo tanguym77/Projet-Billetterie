@@ -98,8 +98,8 @@
                             <?php
                             }
                             ?>
-                            <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=editUser&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=deleteUser&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                 <?php
                     }
