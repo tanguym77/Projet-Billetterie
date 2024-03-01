@@ -69,7 +69,7 @@ switch ($action) {
                             $deleteUser = DbOrganisateur::deleteUser($id);
         
         ?>
-                <script>document.location="index.php?ctl=Organisateurtilisateur&action=vuelisteUser&message=delete"</script>
+                <script>document.location="index.php?ctl=Organisateur&action=vuelisteUser&message=delete"</script>
                 <?php
                         break;
         
