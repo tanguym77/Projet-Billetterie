@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 29 fév. 2024 à 14:59
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : ven. 01 mars 2024 à 09:08
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,12 +31,12 @@ USE `db_billetterie`;
 
 DROP TABLE IF EXISTS `billets`;
 CREATE TABLE IF NOT EXISTS `billets` (
-  `id_billet` int(11) NOT NULL AUTO_INCREMENT,
+  `id_billet` int NOT NULL AUTO_INCREMENT,
   `prix` float DEFAULT NULL,
-  `id_evenement` int(11) NOT NULL,
+  `id_evenement` int NOT NULL,
   PRIMARY KEY (`id_billet`),
   KEY `fk_1` (`id_evenement`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `billets`
@@ -67,19 +67,20 @@ INSERT INTO `billets` (`id_billet`, `prix`, `id_evenement`) VALUES
 
 DROP TABLE IF EXISTS `equipes`;
 CREATE TABLE IF NOT EXISTS `equipes` (
-  `id_equipe` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_equipe` varchar(50) NOT NULL,
-  `logo` text,
+  `id_equipe` int NOT NULL AUTO_INCREMENT,
+  `nom_equipe` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_equipe`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `equipes`
 --
 
-INSERT INTO `equipes` (`id_equipe`, `nom_equipe`, `logo`) VALUES
-(1, 'Jordan', NULL),
-(2, 'Qatar', NULL);
+INSERT INTO `equipes` (`id_equipe`, `nom_equipe`) VALUES
+(1, 'Jordan'),
+(2, 'Qatar'),
+(3, 'Australie'),
+(4, 'Japon');
 
 -- --------------------------------------------------------
 
@@ -89,13 +90,13 @@ INSERT INTO `equipes` (`id_equipe`, `nom_equipe`, `logo`) VALUES
 
 DROP TABLE IF EXISTS `evenement`;
 CREATE TABLE IF NOT EXISTS `evenement` (
-  `id_evenement` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_match` varchar(50) DEFAULT NULL,
+  `id_evenement` int NOT NULL AUTO_INCREMENT,
+  `nom_match` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `date_match` date DEFAULT NULL,
-  `id_stade` int(11) NOT NULL,
+  `id_stade` int NOT NULL,
   PRIMARY KEY (`id_evenement`),
   KEY `id_stade` (`id_stade`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `evenement`
@@ -103,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 
 INSERT INTO `evenement` (`id_evenement`, `nom_match`, `date_match`, `id_stade`) VALUES
 (3, 'Jordan vs Qatar', '2024-02-22', 1),
-(4, 'Jordan vs Qatar 2', '2024-02-23', 1);
+(4, 'Australie VS Japon', '2024-02-23', 1);
 
 -- --------------------------------------------------------
 
@@ -113,11 +114,11 @@ INSERT INTO `evenement` (`id_evenement`, `nom_match`, `date_match`, `id_stade`) 
 
 DROP TABLE IF EXISTS `jouer`;
 CREATE TABLE IF NOT EXISTS `jouer` (
-  `id_evenement` int(11) NOT NULL,
-  `id_equipe` int(11) NOT NULL,
+  `id_evenement` int NOT NULL,
+  `id_equipe` int NOT NULL,
   PRIMARY KEY (`id_evenement`,`id_equipe`),
   KEY `id_equipe` (`id_equipe`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `jouer`
@@ -125,7 +126,9 @@ CREATE TABLE IF NOT EXISTS `jouer` (
 
 INSERT INTO `jouer` (`id_evenement`, `id_equipe`) VALUES
 (3, 1),
-(3, 2);
+(3, 2),
+(4, 3),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -135,12 +138,12 @@ INSERT INTO `jouer` (`id_evenement`, `id_equipe`) VALUES
 
 DROP TABLE IF EXISTS `reserver`;
 CREATE TABLE IF NOT EXISTS `reserver` (
-  `id_utilisateur` int(11) NOT NULL,
-  `id_billet` int(11) NOT NULL,
+  `id_utilisateur` int NOT NULL,
+  `id_billet` int NOT NULL,
   `date_reservation` date NOT NULL,
   PRIMARY KEY (`id_utilisateur`,`id_billet`),
   KEY `id_billet` (`id_billet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `reserver`
@@ -157,11 +160,11 @@ INSERT INTO `reserver` (`id_utilisateur`, `id_billet`, `date_reservation`) VALUE
 
 DROP TABLE IF EXISTS `stades`;
 CREATE TABLE IF NOT EXISTS `stades` (
-  `id_stade` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_stade` varchar(50) NOT NULL,
-  `capacite` varchar(50) DEFAULT NULL,
+  `id_stade` int NOT NULL AUTO_INCREMENT,
+  `nom_stade` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `capacite` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_stade`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `stades`
@@ -178,14 +181,14 @@ INSERT INTO `stades` (`id_stade`, `nom_stade`, `capacite`) VALUES
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
-  `mail` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL,
+  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `prenom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `mail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `utilisateur`
@@ -203,13 +206,13 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mail`, `password`
 
 DROP TABLE IF EXISTS `zones`;
 CREATE TABLE IF NOT EXISTS `zones` (
-  `id_zone` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle_zone` varchar(50) NOT NULL,
-  `nb_place` int(11) DEFAULT NULL,
-  `id_stade` int(11) NOT NULL,
+  `id_zone` int NOT NULL AUTO_INCREMENT,
+  `libelle_zone` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nb_place` int DEFAULT NULL,
+  `id_stade` int NOT NULL,
   PRIMARY KEY (`id_zone`),
   KEY `id_stade` (`id_stade`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `zones`

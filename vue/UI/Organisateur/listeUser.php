@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +14,14 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
     </style>
 </head>
+
 <body>
     <!-- Bouton de retour -->
     <div class="btn-retour mt-2">
@@ -27,49 +30,86 @@
 
     <br><br>
 
-    <center><h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i>Utilisateurs</h1></center>
+    <center>
+        <h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i> Utilisateurs</h1>
+    </center>
     <br><br>
-    
 
-    <br>
-    <div class="container">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Statut</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        // Données des utilisateurs (exemple)
-                        $listeUtilisateurs = array(
-                            array("nom" => "Pignon", "prenom"=> "Louis", "email" => "1@1.fr", "status" => "Utilisateur"),
-                            array("nom" => "Hales", "prenom"=> "Mathieu", "email" => "2@2.fr", "status" => "Administrateur"),
-                        );
-
-                        // Affichage de la liste des utilisateurs sous forme de tableau
-                        if (!empty($listeUtilisateurs)) {
-                            foreach ($listeUtilisateurs as $utilisateur) {
-                                echo "<tr>";
-                                echo "<td>" . $utilisateur['nom'] . "</td>";
-                                echo "<td>" . $utilisateur['prenom'] . "</td>";
-                                echo "<td>" . $utilisateur['email'] . "</td>";
-                                echo "<td>" . $utilisateur['status'] . "</td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='2'>Aucun utilisateur trouvé.</td></tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
+    <center>
+        <div class="mb-3 p-1">
+            <div class="btn-group me-2 btnAjout">
+                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?ctl=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
             </div>
         </div>
+    </center>
+
+
+    <br>
+    <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Statut</th>
+                    <th>Identifiant</th>
+                    <th>Email</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if (isset($listeUserU)){
+                    foreach ($listeUserU as $userU) {
+                ?>
+                        <tr class="table-primary">
+                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
+                            <?php
+                            if($userU['status'] == 1){
+                            ?>
+                                <td>Administrateur</td>
+                            <?php
+                            } else {
+                            ?>
+                                <td>Utilisateur</td>
+                            <?php
+                            }
+                            ?>
+                            <td><?php echo $userU['id_utilisateur'] ?></td>
+                            <td>
+                                <?php 
+                                if(strlen($userU['mail']) > 0){
+                                    echo $userU['mail'];
+                                } else {
+                                    echo "<i class='fas fa-times-circle'></i>";
+                                }
+                                ?>
+                            </td>
+                            <?php
+                            if($userU['status'] == 0){
+                            ?>
+                                <td>Utilisateur</td>
+                            <?php
+                            } else {
+                            ?>
+                                <td>Administrateur</td>
+                            <?php
+                            }
+                            ?>
+                            <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                        </tr>
+                <?php
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
+</div>
+
 </body>
+
 </html>

@@ -9,7 +9,7 @@
     <!-- Custom CSS -->
     <style>
         .card {
-            background-image: url('vue/img/fondblanc.jpg');
+            background-image: url('vue/image/fondblanc.jpg');
             background-size: cover;
             max-width: 300px; /* Définir la largeur maximale des billets */
             margin: 0 auto; /* Centrer les billets */
@@ -29,100 +29,38 @@
     <div class="container">
         <center><h1 class="my-4">Matchs de football - Billets</h1></center>
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h4 class="card-title">Match 1 - Équipe A vs Équipe B</h4>
-                        <p class="card-text">Équipes: 
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/lsyrie.png" alt="Équipe A">
-                                <span>Équipe A</span>
-                            </div>
-                            <span>-</span>
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/chinel.png" alt="Équipe B">
-                                <span>Équipe B</span>
-                            </div>
-                        </p>
-                        <p class="card-text">Date: 01/03/2024</p>
-                        <p class="card-text">Heure: 20:00</p>
-                        <p class="card-text">Stade: Stade ...</p>
-                        <button class="btn btn-primary">Modifier</button>
-                        <button class="btn btn-danger">Supprimer</button>
+            <!-- CARDS -->
+            <?php
+            for ($i=0; $i < count($result); $i++) {
+            $equipes = DbOrganisateur::list_equipes($result[$i][0]);
+            echo'
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">'.$result[$i][1].'</h4>
+                            <p class="card-text">Équipes: 
+                                <div class="equipe-container">
+                                    <img class="equipe-img" src="uploads/'.$equipes[0][0].'.png" alt="Équipe A">
+                                    <span>'.$equipes[0][0].'</span>
+                                </div>
+                                <span>-</span>
+                                <div class="equipe-container">
+                                    <img class="equipe-img" src="uploads/'.$equipes[1][0].'.png" alt="Équipe B">
+                                    <span>'.$equipes[1][0].'</span>
+                                </div>
+                            </p>
+                            <p class="card-text">Date: '.$result[$i][2].'</p>
+                            <p class="card-text">Stade: '.$result[$i][3].'</p>
+                            <button class="btn btn-primary">Modifier</button>
+                            <button class="btn btn-danger">Supprimer</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
-                        <p class="card-text">Équipes: 
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/qatar.jpg" alt="Équipe C">
-                                <span>Équipe C</span>
-                            </div>
-                            <span>-</span>
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/jordan.png" alt="Équipe D">
-                                <span>Équipe D</span>
-                            </div>
-                        </p>
-                        <p class="card-text">Date: 03/03/2024</p>
-                        <p class="card-text">Heure: 18:00</p>
-                        <p class="card-text">Stade: Stade ...</p>
-                        <button class="btn btn-primary">Modifier</button>
-                        <button class="btn btn-danger">Supprimer</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Ajouter d'autres matchs ici au besoin -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
-                        <p class="card-text">Équipes: 
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/korea.jpg" alt="Équipe C">
-                                <span>Équipe C</span>
-                            </div>
-                            <span>-</span>
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/jordan.png" alt="Équipe D">
-                                <span>Équipe D</span>
-                            </div>
-                        </p>
-                        <p class="card-text">Date: 03/03/2024</p>
-                        <p class="card-text">Heure: 18:00</p>
-                        <p class="card-text">Stade: Stade ...</p>
-                        <button class="btn btn-primary">Modifier</button>
-                        <button class="btn btn-danger">Supprimer</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h4 class="card-title">Match 2 - Équipe C vs Équipe D</h4>
-                        <p class="card-text">Équipes: 
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/qatar.jpg" alt="Équipe C">
-                                <span>Équipe C</span>
-                            </div>
-                            <span>-</span>
-                            <div class="equipe-container">
-                                <img class="equipe-img" src="vue/img/jordan.png" alt="Équipe D">
-                                <span>Équipe D</span>
-                            </div>
-                        </p>
-                        <p class="card-text">Date: 03/03/2024</p>
-                        <p class="card-text">Heure: 18:00</p>
-                        <p class="card-text">Stade: Stade ...</p>
-                        <button class="btn btn-primary">Modifier</button>
-                        <button class="btn btn-danger">Supprimer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                ';
+            }
+            ?>
+
+            
     </div>
     <!-- Bootstrap JS and jQuery (optional) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
