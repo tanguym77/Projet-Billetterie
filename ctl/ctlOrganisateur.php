@@ -69,19 +69,19 @@ switch ($action) {
                             $deleteUser = DbOrganisateur::deleteUser($id);
         
         ?>
-                <script>document.location="index.php?ctl=Organisateurtilisateur&action=vueUtilisateur&message=delete"</script>
+                <script>document.location="index.php?ctl=Organisateurtilisateur&action=vuelisteUser&message=delete"</script>
                 <?php
                         break;
         
                     }
 
-                    case "vuelisteUtilisateur":
+                    case "vuelisteUser":
                         {
                             if ($_SESSION['status'] == 'Administrateur') {
                             $listeUserU = DbOrganisateur::listeUtilisateurU();
                             $listeUserA = DbOrganisateur::listeUtilisateurA();
             
-                            include './vue/UI/utilisateur/listeUser.php';
+                            include './vue/UI/Utilisateur/listeUser.php';
             
                             }
                             break;
