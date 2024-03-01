@@ -1,5 +1,5 @@
 <?php
-include './model/Connexion.php';
+//include './model/Connexion.php';
 require_once 'Connexion.php';
 
 public static function infoUser($id)

@@ -42,7 +42,7 @@ switch ($action) {
                 {
     
                     $listeUserU = DbUtilisateur::listeUserU();
-                    $listeUserA = DbUtilisateur::listeUserA();
+                    //$listeUserA = DbUtilisateur::listeUserA();
     
                     include './vue/UI/Utilisateur/listeUser.php';
     
