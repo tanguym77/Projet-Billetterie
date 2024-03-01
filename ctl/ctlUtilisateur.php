@@ -1,6 +1,5 @@
 <?php
 include './model/DbUtilisateur.php';
-include './model/DbOrganisateur.php';
 $action = $_GET['action'];
 
 switch ($action) {
