@@ -50,11 +50,12 @@ class DbOrganisateur{
 
 
 
-	public static function infoUser()
+	public static function infoUser($id)
 {
 	try {
-		$sql = "SELECT * FROM utilisateur";
+		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
 		$result = connectPdo::getObjPdo()->prepare($sql);
+		$result->bindValue(':id', $id);
 		$result->execute();
 		$liste = $result->fetchAll();
 		return $liste;
