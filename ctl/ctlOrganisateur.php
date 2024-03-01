@@ -24,7 +24,8 @@ switch ($action) {
         break;
 
     case 'vuelisteUser':
-        DbOrganisateur::infoUser();
+        $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
+        DbOrganisateur::infoUser($id);
         include './vue/UI/Organisateur/listeUser.php';
         break;
             
@@ -81,12 +82,25 @@ switch ($action) {
                             $listeUserU = DbOrganisateur::listeUtilisateurU();
                             $listeUserA = DbOrganisateur::listeUtilisateurA();
             
-                            include './vue/UI/Utilisateur/listeUser.php';
+                            include './vue/UI/Organisateur/listeUser.php';
             
                             }
                             break;
             
                         }
+
+                        case "infoUser":
+                            {
+                
+                                $id = $_GET['id'];
+                
+                                $infoUtilisateur = DbOrganisateur::infoUser($id);
+                                include './vue/UI/Organisateur/infoUser.php';
+                
+                                break;
+                
+                            }
+                
 
 }
 
