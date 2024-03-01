@@ -10,9 +10,7 @@
       <section class="">
         <p class="d-flex justify-content-center align-items-center">
           <span class="me-3">Inscription gratuite!</span>
-          <button type="button" class="btn btn-outline-light btn-rounded">
-            Inscription
-          </button>
+          <?php {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormRegister">Inscription</a>');} ?>
         </p>
       </section>
       <!-- Section: CTA -->
