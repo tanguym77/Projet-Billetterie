@@ -39,7 +39,7 @@
                 </li>
                 <!-- LIEN 2 -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php?ctl=Utilisateur&action=ListMatch">Reservation</a>
+                    <a class="nav-link active" href="index.php?ctl=Utilisateur&action=ListMatch">Voir les matchs</a>
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">

@@ -14,7 +14,7 @@ switch ($action) {
 
     case 'ListMatch':
         // Récupération des infos de la list des matchs
-        //$result = DbUtilisateur::list_ticket();
+        $result = DbUtilisateur::list_billets();
         include './vue/UI/Utilisateur/ListMatch.php';
         break;
 
