@@ -7,8 +7,8 @@ switch ($action) {
 
     // Vue générale
     case 'Accueil':
-        // Récupération des infos users
-        //$result = DbOrganisateur::list_ticket();
+        // Récupération des billets
+        $result = DbOrganisateur::list_billets();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
