@@ -24,6 +24,7 @@ switch ($action) {
         break;
 
     case 'vuelisteUser':
+        DbOrganisateur::infoUser();
         include './vue/UI/Organisateur/listeUser.php';
         break;
             

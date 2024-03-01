@@ -50,12 +50,11 @@ class DbOrganisateur{
 
 
 
-	public static function infoUser($id)
+	public static function infoUser()
 {
 	try {
-		$sql = "SELECT * FROM utilisateur WHERE id-utilisateur = :id";
+		$sql = "SELECT * FROM utilisateur";
 		$result = connectPdo::getObjPdo()->prepare($sql);
-		$result->bindValue(':id', $id);
 		$result->execute();
 		$liste = $result->fetchAll();
 		return $liste;
@@ -68,7 +67,7 @@ class DbOrganisateur{
 public static function infoUserU($id)
     {
         try {
-            $sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
+            $sql = "SELECT * FROM utilisateur WHERE status = 0";
             $result = connectPdo::getObjPdo()->prepare($sql);
             $result->bindValue(':id', $id);
             $result->execute();
@@ -83,7 +82,7 @@ public static function infoUserU($id)
 	public static function infoUserA($id)
     {
         try {
-            $sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
+            $sql = "SELECT * FROM utilisateur WHERE status = 1";
             $result =connectPdo::getObjPdo()->prepare($sql);
             $result->bindValue(':id', $id);
             $result->execute();

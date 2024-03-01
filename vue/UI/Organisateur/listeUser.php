@@ -38,7 +38,7 @@
     <center>
         <div class="mb-3 p-1">
             <div class="btn-group me-2 btnAjout">
-                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?controleur=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
+                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?ctl=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
             </div>
         </div>
     </center>
@@ -46,28 +46,40 @@
 
     <br>
     <div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Statut</th>
-                    <th>Identifiant</th>
-                    <th>Email</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if (isset($listeUserU)){
-                    foreach ($listeUserU as $userU) {
-                ?>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Statut</th>
+                        <th>Identifiant</th>
+                        <th>Email</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    require_once './model/DbOrganisateur.php';
+
+                    // Appeler la méthode listeUserU pour récupérer les utilisateurs ayant un statut égal à 0.
+                    $listeUserU = DbOrganisateur::listeUserU();
+
+                    // Appeler la méthode listeUserA pour récupérer les utilisateurs ayant un statut égal à 1.
+                    $listeUserA = DbOrganisateur::listeUserA();
+
+                    // Fusionner les deux listes d'utilisateurs
+                    $listeUtilisateurs = array_merge($listeUserU, $listeUserA);
+
+                    // Parcourir la liste fusionnée des utilisateurs
+                    foreach ($listeUtilisateurs as $user) {
+                    ?>
                         <tr class="table-primary">
-                            <td><a href="index.php?controleur=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'] ?></a></td>
+                            <td><?php echo $user['prenom'] ?></td>
                             <?php
-                            if($userU['status'] == 1){
+                            if($user['status'] == 1){
                             ?>
                                 <td>Administrateur</td>
                             <?php
@@ -77,38 +89,18 @@
                             <?php
                             }
                             ?>
-                            <td><?php echo $userU['id_utilisateur'] ?></td>
-                            <td>
-                                <?php 
-                                if(strlen($userU['mail']) > 0){
-                                    echo $userU['mail'];
-                                } else {
-                                    echo "<i class='fas fa-times-circle'></i>";
-                                }
-                                ?>
-                            </td>
-                            <?php
-                            if($userU['status'] == 0){
-                            ?>
-                                <td>Utilisateur</td>
-                            <?php
-                            } else {
-                            ?>
-                                <td>Administrateur</td>
-                            <?php
-                            }
-                            ?>
-                            <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td><?php echo $user['mail'] ?></td>
+                            <td><?php echo $user['mail'] ?></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
-                <?php
+                    <?php
                     }
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </body>
 
