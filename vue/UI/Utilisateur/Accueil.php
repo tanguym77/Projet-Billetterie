@@ -137,7 +137,7 @@
               <img src="vue/image/coupe.png" class="img-fluid" alt="Votre Image"> <!-- img-fluid rend l'image responsive -->
             </div>
             <div class="col-md-6">
-              <div class="description">
+              <div>
                 <h2>Qu'est-ce que l'Asian Cup Qatar ?</h2>
                 <br>
                 <p>L'Asian Cup Qatar est un tournoi de football organisé par la Confédération asiatique de football. 
