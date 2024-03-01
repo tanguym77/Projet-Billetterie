@@ -3,77 +3,95 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <style>
-
-    body {
-        overflow: auto;
-        background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
-        animation: gradient 15s ease infinite;
-        background-size: 400% 400%;
-        background-attachment: fixed;
-    }
-
-    /* fond animé */
-    @keyframes gradient {
-        0% {
-            background-position: 0% 0%;
-        }
-        50% {
-            background-position: 100% 100%;
-        }
-        100% {
-            background-position: 0% 0%;
-        }
-    }
-
-    .wave {
-        background: rgb(255 255 255 / 25%);
-        border-radius: 1000% 1000% 0 0;
-        position: fixed;
-        width: 200%;
-        height: 12em;
-        animation: wave 10s -3s linear infinite;
-        transform: translate3d(0, 0, 0);
-        opacity: 0.8;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-    }
-
-    .wave:nth-of-type(2) {
-        bottom: -1.25em;
-        animation: wave 18s linear reverse infinite;
-        opacity: 0.8;
-    }
-
-    .wave:nth-of-type(3) {
-        bottom: -2.5em;
-        animation: wave 20s -1s reverse infinite;
-        opacity: 0.9;
-    }
-
-    
-    @keyframes wave {
-        2% {
-            transform: translateX(1);
+        /*corp du text */
+        body {
+            overflow: auto;
+            background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+            background-attachment: fixed;
         }
 
-        25% {
-            transform: translateX(-25%);
+        /* fond animé */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
         }
 
-        50% {
-            transform: translateX(-50%);
+        .wave {
+            background: rgb(255 255 255 / 25%);
+            border-radius: 1000% 1000% 0 0;
+            position: fixed;
+            width: 200%;
+            height: 12em;
+            animation: wave 10s -3s linear infinite;
+            transform: translate3d(0, 0, 0);
+            opacity: 0.8;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
         }
 
-        75% {
-            transform: translateX(-25%);
+        .wave:nth-of-type(2) {
+            bottom: -1.25em;
+            animation: wave 18s linear reverse infinite;
+            opacity: 0.8;
         }
 
-        100% {
-            transform: translateX(1);
+        .wave:nth-of-type(3) {
+            bottom: -2.5em;
+            animation: wave 20s -1s reverse infinite;
+            opacity: 0.9;
         }
-    }
+
         
+        @keyframes wave {
+            2% {
+                transform: translateX(1);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-25%);
+            }
+
+            100% {
+                transform: translateX(1);
+            }
+        }
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .animated-text {
+            /* Appliquer l'animation */
+            animation: 1s ease-out 0s 1 slideInFromLeft;
+            /* Centrer le texte horizontalement et verticalement */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Ajouter plus de styles selon le besoin */
+        }
         .custom-div {
             /* border: 2px solid #000;  cadre de 2px de largeur solide noir */
             font-family: cursive;
@@ -106,7 +124,7 @@
         }
 
         .carousel-item {
-            transition: transform 0.3s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
+            transition: transform 0.5s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
         }
 
         .police {
@@ -123,11 +141,9 @@
     </style>
 </head>
     <!-- CONTENU PAGE -->
-
-    <br><br><br><br>
-    <center><h1 class = "police"> Bienvenue dans la Billetterie Asian Cup Qatar 2023 </h1></center>
-    <br><br><br><br>
-
+    <div class=" animated-text">
+        <h1 class = "police"> Bienvenue dans la Billetterie Asian Cup Qatar 2023 </h1>
+    </div>
     <div class="container mt-5">
     <div class="row">
       <div class="col-md-12">
@@ -179,7 +195,7 @@
             </ol>
 			<!-- Wrapper pour les slides -->
 			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="15000">
+				<div class="carousel-item active" data-bs-interval="20000">
 					<img src="vue/image/art-islamique.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Musée d'art islamique</h5>
@@ -187,7 +203,7 @@
 					</div>
 				</div>
 
-				<div class="carousel-item" data-bs-interval="15000">
+				<div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/aspire-park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Aspire Park</h5>
@@ -195,7 +211,7 @@
 					</div>
 				</div>
 
-				<div class="carousel-item" data-bs-interval="15000">
+				<div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Aspire-Zone.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Aspire Zone</h5>
@@ -203,7 +219,7 @@
 					</div>
 				</div>
                 
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Corniche-Doha.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Corniche de Doha</h5>
@@ -211,14 +227,14 @@
 					</div>
 				</div>
                 
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Cultural-Village.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Katara Cultural Village</h5>
 						<p>Un complexe culturel qui propose des expositions artistiques, des événements culturels, des restaurants, et des plages artificielles. C'est un excellent endroit pour explorer la diversité culturelle du Qatar.</p>
 					</div>
 				</div>
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/fort-zubarah.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Al Zubarah Fort</h5>
@@ -226,14 +242,14 @@
 					</div>
 				</div>
                 
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Jazeera-Park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Al Jazeera Park</h5>
 						<p>Un parc populaire pour les familles avec des aires de jeux, des espaces de pique-nique, et une grande roue qui offre une vue panoramique sur la ville. </p>
 					</div>
 				</div>
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/MIA-Park.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>MIA Park</h5>
@@ -241,7 +257,7 @@
 					</div>
 				</div>
                 
-                <div class="carousel-item" data-bs-interval="15000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Pearl-Qatar.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>The Pearl-Qatar</h5>
@@ -249,7 +265,7 @@
 					</div>
 				</div>
 
-                <div class="carousel-item" data-bs-interval="10000">
+                <div class="carousel-item" data-bs-interval="20000">
 					<img src="vue/image/Souq-Waqif.webp" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Souq Waqif</h5>
