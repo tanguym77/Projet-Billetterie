@@ -51,18 +51,15 @@
                                     <span>'.$equipes[1][0].'</span>
                                 </div>
                             </p>
-                           
                             <p class="card-text">Date: '.$result[$i][2].'</p>
                             <p class="card-text">Stade: '.$result[$i][3].'</p>
-                            
                         </div>
                     </div>
                 </div>
                 ';
             }
             ?>
-
-            
+        </div>
     </div>
     <!-- Bootstrap JS and jQuery (optional) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -72,7 +69,7 @@
 </html>
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <?php  include './vue/Footer.php'; ?>
 </body>
