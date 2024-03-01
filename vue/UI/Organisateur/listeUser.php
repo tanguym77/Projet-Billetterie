@@ -92,7 +92,7 @@
                     foreach ($listeUtilisateurs as $user) {
                     ?>
                         <tr class="table-primary">
-                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'] ?></a></td>
+                            <td><a href="index.php?ctl=Organisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'] ?></a></td>
                             <td><?php echo $user['prenom'] ?></td>
                             <?php
                             if($user['status'] == 1){

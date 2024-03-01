@@ -88,6 +88,19 @@ switch ($action) {
             
                         }
 
+                        case "infoUser":
+                            {
+                
+                                $id = $_GET['id'];
+                
+                                $infoUtilisateur = DbOrganisateur::infoUser();
+                                include './vue/UI/Utilisateur/infoUser.php';
+                
+                                break;
+                
+                            }
+                
+
 }
 
 
