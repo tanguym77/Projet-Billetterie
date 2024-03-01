@@ -29,7 +29,7 @@ switch ($action) {
         break;
             
 
-        case "editUtilisateur":
+        case "editUser":
             {
                 $id = $_GET['id'];
                 $status = $_GET['s'];
@@ -43,7 +43,7 @@ switch ($action) {
                 }
             
             
-                include './vue/UI/Utilisateur/vuetestEditUtilisateur.php';
+                include './vue/UI/Utilisateur/vueEditUser.php';
                 break;
             }
             
