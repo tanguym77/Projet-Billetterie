@@ -38,7 +38,7 @@
     <center>
         <div class="mb-3 p-1">
             <div class="btn-group me-2 btnAjout">
-                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?controleur=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
+                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?ctl=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
             </div>
         </div>
     </center>
@@ -61,11 +61,12 @@
             </thead>
             <tbody>
                 <?php
+                var_dump($listeUserU);
                 if (isset($listeUserU)){
                     foreach ($listeUserU as $userU) {
                 ?>
                         <tr class="table-primary">
-                            <td><a href="index.php?controleur=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
                             <?php
                             if($userU['status'] == 1){
                             ?>
@@ -98,8 +99,8 @@
                             <?php
                             }
                             ?>
-                            <td><a href="index.php?controleur=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?controleur=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                 <?php
                     }
