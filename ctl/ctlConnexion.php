@@ -11,6 +11,11 @@ switch ($action) {
         include('./vue/FormLogin.php');
         break;
 
+    case 'FormRegister':
+        include('./vue/UI/Utilisateur/Header.php');
+        include('./vue/FormRegister.php');
+        break;
+        
 
     // L'Utilisateur se connecte
     case 'login':
@@ -41,7 +46,7 @@ switch ($action) {
             }
         }
         break;
-
+        
     // L'utilisateur se déconnecte
     case 'Deconnexion':
         session_unset();
