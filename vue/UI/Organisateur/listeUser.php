@@ -46,70 +46,75 @@
 
     <br>
     <div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Statut</th>
-                    <th>Identifiant</th>
-                    <th>Email</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                var_dump($listeUserU);
-                if (isset($listeUserU)){
-                    foreach ($listeUserU as $userU) {
-                ?>
-                        <tr class="table-primary">
-                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
-                            <?php
-                            if($userU['status'] == 1){
-                            ?>
-                                <td>Administrateur</td>
-                            <?php
-                            } else {
-                            ?>
-                                <td>Utilisateur</td>
-                            <?php
-                            }
-                            ?>
-                            <td><?php echo $userU['id_utilisateur'] ?></td>
-                            <td>
-                                <?php 
-                                if(strlen($userU['mail']) > 0){
-                                    echo $userU['mail'];
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Statut</th>
+                        <th>Identifiant</th>
+                        <th>Email</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // Données factices pour tester
+                    $listeUserU = [
+                        ['id_utilisateur' => 1, 'nom' => 'Doe', 'prenom' => 'John', 'status' => 1, 'mail' => 'john@example.com'],
+                        ['id_utilisateur' => 2, 'nom' => 'Smith', 'prenom' => 'Jane', 'status' => 0, 'mail' => 'jane@example.com']
+                    ];
+
+                    if (isset($listeUserU)) {
+                        foreach ($listeUserU as $userU) {
+                    ?>
+                            <tr class="table-primary">
+                                <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'] . ' ' . $userU['prenom'] ?></a></td>
+                                <?php
+                                if ($userU['status'] == 1) {
+                                ?>
+                                    <td>Administrateur</td>
+                                <?php
                                 } else {
-                                    echo "<i class='fas fa-times-circle'></i>";
+                                ?>
+                                    <td>Utilisateur</td>
+                                <?php
                                 }
                                 ?>
-                            </td>
-                            <?php
-                            if($userU['status'] == 0){
-                            ?>
-                                <td>Utilisateur</td>
-                            <?php
-                            } else {
-                            ?>
-                                <td>Administrateur</td>
-                            <?php
-                            }
-                            ?>
-                            <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
-                        </tr>
-                <?php
+                                <td><?php echo $userU['id_utilisateur'] ?></td>
+                                <td>
+                                    <?php
+                                    if (strlen($userU['mail']) > 0) {
+                                        echo $userU['mail'];
+                                    } else {
+                                        echo "<i class='fas fa-times-circle'></i>";
+                                    }
+                                    ?>
+                                </td>
+                                <?php
+                                if ($userU['status'] == 0) {
+                                ?>
+                                    <td>Utilisateur</td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td>Administrateur</td>
+                                <?php
+                                }
+                                ?>
+                                <td><a href="index.php?ctl=Utilisateur&action=editUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                                <td><a href="index.php?ctl=Utilisateur&action=deleteUtilisateur&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            </tr>
+                    <?php
+                        }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </body>
 
