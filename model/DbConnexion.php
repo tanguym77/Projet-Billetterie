@@ -11,6 +11,12 @@ class DbConnection{
 		return $result;
 	}
 
+	public static function newUser($nom,$prenom,$email,$password)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `utilisateur`(`id_utilisateur`, `nom`, `prenom`, `mail`, `password`, `status`) VALUES (NULL,?,?,?,?,'0')");
+		$stmt->execute([$nom,$prenom,$email,$password]);
+	}
+
 }
 
 ?>

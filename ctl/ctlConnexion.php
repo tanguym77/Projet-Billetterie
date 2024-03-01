@@ -1,6 +1,5 @@
 <?php
 include './model/DbConnexion.php';
-
 $action = $_GET['action'];
 
 switch ($action) {
@@ -50,31 +49,11 @@ switch ($action) {
 
         // L'Utilisateur s'inscrit (template)
         case 'Register':
-        if(isset($_POST['email']) && isset($_POST['password'])){
-
-            $result = DbConnection::connectUser($_POST['email'],$_POST['password']);
-            
-
-            if($result != null){
-                // Récupération des informations de l'utilisateur
-                $_SESSION['nom'] = $result['nom'];
-                $_SESSION['prenom'] = $result['prenom'];
-                $_SESSION['status'] = $result['status'];
-
-                // L'utilisateur est un admin
-                if($_SESSION['status'] == 1){
-                    header("Location: index.php?ctl=Organisateur&action=Accueil");
-                }
-                // L'utilisateur n'est pas admin
-                else{ 
-                    header("Location: index.php?ctl=Utilisateur&action=Accueil");
-                }
-                
-            }
-            if($result == null){
-                header("Location:index.php?ctl=Connexion&action=FormLogin&msg=Email ou mot de passe incorrect");
-            }
+        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
+            $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
         }
+        include('./vue/UI/Utilisateur/Header.php');
+        include('./vue/FormLogin.php');
         break;
         
     // L'utilisateur se déconnecte

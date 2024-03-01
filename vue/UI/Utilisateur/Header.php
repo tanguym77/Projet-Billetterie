@@ -24,7 +24,7 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">GOAL !!!
             <img src="vue/image/ballon-de-football.png"  alt="Logo"></a>
