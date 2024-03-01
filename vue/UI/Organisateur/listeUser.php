@@ -35,6 +35,28 @@
     </center>
     <br><br>
 
+
+    <?php
+  if(isset($_GET['message'])){
+      if($_GET['message'] == 'success'){ ?>
+        <div class="alert alert-success fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Succès</strong> L'utilisateur a bien été ajouté
+        </div>
+      <?php } else if($_GET['message'] == 'delete'){ ?>
+        <div class="alert alert-danger fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Attention !</strong> L'utilisateur a bien été supprimé
+        </div>
+      <?php } else if($_GET['message'] == 'update'){ ?>
+        <div class="alert alert-success fade show alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Succès</strong> L'utilisateur a bien été modifié
+        </div>
+     <?php }
+  }
+?>
+
     <center>
         <div class="mb-3 p-1">
             <div class="btn-group me-2 btnAjout">

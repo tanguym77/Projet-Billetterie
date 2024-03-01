@@ -60,6 +60,21 @@ switch ($action) {
     
                 }
 
+
+                case "deleteUser":
+                    {
+        
+                            $id = $_GET['id'];
+        
+                            $deleteUser = DbOrganisateur::deleteUser($id);
+        
+        ?>
+                <script>document.location="index.php?ctl=Organisateurtilisateur&action=vueUtilisateur&message=delete"</script>
+                <?php
+                        break;
+        
+                    }
+
 }
 
 

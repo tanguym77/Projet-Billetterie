@@ -121,6 +121,21 @@ public static function infoUserU($id)
             die("Erreur dans la BDD ");
         }
     }
+
+
+
+	public static function deleteUser($id)
+    {
+        try {
+            $sql = "DELETE FROM utilisateur WHERE id_utilisateur = :id";
+            $result = connectPdo::getObjPdo()->prepare($sql);
+            $result->bindValue(':id', $id);
+            $result->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            die("Erreur dans la BDD ");
+        }
+    }
 }
 
 ?>
