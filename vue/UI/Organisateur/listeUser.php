@@ -1,3 +1,17 @@
+<?php
+require_once './model/DbOrganisateur.php';
+
+// Appeler la méthode listeUserU pour récupérer les utilisateurs ayant un statut égal à 0.
+$listeUserU = DbOrganisateur::listeUserU();
+
+// Appeler la méthode listeUserA pour récupérer les utilisateurs ayant un statut égal à 1.
+$listeUserA = DbOrganisateur::listeUserA();
+
+// Fusionner les deux listes d'utilisateurs
+$listeUtilisateurs = array_merge($listeUserU, $listeUserA);
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -61,48 +75,47 @@
             </thead>
             <tbody>
                 <?php
-                if (isset($listeUserU)){
-                    foreach ($listeUserU as $userU) {
+                // Parcourir la liste fusionnée des utilisateurs
+                foreach ($listeUtilisateurs as $user) {
                 ?>
-                        <tr class="table-primary">
-                            <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $userU['id_utilisateur']; ?>"><?php echo $userU['nom'].' '.$userU['prenom'] ?></a></td>
-                            <?php
-                            if($userU['status'] == 1){
-                            ?>
-                                <td>Administrateur</td>
-                            <?php
+                    <tr class="table-primary">
+                        <td><a href="index.php?ctl=Utilisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'].' '.$user['prenom'] ?></a></td>
+                        <?php
+                        if($user['status'] == 1){
+                        ?>
+                            <td>Administrateur</td>
+                        <?php
+                        } else {
+                        ?>
+                            <td>Utilisateur</td>
+                        <?php
+                        }
+                        ?>
+                        <td><?php echo $user['id_utilisateur'] ?></td>
+                        <td>
+                            <?php 
+                            if(strlen($user['mail']) > 0){
+                                echo $user['mail'];
                             } else {
-                            ?>
-                                <td>Utilisateur</td>
-                            <?php
+                                echo "<i class='fas fa-times-circle'></i>";
                             }
                             ?>
-                            <td><?php echo $userU['id_utilisateur'] ?></td>
-                            <td>
-                                <?php 
-                                if(strlen($userU['mail']) > 0){
-                                    echo $userU['mail'];
-                                } else {
-                                    echo "<i class='fas fa-times-circle'></i>";
-                                }
-                                ?>
-                            </td>
-                            <?php
-                            if($userU['status'] == 0){
-                            ?>
-                                <td>Utilisateur</td>
-                            <?php
-                            } else {
-                            ?>
-                                <td>Administrateur</td>
-                            <?php
-                            }
-                            ?>
-                            <td><a href="index.php?ctl=Utilisateur&action=editUser&id=<?php echo $userU['id_utilisateur'] ?>&s=<?php echo $userU['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Utilisateur&action=deleteUser&id=<?php echo $userU['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
-                        </tr>
+                        </td>
+                        <?php
+                        if($user['status'] == 0){
+                        ?>
+                            <td>Utilisateur</td>
+                        <?php
+                        } else {
+                        ?>
+                            <td>Administrateur</td>
+                        <?php
+                        }
+                        ?>
+                        <td><a href="index.php?ctl=Utilisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="index.php?ctl=Utilisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                    </tr>
                 <?php
-                    }
                 }
                 ?>
             </tbody>
