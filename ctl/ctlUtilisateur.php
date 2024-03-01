@@ -19,36 +19,7 @@ switch ($action) {
         break;
 
 
-        case "editUtilisateur":
-            {
-                $id = $_GET['id'];
-                $status = $_GET['s'];
-                if ($status == 0)
-                {
-                    $infoI = DbOrganisateur::infoUserU($id);
-                }
-                else
-                {
-                    $infoUserU = DbOrganisateur::infoUserA($id);
-                }
-            
-            
-                include './vue/UI/Utilisateur/vuetestEditUtilisateur.php';
-                break;
-            }
-            
-
-            case "vueUtilisateur":
-                {
-    
-                    $listeUserU = DbOrganisateur::listeUserU();
-                    //$listeUserA = DbOrganisateur::listeUserA();
-    
-                    include './vue/UI/Utilisateur/listeUser.php';
-    
-                    break;
-    
-                }
+        
 
 }
 
