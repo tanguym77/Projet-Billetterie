@@ -57,13 +57,7 @@
   }
 ?>
 
-    <center>
-        <div class="mb-3 p-1">
-            <div class="btn-group me-2 btnAjout">
-                <a class="btn btn-sm btn-primary rounded me-2" href="index.php?ctl=Utilisateur&action=vueFormUtilisateur"><i class="fa fa-plus-circle"></i> Ajouter un utilisateur</a>
-            </div>
-        </div>
-    </center>
+  
 
 
     <br>

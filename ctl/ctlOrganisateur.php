@@ -75,6 +75,19 @@ switch ($action) {
         
                     }
 
+                    case "vuelisteUtilisateur":
+                        {
+                            if ($_SESSION['status'] == 'Administrateur') {
+                            $listeUserU = DbOrganisateur::listeUtilisateurU();
+                            $listeUserA = DbOrganisateur::listeUtilisateurA();
+            
+                            include './vue/UI/utilisateur/listeUser.php';
+            
+                            }
+                            break;
+            
+                        }
+
 }
 
 
