@@ -19,6 +19,23 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        .table-responsive {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+        }
+
+        /* Réduire la taille des colonnes */
+        th, td {
+            white-space: nowrap;
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 
@@ -61,18 +78,19 @@
 
 
     <br>
+    <div class="card card-alert text-center bg-card-liste">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable">
                 <thead class="table-dark">
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Statut</th>
-                        <th>Identifiant</th>
-                        <th>Email</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <th style="max-width: 100px;">Nom</th>
+                        <th style="max-width: 100px;">Prénom</th>
+                        <th style="max-width: 100px;">Statut</th>
+                        <th style="max-width: 150px;">Identifiant</th>
+                        <th style="max-width: 150px;">Email</th>
+                        <th style="max-width: 50px;">Modifier</th>
+                        <th style="max-width: 50px;">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,23 +110,23 @@
                     foreach ($listeUtilisateurs as $user) {
                     ?>
                         <tr class="table-primary">
-                            <td><a href="index.php?ctl=Organisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'] ?></a></td>
-                            <td><?php echo $user['prenom'] ?></td>
+                            <td style="max-width: 100px;"><a href="index.php?ctl=Organisateur&action=infoUser&id=<?php echo $user['id_utilisateur']; ?>"><?php echo $user['nom'] ?></a></td>
+                            <td style="max-width: 100px;"><?php echo $user['prenom'] ?></td>
                             <?php
                             if($user['status'] == 1){
                             ?>
-                                <td>Administrateur</td>
+                                <td style="max-width: 100px;">Administrateur</td>
                             <?php
                             } else {
                             ?>
-                                <td>Utilisateur</td>
+                                <td style="max-width: 100px;">Utilisateur</td>
                             <?php
                             }
                             ?>
-                            <td><?php echo $user['mail'] ?></td>
-                            <td><?php echo $user['mail'] ?></td>
-                            <td><a href="index.php?ctl=Organisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><i class="fa fa-trash-alt fa-red"></i></a></td>
+                            <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
+                            <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
+                            <td style="max-width: 50px;"><a href="index.php?ctl=Organisateur&action=editUser&id=<?php echo $user['id_utilisateur'] ?>&s=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
+                            <td style="max-width: 50px;"><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                     <?php
                     }
@@ -117,7 +135,7 @@
             </table>
         </div>
     </div>
-
+                </div>
 </body>
 
 </html>
