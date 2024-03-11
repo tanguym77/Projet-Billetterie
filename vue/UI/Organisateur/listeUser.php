@@ -78,6 +78,7 @@
 
 
     <br>
+    <div class="card card-alert text-center bg-card-liste">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable">
@@ -134,7 +135,7 @@
             </table>
         </div>
     </div>
-
+                </div>
 </body>
 
 </html>
