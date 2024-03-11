@@ -34,11 +34,11 @@
                 </li>
                 <!-- LIEN 2 -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php?ctl=Organisateur&action=vuelisteUser">Utilisateurs</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=listEvenement">Evenements</a>
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Paramètres</a>
+                    <a class="nav-link active" href="index.php?ctl=Organisateur&action=vuelisteUser">Utilisateurs</a>
                 </li>
             </ul>
             <!-- CONNEXION DECONNEXION -->
