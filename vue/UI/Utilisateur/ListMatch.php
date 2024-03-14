@@ -214,6 +214,7 @@
                             <p class="card-text">Date: '.$result[$i][2].'</p>
                             <p class="card-text">Stade: '.$result[$i][3].'</p>
                         </div>
+                        <a class="btn btn-primary m-2" href="index.php?ctl=Utilisateur&action=DetailMatch&evenement='.$result[$i][0].'">Réserver</a>
                     </div>
                 </div>
                 ';

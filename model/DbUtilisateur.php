@@ -77,8 +77,8 @@ public static function infoUserU($id)
         }
     }
 
-
-    public static function list_billets()
+    // Retourne les infos des evenements
+    public static function list_evenements()
 	{
 		$stmt = connectPdo::getObjPdo()->prepare("SELECT id_evenement, nom_match, date_match, nom_stade FROM evenement e, stades s WHERE e.id_stade = s.id_stade;");
 		$stmt->execute();
@@ -95,6 +95,11 @@ public static function infoUserU($id)
 		$result = $stmt->fetchall();
 		return $result;
 	}
+
+    public static function info_matchs($id_evenement){
+
+    }
+    
 }
 
 ?>
