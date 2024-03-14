@@ -16,6 +16,11 @@ switch ($action) {
         include('./vue/FormRegister.php');
         break;
         
+    // L'Utilisateur accès au formulaire d'inscription
+    case 'Profil':
+        include('./vue/UI/Utilisateur/Header.php');
+        include('./vue/Profil.php');
+        break;
 
     // L'Utilisateur se connecte
     case 'login':
@@ -47,14 +52,15 @@ switch ($action) {
         }
         break;
 
-        // L'Utilisateur s'inscrit (template)
-        case 'Register':
+    // L'Utilisateur s'inscrit (template)
+    case 'Register':
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
             $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
         }
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
         break;
+            
         
     // L'utilisateur se déconnecte
     case 'Deconnexion':
