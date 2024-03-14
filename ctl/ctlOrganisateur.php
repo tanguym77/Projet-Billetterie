@@ -44,7 +44,7 @@ switch ($action) {
                 }
             
             
-                include './vue/UI/Utilisateur/vueEditUser.php';
+                include './vue/UI/Utilisateur/vueEdituser.php';
                 break;
             }
             
