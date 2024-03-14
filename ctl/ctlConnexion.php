@@ -68,7 +68,7 @@ switch ($action) {
             }
 
             else {
-                header("Location:index.php?ctl=Connexion&action=FormLogin&msg=Erreur : un compte est déjà crée avec cet Email");
+                header("Location:index.php?ctl=Connexion&action=FormRegister&msg=Erreur : un compte est déjà crée avec cet Email");
             }
         }
         
@@ -80,10 +80,23 @@ switch ($action) {
     case 'ChangeProfil':
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
             $mdp=DbConnection::userPassword($_SESSION['mail']);
-            if($mdp=$_POST['password']){
-                $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
+            if($mdp==$_POST['password']){
+                if($_SESSION['mail']==$_POST['email']){
+                    $changeUser=DbConnection::changeProfil2($_POST['nom'],$_POST['prenom'],$mdp);
+                }   
+                
+                else {
+                    $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
+                }
+            }
+
+            else {
+                header("Location:index.php?ctl=Connexion&action=Profil&msg=Erreur : mot de passe incorrecte");
+                break;
             }
         }
+            
+
         session_unset();
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
