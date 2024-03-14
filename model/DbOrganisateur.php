@@ -40,12 +40,21 @@ class DbOrganisateur{
 	}
 
 	// Ajoute X billets dans la base pour un evenement
-	public static function ajout_billet($match_id, $prix, $nb_billets)
+	public static function ajout_billet($nb_billets, $prix, $id_evenement, $id_zone)
 	{
 		for ($i=0; $i < $nb_billets; $i++) {
-			$stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `billets` (`prix`, `id_evenement`) VALUES ( (?), (?) );");
-			$stmt->execute([$prix, $match_id]);
+			$stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `billets` (`prix`, `id_evenement`, `id_zone`) VALUES ( (?), (?), (?) )");
+			$stmt->execute([$prix, $id_evenement, $id_zone]);
 		}
+	}
+
+    // Retourne les zones d'un stade
+	public static function info_zone($id_evenement)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT zones.id_zone, zones.libelle_zone FROM zones, stades, evenement WHERE zones.id_stade = stades.id_stade AND stades.id_stade = evenement.id_stade AND evenement.id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetchall();
+        return $result;
 	}
 
 

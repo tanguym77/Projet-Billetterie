@@ -1,12 +1,9 @@
 <?php include './vue/UI/Utilisateur/Header.php'; ?>
 
-<?php
-    //var_dump($result);
-?>
 <body>
     <style>
         .equipe-img {
-            max-width: 100pxpx;
+            max-width: 100px;
             max-height: 100px;
             margin-right: 10px;
         }
@@ -85,22 +82,22 @@
 
             <?php
 
-            for ($i=0; $i < 4; $i++) { 
+            for ($i=0; $i < count($info_zone); $i++) { 
             echo'
             
             <form action="" method="post">
                 <div class="row border p-1 m-2">
                     <div class="col-md-2 py-md-5">
                         Catégorie
-                        <b>Catégorie '.($i+1).'</b>
+                        <b>'.$info_zone[$i]['libelle_zone'].'</b>
                     </div>
                     <div class="col-md-3 py-md-5 py-2">
                         Disponible <br>
-                        X Billets
+                        '.DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'].' Billets
                     </div>
                     <div class="col-md-3 py-md-5 py-2">
                         Prix/billet <br>
-                        X €
+                        '.$prix_zone[$i]['prix'].' €
                     </div>
                     <div class="col-md-2 py-md-5 py-2">
                         Quantité

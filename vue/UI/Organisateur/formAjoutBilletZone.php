@@ -6,6 +6,12 @@
     <title>Créer un billet de match de football</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
         form {
             background-color: #fff;
             padding: 20px;
@@ -57,7 +63,7 @@
         }
     </style>
 </head>
-<body class="m-0 p-0">
+<body>
 <div class="btn-retour mt-2">
         <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour </a>
     </div>
@@ -69,20 +75,30 @@
 
 <br><br>
 
-    <form action="./index.php?ctl=Organisateur&action=ajout_billet_suite" method="post">
-        <label for="id_evenement">Evénement : <i class="fas fa-futbol"></i></label>
-        <select name="id_evenement" id="id_evenement">
-            <option value="">--Choisir un évènement--</option>
+    <form action="./index.php?ctl=Organisateur&action=ajout_billet" method="post">
+
+        <!-- PRIX -->
+        <label for="prix">Prix du billet : <i class="fas fa-euro-sign"></i></label>
+        <input type="number" id="prix" name="prix" min="0" required placeholder="Prix">
+
+        <!-- NB BILLETS -->
+        <label for="nb_billets">Nombre de billets : <i class="fas fa-layer-group"></i></label>
+        <input type="number" id="nb_billets" name="nb_billets" min="0" required placeholder="Nombre de billets">
+
+        <!-- Zone -->
+        <label for="id_zone">Zone : </label>
+        <select name="id_zone" id="id_zone">
+            <option value="">--Choisir une zone--</option>
             <?php
-                $result = DbOrganisateur::list_match();
                 for ($i=0; $i < count($result); $i++) { 
-                    echo '<option value='.$result[$i][0].'>'.$result[$i][1].'</option>';
+                    echo '<option value='.$result[$i]['id_zone'].'>'.$result[$i]['libelle_zone'].'</option>';
                 }
             ?>
         </select>
         <br><br>
 
-        <input type="submit" value="Choisir un évènement">
+        <input type="hidden" name="id_evenement" value="<?php echo($_POST['id_evenement']) ?>">
+        <input type="submit" value="Créer les billets">
     </form>
     
 </body>

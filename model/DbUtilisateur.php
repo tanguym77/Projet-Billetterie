@@ -120,6 +120,33 @@ public static function infoUserU($id)
 		$result = $stmt->fetch();
 		return $result;
     }
+
+    // Retourne les zones d'un stade
+	public static function info_zone($id_evenement)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT zones.id_zone, zones.libelle_zone FROM zones, stades, evenement WHERE zones.id_stade = stades.id_stade AND stades.id_stade = evenement.id_stade AND evenement.id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetchall();
+        return $result;
+	}
+
+    // Retourne le prix des zones d'un evenement
+	public static function prix_zone($id_evenement)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT DISTINCT billets.id_zone, billets.prix FROM billets, evenement WHERE billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetchall();
+        return $result;
+	}
+
+    // Retourne le nombre de place dispo d'une zone
+	public static function dispo_zone($id_zone, $id_evenement)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(billets.id_billet) AS Categorie_dispo FROM billets WHERE billets.id_billet NOT IN (SELECT reserver.id_billet FROM reserver) AND billets.id_zone = (?) AND billets.id_evenement = (?);");
+        $stmt->execute([$id_zone, $id_evenement]);
+        $result = $stmt->fetch();
+        return $result;
+	}
 }
 
 ?>

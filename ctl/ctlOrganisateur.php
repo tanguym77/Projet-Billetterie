@@ -13,16 +13,27 @@ switch ($action) {
         include './vue/UI/Organisateur/Accueil.php';
         break;
 
+    // Formulaire ajout de billet -- On choisit un evenement
     case 'newTicket':
+        include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/formAjoutBillet.php';
         break;
     
+    // Création de billet -- Formulaire : 
+    case 'ajout_billet_suite':
+        $result = DbOrganisateur::info_zone($_POST['id_evenement']);
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/formAjoutBilletZone.php';
+        break;
+
+    // Création de billet -- Création
     case 'ajout_billet':
-        DbOrganisateur::ajout_billet($_POST['match_id'], $_POST['prix'], $_POST['nb_billets']);
+        DbOrganisateur::ajout_billet($_POST['nb_billets'], $_POST['prix'], $_POST['id_evenement'], $_POST['id_zone']);
+        $result = DbOrganisateur::list_billets();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
-
+    
     case 'vuelisteUser':
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);
