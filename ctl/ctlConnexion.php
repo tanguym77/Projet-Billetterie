@@ -56,8 +56,17 @@ switch ($action) {
     // L'Utilisateur s'inscrit (template)
     case 'Register':
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
-            $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
+            $result = DbConnection::verifEmail($_POST['email']);
+
+            if($result == null){
+                $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
+            }
+
+            else {
+                header("Location:index.php?ctl=Connexion&action=FormLogin&msg=Erreur : un compte est déjà crée avec cet Email");
+            }
         }
+        
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
         break;

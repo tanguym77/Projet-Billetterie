@@ -33,6 +33,14 @@ class DbConnection{
 		return $result;
 	}
 
+	public static function verifEmail($email)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT `mail` FROM `utilisateur` WHERE mail=(?)");
+		$stmt->execute([$email]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
 }
 
 ?>

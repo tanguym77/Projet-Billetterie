@@ -38,7 +38,7 @@
                             <p class="mb-5">Veuillez rentrer vos identifiants :</p>
 
                             <!-- FORM -->
-                            <form action="./index.php?ctl=Connexion&action=ChangeProfil" method="post">
+                            <form action="./index.php?ctl=Connexion&action=Register" method="post">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" name="nom" class="form-control form-control-lg" placeholder="nom" required/>
                                 </div>
