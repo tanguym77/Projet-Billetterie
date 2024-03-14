@@ -18,7 +18,12 @@ switch ($action) {
         
     // L'Utilisateur accès au formulaire d'inscription
     case 'Profil':
-        include('./vue/UI/Utilisateur/Header.php');
+        if($_SESSION['status']==0){
+            include('./vue/UI/Utilisateur/Header.php');
+        }else{
+            include('./vue/UI/Organisateur/Header.php');
+        }
+       
         include('./vue/Profil.php');
         break;
 
@@ -56,8 +61,17 @@ switch ($action) {
     // L'Utilisateur s'inscrit (template)
     case 'Register':
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
-            $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
+            $result = DbConnection::verifEmail($_POST['email']);
+
+            if($result == null){
+                $result = DbConnection::newUser($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['password']);
+            }
+
+            else {
+                header("Location:index.php?ctl=Connexion&action=FormRegister&msg=Erreur : un compte est déjà crée avec cet Email");
+            }
         }
+        
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
         break;
@@ -67,9 +81,23 @@ switch ($action) {
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
             $mdp=DbConnection::userPassword($_SESSION['mail']);
             if($mdp=$_POST['password']){
-                $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
+                if($_SESSION['mail']==$_POST['email']){
+                    $changeUser=DbConnection::changeProfil2($_POST['nom'],$_POST['prenom'],$mdp);
+                }   
+                
+                else {
+                    $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
+                }
+            }
+
+            else {
+                header("Location:index.php?ctl=Connexion&action=Profil&msg=Erreur : mot de passe incorrecte");
+                break;
             }
         }
+
+            
+
         session_unset();
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');

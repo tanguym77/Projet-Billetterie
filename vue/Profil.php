@@ -54,7 +54,7 @@
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
               
               <!-- BOUTON RETOUR -->
-              <a href="./index.php" class="btn btn-light mb-3 shadow"><i class="bi bi-arrow-left-circle-fill"></i>&nbsp Retour</a>
+              <a href="javascript:history.go(-1)" class="btn btn-light mb-3 shadow"><i class="bi bi-arrow-left-circle-fill"></i>&nbsp Retour</a>
                 
                 <div class="card bg-light border-2 shadow" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
