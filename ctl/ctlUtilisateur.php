@@ -16,7 +16,9 @@ switch ($action) {
         break;
 
     case 'DetailMatch':
-        $result = DbUtilisateur::info_matchs($id_evenement);
+        $result = DbUtilisateur::info_matchs($_GET['evenement']); // Info générales
+        $billets_reserve = DbUtilisateur::billets_reserve($_GET['evenement']);
+        $billets_dispo = DbUtilisateur::billets_dispo($_GET['evenement']);
         include './vue/UI/Utilisateur/DetailMatch.php';
         break;
 

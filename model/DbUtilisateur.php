@@ -96,10 +96,30 @@ public static function infoUserU($id)
 		return $result;
 	}
 
+    // Retourne les détails de l'evenement passé en parametre
     public static function info_matchs($id_evenement){
-
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT nom_match, date_match, nom_equipe, nom_stade, capacite FROM evenement, jouer, equipes, stades WHERE evenement.id_evenement = jouer.id_evenement AND jouer.id_equipe = equipes.id_equipe AND evenement.id_stade = stades.id_stade AND evenement.id_evenement = (?);");
+		$stmt->execute([$id_evenement]);
+		$result = $stmt->fetchall();
+		return $result;
     }
+
     
+    // Retourne le nombre de billets réservés pour un évènement
+    public static function billets_reserve($id_evenement){
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
+		$stmt->execute([$id_evenement]);
+		$result = $stmt->fetch();
+		return $result;
+    }
+
+    // Retourne le nombre de billets dispo d'un evenement
+    public static function billets_dispo($id_evenement){
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(billets.id_billet)-(SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?)) AS billets_dispo FROM billets, evenement WHERE billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
+		$stmt->execute([$id_evenement,$id_evenement]);
+		$result = $stmt->fetch();
+		return $result;
+    }
 }
 
 ?>
