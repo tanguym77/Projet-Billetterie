@@ -35,7 +35,7 @@
                         <div class="mt-md-1 m-auto">
                             
                             <h2 class="fw-bold mb-2 text-uppercase">PROFIL</h2>
-                            <p class="mb-5">Voici votre profil :</p>
+                            <p class="mb-5">Voici vos informations :</p>
 
                             <!-- FORM -->
                             <form action="./index.php?ctl=Connexion&action=Register" method="post">
