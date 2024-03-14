@@ -101,41 +101,7 @@ switch ($action) {
                 
                             }
 
-                            case "modifUtilisateur": {
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    // Récupérer les données du formulaire
-                                    $id = $_POST['id_utilisateur'];
-                                    $nom = $_POST['nom'];
-                                    $prenom = $_POST['prenom'];
-                                    $email = $_POST['email'];
-                                    $statut = $_POST['statut'];
-                                    $password = $_POST['password']; // Mot de passe non haché
-                            
-                                    // Appeler la méthode pour modifier l'utilisateur dans le modèle
-                                    $editUser = DbOrganisateur::editUser($nom, $prenom, $email, $statut, $id);
-                            
-                                    // Modifier l'email si nécessaire
-                                    if (strlen($email) > 0) {
-                                        $editUserEmail = DbOrganisateur::editUserEmail($email, $id);
-                                    }
-                            
-                                    // Modifier le mot de passe si un nouveau mot de passe est fourni
-                                    if (strlen($password) > 0) {
-                                        $editUserPassword = DbOrganisateur::editUserPassword($password, $id);
-                                    }
-                            
-                                    // Rediriger vers une autre page après la modification
-                                    header("Location: index.php?controleur=utilisateur&action=vuelisteUser&message=update");
-                                    exit();
-                                } else {
-                                    // Si la requête n'est pas de type POST, rediriger vers une autre page ou afficher une erreur
-                                    // selon le cas
-                                    // Vous pouvez également gérer cela dans la vue pour afficher un message d'erreur approprié
-                                    header("Location: index.php?controleur=utilisateur&action=vuelisteUser&message=error");
-                                    exit();
-                                }
-                                break;
-                            }
+                    
                             
                 
 
