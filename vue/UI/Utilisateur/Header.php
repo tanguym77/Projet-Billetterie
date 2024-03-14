@@ -48,10 +48,11 @@
             </ul>
             <!-- CONNEXION DECONNEXION -->
             <span class="navbar-text">
+            <a class="navbar-brand" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>
                 <?php if (!isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormLogin">LOGIN</a>');} ?>
-                <?php if (isset($_SESSION['prenom'])) {echo("Bonjour ".$_SESSION['prenom']);} ?>
-                <a class="navbar-brand" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>
+                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info href="#">Voir profil</a>');} ?>
                 <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info p-2" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
+                
             </span>
             </div>
         </div>
