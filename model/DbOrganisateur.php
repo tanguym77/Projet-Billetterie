@@ -137,6 +137,10 @@ public static function infoUserU($id)
             die("Erreur dans la BDD ");
         }
     }
+
+
+  
+    
 }
 
 ?>

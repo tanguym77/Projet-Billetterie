@@ -1,25 +1,51 @@
 <style>
-    .gradient {
-        z-index: 1;
-        background: linear-gradient(-45deg, yellow, orange, red);
-        background-size: 400% 400%;
-        width: 100%;
-        height: 100vh;
-        animation: animate 10s ease infinite;
-    }
+    body {
+    background-image: url('vue/image/triangles.png');
+  }
     
-    @keyframes animate {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+  .text-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container h1{
+  margin: 0;
+  font-size: 80px;
+  color: rgba(225,225,225, .01);
+  background-image: url("vue/image/pixel.jpg");
+  background-repeat: repeat;
+  -webkit-background-clip:text;
+  animation: animate 15s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+  @keyframes animate {
+    0%, 100% {
+      background-position: left top;
     }
+    25%{
+      background-position: right bottom;
+     }
+    50% {
+      background-position: left bottom;
+    }
+    75% {
+      background-position: right top;
+    }   
+} 
+
 </style>
+
+<body>
+<br><br>
+  <div class="text-container">
+    <h1>- PROFIL -</h1>
+  </div>
+  <br>
 
 <!-- FORM profil -->
 <section class="d-flex align-items-center gradient">
@@ -34,11 +60,11 @@
                     <div class="card-body p-5 text-center">
                         <div class="mt-md-1 m-auto">
                             
-                            <h2 class="fw-bold mb-2 text-uppercase">Profils</h2>
-                            <p class="mb-5">Voici votre profil :</p>
+                            <h3 class="fw-bold mb-2 text-uppercase">Voici vos informations :</h3>
+                            <p class="mb-5"></p>
 
                             <!-- FORM -->
-                            <form action="./index.php?ctl=Connexion&action=Register" method="post">
+                            <form action="./index.php?ctl=Connexion&action=ChangeProfil" method="post">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" name="nom" class="form-control form-control-lg" value=<?php echo($_SESSION['nom'])?> required/>
                                 </div>
@@ -49,10 +75,10 @@
                                     <input type="email" name="email" class="form-control form-control-lg" value=<?php echo($_SESSION['mail'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Mot de passe" required/>
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="entrer votre mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
-                                <button class="btn btn-primary btn-lg px-5" type="submit">changer profil</button>
+                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier vos informations <--</button>
                             </form>
                             <!-- Message erreur -->
                             <?php
@@ -68,3 +94,4 @@
         </div>
     </div>
 </section>
+</body>
