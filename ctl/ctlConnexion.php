@@ -61,6 +61,19 @@ switch ($action) {
         include('./vue/UI/Utilisateur/Header.php');
         include('./vue/FormLogin.php');
         break;
+    
+    // L'Utilisateur s'inscrit (template)
+    case 'ChangeProfil':
+        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
+            $mdp=DbConnection::userPassword($_SESSION['mail']);
+            if($mdp=$_POST['password']){
+                $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
+            }
+        }
+        session_unset();
+        include('./vue/UI/Utilisateur/Header.php');
+        include('./vue/FormLogin.php');
+        break;
             
         
     // L'utilisateur se déconnecte

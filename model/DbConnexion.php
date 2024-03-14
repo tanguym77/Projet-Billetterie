@@ -17,6 +17,22 @@ class DbConnection{
 		$stmt->execute([$nom,$prenom,$email,$password]);
 	}
 
+	public static function userPassword($email)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT `password` FROM `utilisateur` WHERE mail=(?)");
+		$stmt->execute([$email]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+	
+	public static function changeProfil($nom,$prenom,$email,$mdp)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `nom` = (?), `prenom` =(?), `mail` = (?) WHERE `utilisateur`.`password` = (?)");
+		$stmt->execute([$nom,$prenom,$email,$mdp]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
 }
 
 ?>

@@ -38,7 +38,7 @@
                             <p class="mb-5">Voici vos informations :</p>
 
                             <!-- FORM -->
-                            <form action="./index.php?ctl=Connexion&action=Register" method="post">
+                            <form action="./index.php?ctl=Connexion&action=ChangeProfil" method="post">
                                 <div class="form-outline form-white mb-4">
                                     <input type="text" name="nom" class="form-control form-control-lg" value=<?php echo($_SESSION['nom'])?> required/>
                                 </div>
@@ -49,10 +49,10 @@
                                     <input type="email" name="email" class="form-control form-control-lg" value=<?php echo($_SESSION['mail'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Mot de passe" required/>
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="entrer votre mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
-                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier votre profil <--</button>
+                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier votre information <--</button>
                             </form>
                             <!-- Message erreur -->
                             <?php
