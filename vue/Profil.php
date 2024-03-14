@@ -43,7 +43,7 @@
 <body>
 <br><br>
   <div class="text-container">
-    <h1>PROFIL</h1>
+    <h1>- PROFIL -</h1>
   </div>
   <br>
 
@@ -60,8 +60,8 @@
                     <div class="card-body p-5 text-center">
                         <div class="mt-md-1 m-auto">
                             
-                            <h2 class="fw-bold mb-2 text-uppercase">PROFIL</h2>
-                            <p class="mb-5">Voici vos informations :</p>
+                            <h3 class="fw-bold mb-2 text-uppercase">Voici vos informations :</h3>
+                            <p class="mb-5"></p>
 
                             <!-- FORM -->
                             <form action="./index.php?ctl=Connexion&action=ChangeProfil" method="post">
