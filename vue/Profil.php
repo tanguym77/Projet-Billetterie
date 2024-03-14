@@ -34,8 +34,8 @@
                     <div class="card-body p-5 text-center">
                         <div class="mt-md-1 m-auto">
                             
-                            <h2 class="fw-bold mb-2 text-uppercase">Profils</h2>
-                            <p class="mb-5">Voici votre profil :</p>
+                            <h2 class="fw-bold mb-2 text-uppercase">PROFIL</h2>
+                            <p class="mb-5">Voici vos informations :</p>
 
                             <!-- FORM -->
                             <form action="./index.php?ctl=Connexion&action=Register" method="post">
@@ -52,7 +52,7 @@
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="Mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
-                                <button class="btn btn-primary btn-lg px-5" type="submit">changer profil</button>
+                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier votre profil <--</button>
                             </form>
                             <!-- Message erreur -->
                             <?php
