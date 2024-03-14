@@ -18,7 +18,12 @@ switch ($action) {
         
     // L'Utilisateur accès au formulaire d'inscription
     case 'Profil':
-        include('./vue/UI/Utilisateur/Header.php');
+        if($_SESSION['status']==0){
+            include('./vue/UI/Utilisateur/Header.php');
+        }else{
+            include('./vue/UI/Organisateur/Header.php');
+        }
+       
         include('./vue/Profil.php');
         break;
 
