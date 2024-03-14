@@ -34,6 +34,7 @@ switch ($action) {
                 // Récupération des informations de l'utilisateur
                 $_SESSION['nom'] = $result['nom'];
                 $_SESSION['prenom'] = $result['prenom'];
+                $_SESSION['mail'] = $result['mail'];
                 $_SESSION['status'] = $result['status'];
 
                 // L'utilisateur est un admin

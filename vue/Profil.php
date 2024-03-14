@@ -40,13 +40,13 @@
                             <!-- FORM -->
                             <form action="./index.php?ctl=Connexion&action=Register" method="post">
                                 <div class="form-outline form-white mb-4">
-                                    <input type="text" name="nom" class="form-control form-control-lg" placeholder="nom" required/>
+                                    <input type="text" name="nom" class="form-control form-control-lg" value=<?php echo($_SESSION['nom'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input type="text" name="prenom" class="form-control form-control-lg" placeholder="prenom" required/>
+                                    <input type="text" name="prenom" class="form-control form-control-lg" value=<?php echo($_SESSION['prenom'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required/>
+                                    <input type="email" name="email" class="form-control form-control-lg" value=<?php echo($_SESSION['mail'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="Mot de passe" required/>
@@ -54,7 +54,6 @@
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
                                 <button class="btn btn-primary btn-lg px-5" type="submit">changer profil</button>
                             </form>
-                            
                             <!-- Message erreur -->
                             <?php
                                 if(isset($_GET['msg'])){
