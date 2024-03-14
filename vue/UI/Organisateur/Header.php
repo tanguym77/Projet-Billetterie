@@ -44,7 +44,7 @@
             <!-- CONNEXION DECONNEXION -->
             <span class="navbar-text">
                 <?php if (!isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormLogin">LOGIN</a>');} ?>
-                <?php if (isset($_SESSION['prenom'])) {echo("Bonjour ".$_SESSION['prenom']);} ?>
+                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=Profil">Voir profil</a>');} ?>
                 <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info p-2" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
             </span>
             </div>
