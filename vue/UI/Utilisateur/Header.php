@@ -43,7 +43,7 @@
                 </li>
                 <!-- LIEN 3 -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Lien 3</a>
+                    <?php if (isset($_SESSION['prenom'])) {echo('<a class="nav-link active" href="#">Lien 3</a>');} ?>
                 </li>
             </ul>
             <!-- CONNEXION DECONNEXION -->
