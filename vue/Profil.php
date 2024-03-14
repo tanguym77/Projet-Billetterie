@@ -14,7 +14,7 @@
   margin: 0;
   font-size: 100px;
   color: rgba(225,225,225, .01);
-  background-image: url("vue/image/ciel.png");
+  background-image: url("vue/image/pixel.jpg");
   background-repeat: repeat;
   -webkit-background-clip:text;
   animation: animate 15s ease-in-out infinite;
@@ -78,7 +78,7 @@
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="entrer votre mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
-                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier vos information <--</button>
+                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier vos informations <--</button>
                             </form>
                             <!-- Message erreur -->
                             <?php
