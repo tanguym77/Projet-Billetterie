@@ -47,33 +47,35 @@
                     <br>
                     <div class="card bg-primary text-white"> <!-- Suppression de la classe "mb-3" pour réduire la taille -->
                         <div class="card-body">
-                            <?php foreach ($infoUtilisateur as $info) { ?>
-                                <input type="hidden" name="Identifiant" value="<?php echo $info['id_utilisateur']; ?>">
+                            <?php if (!empty($infoUtilisateur)) { ?>
+                                <input type="hidden" name="id_utilisateur" value="<?php echo $infoUtilisateur['id_utilisateur']; ?>">
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $info['nom']; ?>">
+                                    <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $infoUtilisateur['nom']; ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="prenom" class="form-label">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $info['prenom']; ?>">
+                                    <input type="text" class="form-control" id="prenom" name="prenom" value="<?php echo $infoUtilisateur['prenom']; ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $info['mail']; ?>">
+                                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $infoUtilisateur['mail']; ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Statut</label>
                                     <select class="form-select" id="status" name="status">
-                                        <option value="1" <?php if ($info['status'] == '1') echo 'selected'; ?>>Administrateur</option>
-                                        <option value="0" <?php if ($info['status'] == '0') echo 'selected'; ?>>Utilisateur</option>
+                                        <option value="1" <?php if ($infoUtilisateur['status'] == '1') echo 'selected'; ?>>Administrateur</option>
+                                        <option value="0" <?php if ($infoUtilisateur['status'] == '0') echo 'selected'; ?>>Utilisateur</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                        <label for="mdp" class="form-label">Mot de passe</label>
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+                                    <label for="mdp" class="form-label">Mot de passe</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                                 </div>
+                                <button type="submit" class="btn btn-primary">Modifier</button>
+                            <?php } else { ?>
+                                <p>Aucune information d'utilisateur disponible.</p>
                             <?php } ?>
-                            <button type="submit" class="btn btn-primary">Modifier</button>
                         </div>
                     </div>
                 </form>
