@@ -12,7 +12,7 @@
 
 .text-container h1{
   margin: 0;
-  font-size: 100px;
+  font-size: 80px;
   color: rgba(225,225,225, .01);
   background-image: url("vue/image/pixel.jpg");
   background-repeat: repeat;
