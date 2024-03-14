@@ -1,25 +1,51 @@
 <style>
-    .gradient {
-        z-index: 1;
-        background: linear-gradient(-45deg, yellow, orange, red);
-        background-size: 400% 400%;
-        width: 100%;
-        height: 100vh;
-        animation: animate 10s ease infinite;
-    }
+    body {
+    background-image: url('vue/image/triangles.png');
+  }
     
-    @keyframes animate {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+  .text-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-container h1{
+  margin: 0;
+  font-size: 100px;
+  color: rgba(225,225,225, .01);
+  background-image: url("vue/image/ciel.png");
+  background-repeat: repeat;
+  -webkit-background-clip:text;
+  animation: animate 15s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+  @keyframes animate {
+    0%, 100% {
+      background-position: left top;
     }
+    25%{
+      background-position: right bottom;
+     }
+    50% {
+      background-position: left bottom;
+    }
+    75% {
+      background-position: right top;
+    }   
+} 
+
 </style>
+
+<body>
+<br><br>
+  <div class="text-container">
+    <h1>PROFIL</h1>
+  </div>
+  <br>
 
 <!-- FORM profil -->
 <section class="d-flex align-items-center gradient">
@@ -68,3 +94,4 @@
         </div>
     </div>
 </section>
+</body>
