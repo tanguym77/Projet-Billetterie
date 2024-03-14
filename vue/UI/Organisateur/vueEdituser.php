@@ -48,7 +48,7 @@
                     <div class="card bg-primary text-white"> <!-- Suppression de la classe "mb-3" pour réduire la taille -->
                         <div class="card-body">
                             <?php foreach ($infoUtilisateur as $info) { ?>
-                                <input type="hidden" name="Identifiant" value="<?php echo $info['mail']; ?>">
+                                <input type="hidden" name="Identifiant" value="<?php echo $info['id_utilisateur']; ?>">
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom</label>
                                     <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $info['nom']; ?>">
