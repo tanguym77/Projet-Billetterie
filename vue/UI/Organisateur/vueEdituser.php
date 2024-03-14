@@ -69,7 +69,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mdp" class="form-label">Mot de passe</label>
+                                    <label for="password" class="form-label">Mot de passe</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Modifier</button>
