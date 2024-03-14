@@ -112,16 +112,16 @@ switch ($action) {
                                     $password = $_POST['password']; // Mot de passe non haché
                             
                                     // Appeler la méthode pour modifier l'utilisateur dans le modèle
-                                    $editUser = ModelUtilisateur::editUser($nom, $prenom, $email, $statut, $id);
+                                    $editUser = DbOrganisateur::editUser($nom, $prenom, $email, $statut, $id);
                             
                                     // Modifier l'email si nécessaire
                                     if (strlen($email) > 0) {
-                                        $editUserEmail = ModelUtilisateur::editUserEmail($email, $id);
+                                        $editUserEmail = DbOrganisateur::editUserEmail($email, $id);
                                     }
                             
                                     // Modifier le mot de passe si un nouveau mot de passe est fourni
                                     if (strlen($password) > 0) {
-                                        $editUserPassword = ModelUtilisateur::editUserPassword($password, $id);
+                                        $editUserPassword = DbOrganisateur::editUserPassword($password, $id);
                                     }
                             
                                     // Rediriger vers une autre page après la modification

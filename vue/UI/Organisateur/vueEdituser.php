@@ -41,7 +41,7 @@
         <div class="card card-alert text-center bg-light">
             <div class="text-center"></div>
             <div class="card-body card-body-alert text-form-alerte">
-            <form method="post" action="index.php?controleur=utilisateur&action=modifUtilisateur&id=<?php echo $infoUtilisateur['id_utilisateur'] ?>&s=<?php echo $infoUtilisateur['status']?>">
+                <form method="post" action="index.php?controleur=utilisateur&action=modifUtilisateur">
                     <br>
                     <h3 class="text-center font-weight-bold">Informations</h3>
                     <br>
