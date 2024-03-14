@@ -78,7 +78,7 @@
                                     <input type="password" name="password" class="form-control form-control-lg" placeholder="entrer votre mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
-                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier votre information <--</button>
+                                <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier vos information <--</button>
                             </form>
                             <!-- Message erreur -->
                             <?php
