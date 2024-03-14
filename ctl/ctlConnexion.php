@@ -80,7 +80,7 @@ switch ($action) {
     case 'ChangeProfil':
         if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
             $mdp=DbConnection::userPassword($_SESSION['mail']);
-            if($mdp==$_POST['password']){
+            if($mdp=$_POST['password']){
                 if($_SESSION['mail']==$_POST['email']){
                     $changeUser=DbConnection::changeProfil2($_POST['nom'],$_POST['prenom'],$mdp);
                 }   
@@ -95,6 +95,7 @@ switch ($action) {
                 break;
             }
         }
+
             
 
         session_unset();
