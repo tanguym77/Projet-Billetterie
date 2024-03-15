@@ -33,7 +33,27 @@ switch ($action) {
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
+
+        
+//  ========== MENU STADE =============== //
+
+    // Affichage des stades
+    case 'listStades':
+        $result = DbOrganisateur::list_stades();
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/ListeStades.php';
+        break;
+
+    // Ajout stade
+    case 'AjouterStade':
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/FormNewStade.php';
+        break;
     
+    
+//  ========== FIN MENU STADE =============== //
+
+
     case 'vuelisteUser':
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);

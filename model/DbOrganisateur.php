@@ -22,9 +22,9 @@ class DbOrganisateur{
 	}
 	
 	// Retourne la liste des stades
-	public static function list_stade()
+	public static function list_stades()
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT stades.libelle_sta FROM stades;");
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM stades;");
 		$stmt->execute();
 		$result = $stmt->fetchall();
 		return $result;

@@ -22,21 +22,25 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Page Organisateur</a>
+            <a class="navbar-brand" href="index.php?ctl=Organisateur&action=Accueil">Page Organisateur</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- LIEN 1 -->
+                <!-- CREER BILLETS -->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=newTicket">Créer Billet</a>
                 </li>
-                <!-- LIEN 2 -->
+                <!-- Gestion evenements -->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=listEvenement">Evenements</a>
                 </li>
-                <!-- LIEN 3 -->
+                <!-- Gestion des stades -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.php?ctl=Organisateur&action=listStades">Stades</a>
+                </li>
+                <!-- Gestion utilisateurs -->
                 <li class="nav-item">
                     <a class="nav-link active" href="index.php?ctl=Organisateur&action=vuelisteUser">Utilisateurs</a>
                 </li>
