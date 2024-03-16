@@ -1,6 +1,5 @@
 <?php
-//include './model/Connexion.php';
-require_once 'Connexion.php';
+include './model/Connexion.php';
 
 class DbUtilisateur{
 

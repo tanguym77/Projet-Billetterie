@@ -1,9 +1,6 @@
-<!-- Remove the container if you want to extend the Footer to full width. -->
 
-
-<section class="">
   <!-- Footer -->
-  <footer class="text-center text-white" style="background-color: #E8724F;">
+  <footer class="text-center text-white mt-5" style="background-color: #E8724F;">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
       <!-- Section: CTA -->
@@ -30,8 +27,6 @@
     -->
     <!-- Copyright -->
   </footer>
-  <!-- Footer -->
-</section>
   
 
 <!-- End of .container -->

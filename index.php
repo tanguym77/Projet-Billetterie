@@ -17,6 +17,7 @@ if(isset($_GET['ctl']))
             }else{
                 include './vue/UI/Utilisateur/Header.php';
                 include './vue/UI/Utilisateur/Accueil.php';
+                include './vue/Footer.php';
             }
             break;
 
@@ -27,7 +28,9 @@ if(isset($_GET['ctl']))
 }
 // Si pas d'action on redirige vers L'accueil
 else{
+    include './vue/UI/Utilisateur/Header.php';
     include './vue/UI/Utilisateur/Accueil.php';
+    include './vue/Footer.php';
 }
 
 ?>

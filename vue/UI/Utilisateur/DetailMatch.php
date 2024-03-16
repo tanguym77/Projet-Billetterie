@@ -1,14 +1,12 @@
-<?php include './vue/UI/Utilisateur/Header.php'; ?>
+<style>
+    .equipe-img {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px;
+    }
+</style>
 
-<body>
-    <style>
-        .equipe-img {
-            max-width: 100px;
-            max-height: 100px;
-            margin-right: 10px;
-        }
-    </style>
-
+<section>
     <!-- INFO GENERALES -->
     <div class="row m-0 p-5">
             <div class="col-4 p-2 text-center">
@@ -115,7 +113,7 @@
     </div>
 
     <!-- Info -->
-    
+
     <div class="row m-0 my-5 px-5">
     <hr>
 
@@ -171,6 +169,4 @@
             <li>La plateforme peut vous aider à trouver les meilleurs billets sur le marché pour ce que vous recherchez.</li>
         </div>
     </div>
-</body>
-
-<?php  include './vue/Footer.php'; ?>
+</section>

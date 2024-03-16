@@ -6,8 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- STYLES -->
+        <!-- BOOTSTRAP V5.3.2 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <!-- STYLE CUSTOM -->
+        <link rel="stylesheet" href="styles.css">
 
         <!-- ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -51,7 +54,7 @@
             <a class="navbar-brand" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>
                 <?php if (!isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormLogin">LOGIN</a>');} ?>
                 <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=Profil">Voir profil</a>');} ?>
-                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info p-2" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
+                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
                 
             </span>
             </div>
