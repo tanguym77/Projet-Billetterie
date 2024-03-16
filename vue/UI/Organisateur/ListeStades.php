@@ -9,13 +9,13 @@
         <?php for ($i=0; $i < count($result); $i++) { 
             echo'
             <div class="row border py-2 my-2">
-                <div class="col-4 text-center my-auto py-2">
+                <div class="col-md-4 text-center my-auto py-2">
                     '.$result[$i]['nom_stade'].'
                 </div>
-                <div class="col-4 text-center my-auto py-2">
+                <div class="col-md-4 text-center my-auto py-2">
                     '.$result[$i]['capacite'].' Personnes
                 </div>
-                <div class="col-4 text-center py-1">
+                <div class="col-md-4 text-center py-1 my-auto">
                     <a class="btn btn-info" href="index.php?ctl=Organisateur&action=FormModifierStade&id_stade='.$result[$i]['id_stade'].'">Modifier</a>
                     <a class="btn btn-danger" href="index.php?ctl=Organisateur&action=SupprimerStade&id_stade='.$result[$i]['id_stade'].'">Supprimer</a>
                 </div>

@@ -5,13 +5,15 @@ $action = $_GET['action'];
 
 switch ($action) {
 
-    // ACCUEIL
+ //  ========== ACCUEIL =============== //
     case 'Accueil':
         // Récupération des billets
         $result = DbOrganisateur::list_billets();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
+//  ========== FIN ACCUEIL =============== //
+
 
 //  ========== MENU BILLETS =============== //
 
@@ -31,14 +33,68 @@ switch ($action) {
     // Création de billet -- Création dans db
     case 'ajout_billet':
         DbOrganisateur::ajout_billet($_POST['nb_billets'], $_POST['prix'], $_POST['id_evenement'], $_POST['id_zone']);
-        $result = DbOrganisateur::list_billets();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Accueil.php';
+        header("Location: index.php?ctl=Organisateur&action=ListeStades");
         break;
 
 //  ========== FIN MENU BILLETS =============== //
 
+
+//  ========== MENU EQUIPES =============== //
+
+    // Affichage des équipes
+    case 'ListeEquipes':
+        $result = DbOrganisateur::ListeEquipes();
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/ListeEquipes.php';
+        break;
+
+    // Form ajout équipe
+    case 'FormAjoutEquipe':
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/FormAjoutEquipe.php';
+        break;
+
+    // Creation d'une équipe'
+    case 'AjouterEquipe':
+        if($_FILES['photo_equipe']['name']!=''){$photo_equipe = $_POST['nom_equipe'].".".(pathinfo($_FILES['photo_equipe']['name']))['extension'];}else{$photo_equipe='';}
+        DbOrganisateur::AjouterEquipe($_POST['nom_equipe'], $photo_equipe);
+        header("Location: index.php?ctl=Organisateur&action=ListeEquipes");
+        break;
+
+    // Form Modifier Equipe
+    case 'FormModifierEquipe':
+        $result = DbOrganisateur::GetInfoEquipe($_GET['id_equipe']);
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/FormModifierEquipe.php';
+        break;
+
+    // Modifier une equipe
+    case 'ModifierEquipe':
+
+        if($_FILES['photo_equipe']['name']!=''){$photo_equipe = $_POST['nom_equipe'].".".(pathinfo($_FILES['photo_equipe']['name']))['extension'];}else{
+            if(DbOrganisateur::Existe_Photo_Equipe($_POST['id_equipe'])['photo_equipe']!=null){$photo_equipe=DbOrganisateur::Existe_Photo_Equipe($_POST['id_equipe'])['photo_equipe'];}else{$photo_equipe='';}
+        }
+        // SI extension différente on enlève l'ancienne photo
+        if (DbOrganisateur::Existe_Photo_Equipe($_POST['id_equipe'])['photo_equipe'] != $photo_equipe && $_FILES['photo_equipe']['name']!='') {
+            unlink("./uploads/equipes/".DbOrganisateur::Existe_Photo_Equipe($_POST['id_equipe'])['photo_equipe']);
+        }
+
+        DbOrganisateur::ModifierEquipe($_POST['id_equipe'], $_POST['nom_equipe'], $photo_equipe);
         
+        header("Location: index.php?ctl=Organisateur&action=ListeEquipes");
+
+        break;
+    
+    // Supprimer une equipe
+    case 'SupprimerEquipe':
+        DbOrganisateur::SupprimerEquipe($_GET['id_equipe']);
+        header("Location: index.php?ctl=Organisateur&action=ListeEquipes");
+        break;
+    
+
+//  ========== FIN MENU EQUIPES =============== //
+
+
 //  ========== MENU STADE =============== //
 
     // Affichage des stades
@@ -51,7 +107,7 @@ switch ($action) {
     // Form Ajout stade
     case 'FormAjoutStade':
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/FormNewStade.php';
+        include './vue/UI/Organisateur/FormAjoutStade.php';
         break;
 
     // Creation de stade

@@ -1,6 +1,25 @@
 <?php
 include './model/Connexion.php';
 
+// Fonction pour sauvegarder le logo de l'équipe
+function AjouterPhotoEquipe($photo_equipe){
+    if ($_FILES['photo_equipe']['error']==0)
+    {
+        // TEST DE LA TAILLE
+        if ($_FILES['photo_equipe']['size'] <= 1000000000000)
+        {
+            // TEST EXTENSION
+            $fileInfo = pathinfo($_FILES['photo_equipe']['name']);
+            $extension = $fileInfo['extension'];
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'PNG'];
+            if (in_array($extension, $allowedExtensions)){
+                // On peut valider le fichier et le stocker définitivement
+                move_uploaded_file($_FILES['photo_equipe']['tmp_name'], 'uploads/equipes/'.basename($photo_equipe));
+            }
+        }
+    }
+}
+
 class DbOrganisateur{
 
 //  ========== MENU ACCUEIL =============== //
@@ -49,6 +68,75 @@ class DbOrganisateur{
 //  ========== FIN MENU BILLETS =============== //
 
 
+//  ========== MENU EQUIPES =============== //
+
+    // Recupérer la liste des équipes
+    public static function ListeEquipes()
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM equipes;");
+        $stmt->execute();
+        $result = $stmt->fetchall();
+        return $result;
+    }
+
+    // Ajouter une équipe + sauvegarder la photo
+    public static function AjouterEquipe($nom_equipe, $photo_equipe)
+	{
+        // Sauvegarde de la photo
+        AjouterPhotoEquipe($photo_equipe);
+
+        var_dump($photo_equipe);
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `equipes` (`nom_equipe`, `photo_equipe`) VALUES ( (?) , (?) )");
+        $stmt->execute([$nom_equipe, $photo_equipe]);
+	}
+
+    // Récupère les infos d'une equipe pour le formulaire
+	public static function GetInfoEquipe($id_equipe)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe, photo_equipe FROM equipes WHERE id_equipe = (?);");
+		$stmt->execute([$id_equipe]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
+    // Modifier une equipe
+	public static function ModifierEquipe($id_equipe, $nom_equipe, $photo_equipe)
+	{
+        // Sauvegarde de la photo
+        AjouterPhotoEquipe($photo_equipe);
+        
+        $stmt = connectPdo::getObjPdo()->prepare("UPDATE equipes SET `nom_equipe` = (?), photo_equipe = (?) WHERE `id_equipe` = (?);");
+        $stmt->execute([$nom_equipe, $photo_equipe, $id_equipe]);
+	}
+
+    // Précise si il existe une photo
+	public static function Existe_Photo_Equipe($id_equipe){
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT photo_equipe FROM equipes WHERE id_equipe = ?");
+		$stmt->execute([$id_equipe]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
+    // Supprimer une equipe
+	public static function SupprimerEquipe($id_equipe)
+	{
+        //Supprimer l'image du serveur
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT photo_equipe FROM equipes WHERE id_equipe = (?) ;");
+		$stmt->execute([$id_equipe]);
+		$result = $stmt->fetch();
+		if($result['photo_equipe'] != null){
+			$url = "uploads/equipes/".$result['photo_equipe'];
+			unlink($url);
+		}
+
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM `equipes` WHERE `equipes`.`id_equipe` = (?)");
+        $stmt->execute([$id_equipe]);
+	}
+
+
+//  ========== FIN MENU EQUIPES =============== //
+
+
 //  ========== MENU STADE =============== //
 
 	// Retourne la liste des stades
@@ -67,13 +155,6 @@ class DbOrganisateur{
         $stmt->execute([$nom_stade, $capacite]);
 	}
 
-    // Supprimer un stade
-	public static function SupprimerStade($id_stade)
-	{
-        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM `stades` WHERE `stades`.`id_stade` = (?)");
-        $stmt->execute([$id_stade]);
-	}
-	
     // Récupère les infos d'un stade pour le formulaire
 	public static function GetInfoStade($id_stade)
 	{
@@ -90,6 +171,13 @@ class DbOrganisateur{
         $stmt->execute([$nom_stade, $capacite, $id_stade]);
 	}
 
+    // Supprimer un stade
+	public static function SupprimerStade($id_stade)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM `stades` WHERE `stades`.`id_stade` = (?)");
+        $stmt->execute([$id_stade]);
+	}
+	
 
 //  ========== FIN MENU STADE =============== //
 

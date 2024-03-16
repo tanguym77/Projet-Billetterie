@@ -32,9 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=newTicket">Créer Billet</a>
                 </li>
-                <!-- Gestion evenements -->
+                <!-- Gestion des équipes -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=listEvenement">Evenements</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=ListeEquipes">Equipes</a>
                 </li>
                 <!-- Gestion des stades -->
                 <li class="nav-item">
@@ -49,7 +49,7 @@
             <span class="navbar-text">
                 <?php if (!isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormLogin">LOGIN</a>');} ?>
                 <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=Profil">Voir profil</a>');} ?>
-                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info p-2" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
+                <?php if (isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=Deconnexion">Deconnexion</a>');} ?>
             </span>
             </div>
         </div>
