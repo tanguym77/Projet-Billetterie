@@ -3,6 +3,8 @@ include './model/Connexion.php';
 
 class DbOrganisateur{
 
+//  ========== MENU ACCUEIL =============== //
+
 	// Retourne les infos générales sur les matchs
 	public static function list_billets()
 	{
@@ -20,24 +22,11 @@ class DbOrganisateur{
 		$result = $stmt->fetchall();
 		return $result;
 	}
-	
-	// Retourne la liste des stades
-	public static function list_stades()
-	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM stades;");
-		$stmt->execute();
-		$result = $stmt->fetchall();
-		return $result;
-	}
 
-	// Retourne la liste des matchs
-	public static function list_match()
-	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT id_evenement, nom_match FROM evenement;");
-		$stmt->execute();
-		$result = $stmt->fetchall();
-		return $result;
-	}
+//  ========== FIN MENU ACCUEIL =============== //
+
+
+//  ========== MENU BILLETS =============== //
 
 	// Ajoute X billets dans la base pour un evenement
 	public static function ajout_billet($nb_billets, $prix, $id_evenement, $id_zone)
@@ -56,6 +45,55 @@ class DbOrganisateur{
         $result = $stmt->fetchall();
         return $result;
 	}
+
+//  ========== FIN MENU BILLETS =============== //
+
+
+//  ========== MENU STADE =============== //
+
+	// Retourne la liste des stades
+	public static function ListeStades()
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM stades;");
+		$stmt->execute();
+		$result = $stmt->fetchall();
+		return $result;
+	}
+
+    // Ajoute un stade
+	public static function AjouterStade($nom_stade, $capacite)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `stades` (`nom_stade`, `capacite`) VALUES ((?), (?) )");
+        $stmt->execute([$nom_stade, $capacite]);
+	}
+
+    // Supprimer un stade
+	public static function SupprimerStade($id_stade)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM `stades` WHERE `stades`.`id_stade` = (?)");
+        $stmt->execute([$id_stade]);
+	}
+	
+    // Récupère les infos d'un stade pour le formulaire
+	public static function GetInfoStade($id_stade)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT stades.nom_stade, stades.capacite FROM stades WHERE stades.id_stade = (?);");
+		$stmt->execute([$id_stade]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
+    // Modifier un stade
+	public static function ModifierStade($id_stade, $nom_stade, $capacite)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `stades` SET `nom_stade` = (?), `capacite` = (?) WHERE `id_stade` = (?);");
+        $stmt->execute([$nom_stade, $capacite, $id_stade]);
+	}
+
+
+//  ========== FIN MENU STADE =============== //
+
+	
 
 
 

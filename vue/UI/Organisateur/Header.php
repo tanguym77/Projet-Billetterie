@@ -38,7 +38,7 @@
                 </li>
                 <!-- Gestion des stades -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php?ctl=Organisateur&action=listStades">Stades</a>
+                    <a class="nav-link active" href="index.php?ctl=Organisateur&action=ListeStades">Stades</a>
                 </li>
                 <!-- Gestion utilisateurs -->
                 <li class="nav-item">
