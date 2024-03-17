@@ -112,7 +112,18 @@ switch ($action) {
 
     // Creation de stade
     case 'AjouterStade':
-        DbOrganisateur::AjouterStade($_POST['nom_stade'], $_POST['capacite']);
+        $total_cat=0; $liste_cat=[];
+        // Regrouper les catégories dans une liste + récupération du total de catégorie créee
+        for ($i=1; $i <= $_POST['inputCount']; $i++) { 
+            $total_cat+=$_POST['categorie_'.$i];
+            array_push($liste_cat, $_POST['categorie_'.$i]);
+        }
+        // Nb Catégories != capacité stade
+       if ($total_cat != $_POST['capacite']) {
+            echo'<script> window.history.back(); </script>';
+       }
+        
+        DbOrganisateur::AjouterStade($_POST['nom_stade'], $_POST['capacite'], $liste_cat);
         header("Location: index.php?ctl=Organisateur&action=ListeStades");
         break;
 

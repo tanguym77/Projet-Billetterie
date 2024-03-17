@@ -148,17 +148,37 @@ class DbOrganisateur{
 		return $result;
 	}
 
-    // Ajoute un stade
-	public static function AjouterStade($nom_stade, $capacite)
+    // Ajoute un stade et ses catégories (zones)
+	public static function AjouterStade($nom_stade, $capacite, $liste_cat)
 	{
+        // Ajout du stade
         $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `stades` (`nom_stade`, `capacite`) VALUES ((?), (?) )");
         $stmt->execute([$nom_stade, $capacite]);
+
+        // Récupérer l'id du dernier stade crée et on créer les catégories
+        $id_stade = DbOrganisateur::GetInfoStade(DbOrganisateur::GetDernierStade()[0]['id_stade'])['id_stade'];
+        
+        for ($i=0; $i < count($liste_cat); $i++) { 
+            $nb_place = $liste_cat[$i];
+            $libelle_zone = "Catégorie ".($i+1);
+            $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `zones` (`libelle_zone`, `nb_place`, `id_stade`) VALUES ( (?), (?), (?) )");
+            $stmt->execute([$libelle_zone, $nb_place, $id_stade]);
+        }
+	}
+
+    // Récupère les infos d'un stade pour le formulaire
+	public static function GetDernierStade()
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT stades.id_stade FROM stades ORDER BY stades.id_stade DESC;");
+		$stmt->execute();
+		$result = $stmt->fetchall();
+		return $result;
 	}
 
     // Récupère les infos d'un stade pour le formulaire
 	public static function GetInfoStade($id_stade)
 	{
-        $stmt = connectPdo::getObjPdo()->prepare("SELECT stades.nom_stade, stades.capacite FROM stades WHERE stades.id_stade = (?);");
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM stades WHERE stades.id_stade = (?);");
 		$stmt->execute([$id_stade]);
 		$result = $stmt->fetch();
 		return $result;
