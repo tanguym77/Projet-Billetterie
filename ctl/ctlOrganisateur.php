@@ -195,6 +195,27 @@ switch ($action) {
         include './vue/UI/Organisateur/infoUser.php';
         break;
 
+
+
+        case "editUtilisateur":
+            {
+
+                $id = $_GET['id'];
+                $status = $_GET['stat'];
+                if ($statut == 0)
+                {
+                    $infoA = DbOrganisateur::infoUserA($id);
+                }
+                else
+                {
+                    $infoUserU = DbOrganisateur::infoUserU($id);
+                }
+
+                include 'UI/Organisateur/.php';
+                break;
+
+            }
+
 //  ========== FIN MENU UTILISATEURS =============== //
 
 }

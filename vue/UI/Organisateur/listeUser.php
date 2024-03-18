@@ -89,6 +89,7 @@
                         <th style="max-width: 100px;">Statut</th>
                         <th style="max-width: 150px;">Identifiant</th>
                         <th style="max-width: 150px;">Email</th>
+                        <th style="max-width: 150px;">Modifier</th>
                         <th style="max-width: 50px;">Supprimer</th>
                     </tr>
                 </thead>
@@ -124,6 +125,7 @@
                             ?>
                             <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
                             <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
+                            <td><a href="index.php?ctl=Organisateur&action=editUtilisateur&id=<?php echo $user['id_utilisateur'] ?>&stat=<?php echo $user['status'] ?>"><i class="fa fa-edit"></i></a></td>
                             <td style="max-width: 50px;"><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                     <?php
