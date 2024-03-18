@@ -211,7 +211,7 @@ switch ($action) {
                     $infoUserU = DbOrganisateur::infoUserU($id);
                 }
 
-                include 'UI/Organisateur/.php';
+                include './vue/UI/Organisateur/.php';
                 break;
 
             }
