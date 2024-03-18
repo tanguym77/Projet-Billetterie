@@ -202,7 +202,7 @@ switch ($action) {
 
                 $id = $_GET['id'];
                 $status = $_GET['stat'];
-                if ($statut == 0)
+                if ($status == 0)
                 {
                     $infoA = DbOrganisateur::infoUserA($id);
                 }
