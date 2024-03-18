@@ -12,7 +12,7 @@
     <div class="wheels"></div>
   </div> 
 
-  <i class="fa fa-list-alt" aria-hidden="true"></i><h1 class="my-5 p-5 text-center">Listes des matchs</h1>
+  <h1 class="my-5 p-5 text-center">Listes des matchs</h1>
 
   <div class="row m-0 my-5">
     <!-- CARDS -->
