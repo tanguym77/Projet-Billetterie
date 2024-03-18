@@ -29,7 +29,6 @@
             width: 100%;
         }
 
-        /* Réduire la taille des colonnes */
         th, td {
             white-space: nowrap;
             max-width: 100px;
@@ -48,7 +47,7 @@
     <br><br>
 
     <center>
-        <h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i> Utilisateurs</h1>
+        <h1 class="title-page-allalerte"><i class="fas fa-exclamation-circle"></i>Liste utilisateurs</h1>
     </center>
     <br><br>
 
