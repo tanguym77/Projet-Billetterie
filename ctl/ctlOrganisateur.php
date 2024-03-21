@@ -211,7 +211,7 @@ case 'vuelisteUser':
 
         // Modifier un utilisateur
         case 'ModifierUtilisateur':
-        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password']);
+        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['status']);
         header("Location: index.php?ctl=Organisateur&action=vuelisteUser");
         break;
 
