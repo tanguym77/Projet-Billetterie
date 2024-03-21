@@ -289,10 +289,10 @@ public static function infoUserU($id)
     }
 
     // Modifier un utilisateur
-    public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $pwd)
+    public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $password, $status)
     {
-        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `nom` = (?), `prenom` = (?), `mail` = (?), `password` = (?) WHERE `id_utilisateur` = (?);");
-        $stmt->execute([$nom, $prenom, $mail, $pwd, $id_utilisateur]);
+        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `nom` = (?), `prenom` = (?), `mail` = (?), `password` = (?), 'status' = (?) WHERE `id_utilisateur` = (?);");
+        $stmt->execute([$nom, $prenom, $mail, $password, $status, $id_utilisateur]);
     }
 
 	public static function deleteUser($id)

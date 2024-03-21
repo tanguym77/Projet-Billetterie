@@ -18,7 +18,7 @@
 
                 <div class="text-center row m-0 py-3">
                     <label class="col-6" for="mail">Adresse Mail</label>
-                    <input class="col-6" id="mail" name="mail" type="number" placeholder="Saisir un mail" value="<?php echo $result['mail']; ?>">
+                    <input class="col-6" id="mail" name="mail" type="text" placeholder="Saisir un mail" value="<?php echo $result['mail']; ?>">
                 </div>
 
 
@@ -32,7 +32,7 @@
                 
 
                 <div class="text-center row m-0 py-3">
-                    <input class="col-12" type="submit">
+                    <input class="col-12"  type="submit">
                 </div>
                 
             </form>
