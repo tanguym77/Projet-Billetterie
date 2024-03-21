@@ -124,9 +124,7 @@
                             ?>
                             <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
                             <td style="max-width: 150px;"><?php echo $user['mail'] ?></td>
-                            <?php for ($i=0; $i < count($result); $i++) { ?>
                             <td style="max-width: 50px;"><a href="index.php?ctl=Organisateur&action=FormModifierUtilisateur&id_utilisateur=<?php echo $result[$i]['id_utilisateur']; ?>"><i class="fa fa-edit"></i></a></td>
-                            <?php } ?>                            
                             <td style="max-width: 50px;"><a href="index.php?ctl=Organisateur&action=deleteUser&id=<?php echo $user['id_utilisateur'] ?>" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')"><i class="fa fa-trash-alt fa-red"></i></a></td>
                         </tr>
                     <?php
