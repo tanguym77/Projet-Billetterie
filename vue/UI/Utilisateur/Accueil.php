@@ -47,9 +47,9 @@
                         L'Asian Cup Qatar est un tournoi de football organisé par la Confédération asiatique de football. 
                     Le tournoi mettra en vedette 24 équipes qui disputeront 51 matchs. La phase de groupes comprenant trois matchs en une journée, rendra l’atmosphère de compétition passionnante tout au long du mois. 
                     Doha, la capitale du Qatar, est une ville dynamique qui offre une variété d'activités et de sites à explorer. Vous retrouverez plus bas dix choses incontournables à faire ou à visiter à Doha.
-                            <a href="https://www.youtube.com/watch?v=z6KxBS34mPg"><br>Une p'tite visite aérienne ?</a>
+                            
                         </p>
-                        <a class="btn btn-dark btn-xl" href="https://www.the-afc.com/en/national/afc_asian_cup/home.html">Pour plus d'infos...</a>
+                        <a class="btn btn-dark btn-xl" href="https://www.the-afc.com/en/national/afc_asian_cup/home.html" target="_blank">Pour plus d'infos...</a>
                     </div>
                 </div>
             </div>
