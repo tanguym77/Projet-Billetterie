@@ -240,7 +240,7 @@
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Suivez-nous sur TikTok et Twitch</h2>
                 <a class="btn btn-xl btn-light my-2" href="https://www.tiktok.com/@emmanuelmacron">Le TikTok</a>
-                <a class="btn btn-xl btn-dark my-2" href="#!">Le Twitch</a>
+                <a class="btn btn-xl btn-dark my-2" href="https://www.twitch.tv/tikiroombunnies">Le Twitch</a>
             </div>
         </section>
 
