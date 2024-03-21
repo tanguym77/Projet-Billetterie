@@ -56,7 +56,7 @@
 
         <!-- Video -->
         <section class="text-center">
-            <video style="width: 100vw;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <video style="width: 98vw;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source src="vue/video/Doha_drone.mp4" type="video/mp4">
             </video>
         </section>
@@ -103,10 +103,10 @@
             </div>
         </section>
         <!-- Callout-->
-        <section class="callout">
+        <section class="content-section image-callout">
             <div class="container px-4 px-lg-5 text-center ">
             <a class="btn btn-primary btn-xl">
-                <h2 class="mx-auto mb-5">
+                <h2 class="mx-auto">
                 Maintenant, à vous de jouer !
                 </h2>
                 </a>
@@ -118,8 +118,7 @@
                 <div class="content-section-heading text-center">
                     <h3 class="text-secondary mb-0">Pas de stresse, on vous a tout prévu...</h3>
                     <br>
-                    <h2 class="mb-5">Pour votre Séjour à Doha, nous avons en stock <b>10 lieux</b> incontournable à vous suggérer :</h2>
-                    <br>
+                    <h2 class="fs-1 mb-5 ">Pour votre Séjour à Doha, nous avons en stock <b>10 lieux</b> incontournable à vous suggérer :</h2>
                 </div>
                 <div class="slider-personnalise">
         <div id="monSlider" class="carousel slide" data-ride="carousel">
@@ -230,19 +229,21 @@
 		</div>
 	</div>
         </section>
-        <!-- Map-->
-        <div class="map" id="contact">
-            
-        </div>
-        <br><br><br>
-<!-- Call to Action-->
+        <!-- Call to Action-->
         <section class="content-section bg-primary text-white">
             <div class="container px-4 px-lg-5 text-center">
-                <h2 class="mb-4">Suivez-nous sur <b>TikTok</b> et <b>Twitch</b></h2>
-                <a class="btn btn-xl btn-light me-4" href="https://www.tiktok.com/@emmanuelmacron">Le TikTok</a>
-                <a class="btn btn-xl btn-dark" href="https://www.twitch.tv/kennyoffi">Le Twitch</a>
+                <h2 class="mb-4">The buttons below are impossible to resist...</h2>
+                <a class="btn btn-xl btn-light my-2" href="#!">Click Me!</a>
+                <a class="btn btn-xl btn-dark my-2" href="#!">Look at Me!</a>
             </div>
         </section>
+        <!-- Map-->
+        <div class="map mt-5" id="contact">
+            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+            <br />
+            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
+        </div>
+        
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
