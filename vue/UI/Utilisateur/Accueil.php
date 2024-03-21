@@ -230,7 +230,12 @@
 		</div>
 	</div>
         </section>
-        <!-- Call to Action-->
+        <!-- Map-->
+        <div class="map" id="contact">
+            
+        </div>
+        <br><br><br>
+<!-- Call to Action-->
         <section class="content-section bg-primary text-white">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">Suivez-nous sur <b>TikTok</b> et <b>Twitch</b></h2>
@@ -238,11 +243,6 @@
                 <a class="btn btn-xl btn-dark" href="https://www.twitch.tv/kennyoffi">Le Twitch</a>
             </div>
         </section>
-        <!-- Map-->
-        <div class="map" id="contact">
-            
-        </div>
-        
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
