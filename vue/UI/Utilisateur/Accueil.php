@@ -53,6 +53,14 @@
                 </div>
             </div>
         </section>
+
+        <!-- Video -->
+        <section class="text-center">
+            <video style="width: 100vw;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="vue/video/Doha_drone.mp4" type="video/mp4">
+            </video>
+        </section>
+
         <!-- Services-->
         <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
@@ -238,6 +246,7 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
