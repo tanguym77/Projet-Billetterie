@@ -3,78 +3,7 @@ include './model/Connexion.php';
 
 class DbUtilisateur{
 
-public static function infoUser($id)
-{
-	try {
-		$sql = "SELECT * FROM utilisateur WHERE id-utilisateur = :id";
-		$result = ModelPdo::$pdo->prepare($sql);
-		$result->bindValue(':id', $id);
-		$result->execute();
-		$liste = $result->fetchAll();
-		return $liste;
-	} catch (PDOException $e) {
-		echo $e->getMessage();
-		die("Erreur dans la BDD ");
-	}
-}
-
-public static function infoUserU($id)
-    {
-        try {
-            $sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
-            $result = ModelPdo::$pdo->prepare($sql);
-            $result->bindValue(':id', $id);
-            $result->execute();
-            $liste = $result->fetchAll();
-            return $liste;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die("Erreur dans la BDD ");
-        }
-    }
-
-	public static function infoUserA($id)
-    {
-        try {
-            $sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
-            $result = ModelPdo::$pdo->prepare($sql);
-            $result->bindValue(':id', $id);
-            $result->execute();
-            $liste = $result->fetch();
-            return $liste;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die("Erreur dans la BDD ");
-        }
-    }
-
-
-	public static function listeUserU()
-    {
-        try {
-            $sql = "SELECT * FROM utilisateur WHERE status = 0";
-            $result = ModelPdo::$pdo->query($sql);
-            $liste = $result->fetchAll();
-            return $liste;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die("Erreur dans la BDD ");
-        }
-    }
-
-
-	public static function listeUserA()
-    {
-        try {
-            $sql = "SELECT * FROM utilisateur WHERE status = 1";
-            $result = ModelPdo::$pdo->query($sql);
-            $liste = $result->fetchAll();
-            return $liste;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
-            die("Erreur dans la BDD ");
-        }
-    }
+//  ========== MENU VOIR LES MATCHS =============== //
 
     // Retourne les infos des evenements
     public static function list_evenements()
@@ -85,25 +14,27 @@ public static function infoUserU($id)
 		return $result;
 	}
 
-
     // Retourne les équipes d'un match
 	public static function list_equipes($id_evenement)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe FROM equipes e, jouer j WHERE j.id_equipe = e.id_equipe AND j.id_evenement = (?);");
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe, photo_equipe FROM equipes e, jouer j WHERE j.id_equipe = e.id_equipe AND j.id_evenement = (?);");
 		$stmt->execute([$id_evenement]);
 		$result = $stmt->fetchall();
 		return $result;
 	}
 
-    // Retourne les détails de l'evenement passé en parametre
-    public static function info_matchs($id_evenement){
-        $stmt = connectPdo::getObjPdo()->prepare("SELECT nom_match, date_match, nom_equipe, nom_stade, capacite FROM evenement, jouer, equipes, stades WHERE evenement.id_evenement = jouer.id_evenement AND jouer.id_equipe = equipes.id_equipe AND evenement.id_stade = stades.id_stade AND evenement.id_evenement = (?);");
-		$stmt->execute([$id_evenement]);
-		$result = $stmt->fetchall();
-		return $result;
-    }
+//  ========== FIN MENU ACCUEIL =============== //
 
     
+//  ==========  DETAIL MATCH =============== //
+    // Retourne les détails de l'evenement passé en parametre
+    public static function info_matchs($id_evenement){
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT nom_match, date_match, nom_equipe, nom_stade, capacite, photo_equipe FROM evenement, jouer, equipes, stades WHERE evenement.id_evenement = jouer.id_evenement AND jouer.id_equipe = equipes.id_equipe AND evenement.id_stade = stades.id_stade AND evenement.id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetchall();
+        return $result;
+    }
+
     // Retourne le nombre de billets réservés pour un évènement
     public static function billets_reserve($id_evenement){
         $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
@@ -146,6 +77,20 @@ public static function infoUserU($id)
         $result = $stmt->fetch();
         return $result;
 	}
+//  ==========  FIN DETAIL MATCH =============== //
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
 }
 
 ?>

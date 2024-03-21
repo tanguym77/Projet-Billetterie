@@ -47,10 +47,14 @@ switch ($action) {
                     header("Location: index.php?ctl=Organisateur&action=Accueil");
                 }
                 // L'utilisateur n'est pas admin
-                else{ 
-                    header("Location: index.php?ctl=Utilisateur&action=Accueil");
+                else{
+                    // L'utilisateur souhaitais réserver un match
+                    if (isset($_SESSION['evenement'])) {
+                        header("Location: index.php?ctl=Utilisateur&action=DetailMatch&evenement=".$_SESSION['evenement']);
+                    }else{
+                        header("Location: index.php?ctl=Utilisateur&action=Accueil");
+                    }
                 }
-                
             }
             if($result == null){
                 header("Location:index.php?ctl=Connexion&action=FormLogin&msg=Email ou mot de passe incorrect");

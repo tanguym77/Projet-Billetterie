@@ -26,12 +26,12 @@
                     <h4 class="card-title">'.$result[$i][1].'</h4>
                     <p class="card-text">Équipes: 
                         <div class="equipe-container">
-                            <img class="equipe-img" src="uploads/equipes/'.$equipes[0][0].'.png" alt="Équipe A">
+                            <img class="equipe-img" src="uploads/equipes/'.$equipes[0]['photo_equipe'].'" alt="Équipe A">
                             <span>'.$equipes[0][0].'</span>
                         </div>
                         <span>-</span>
                         <div class="equipe-container">
-                            <img class="equipe-img" src="uploads/equipes/'.$equipes[1][0].'.png" alt="Équipe B">
+                            <img class="equipe-img" src="uploads/equipes/'.$equipes[1]['photo_equipe'].'" alt="Équipe B">
                             <span>'.$equipes[1][0].'</span>
                         </div>
                     </p>

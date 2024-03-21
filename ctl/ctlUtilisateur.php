@@ -33,6 +33,25 @@ switch ($action) {
 
 //  ========== FIN MENU VOIR LES MATCHS =============== //
 
+
+//  ========== RESERVATIONS =============== //
+
+    case 'Reserver':
+        var_dump($_SESSION);
+        var_dump($_POST);
+        // L'utilisateur n'est pas connecté
+        if ($_SESSION['nom']==null) {
+            $_SESSION['evenement'] = $_POST['evenement'];
+            header("Location: index.php?ctl=Connexion&action=FormLogin");
+        }
+        include './vue/UI/Utilisateur/Header.php';
+        include './vue/UI/Utilisateur/FormReservation.php';
+        include './vue/Footer.php';
+        break;
+
+
+//  ========== FIN RESERVATIONS =============== //
+
 }
 
 ?>

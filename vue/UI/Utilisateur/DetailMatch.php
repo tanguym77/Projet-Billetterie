@@ -10,14 +10,14 @@
     <!-- INFO GENERALES -->
     <div class="row m-0 p-5">
             <div class="col-4 p-2 text-center">
-                <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[0]['nom_equipe'].'.png" alt="Équipe B">' ?>
+                <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[0]['photo_equipe'].'" alt="Équipe B">' ?>
             </div>
             <div class="col-4 text-center mt-2">
                 <?php echo'<h2>'.$result[0]['nom_match'].'</h2>' ?>
                 <i class="bi bi-calendar-check"></i> <?php echo($result[1]['date_match']);?>
             </div>
             <div class="col-4 p-2 text-center">
-            <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[1]['nom_equipe'].'.png" alt="Équipe B">' ?>
+            <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[1]['photo_equipe'].'" alt="Équipe B">' ?>
             </div>
     </div>
 
@@ -79,34 +79,58 @@
         <div class="col-md-7 m-1 text-center">
 
             <?php
-
-            for ($i=0; $i < count($info_zone); $i++) { 
-            echo'
             
-            <form action="" method="post">
-                <div class="row border p-1 m-2">
-                    <div class="col-md-2 py-md-5">
-                        Catégorie
-                        <b>'.$info_zone[$i]['libelle_zone'].'</b>
+            // Test Billet existe
+            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+            if ($dispo_zone!=0) {
+                for ($i=0; $i < count($info_zone); $i++) {
+                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+            
+            
+                // AFFICHAGE DES BILLETS DISPO PAR ZONE
+                echo'
+                <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
+                    <input type="hidden" name="evenement" value="'.$_GET['evenement'].'">
+                    <div class="row border p-1 m-2">
+                        <div class="col-md-2 py-md-5">
+                            Catégorie
+                            <b>'.$info_zone[$i]['libelle_zone'].'</b>
+                        </div>
+                        <div class="col-md-3 py-md-5 py-2">
+                            Disponible <br>
+                            '.$dispo_zone.' Billets
+                        </div>
+                        <div class="col-md-3 py-md-5 py-2">
+                            Prix/billet <br>
+                            '.$prix_zone[$i]['prix'].' €
+                        </div>
+                        <div class="col-md-2 py-md-5 py-2">
+                            Quantité
+                            <input type="number" id="quantity" name="quantity" min="1" max="'.$dispo_zone.'" required>
+                        </div>
+                        <div class="col-md-2 py-md-5 py-2">
+                            Réserver
+                            <button class="btn btn-primary" type="submit">Réserver</a>
+                        </div>
                     </div>
-                    <div class="col-md-3 py-md-5 py-2">
-                        Disponible <br>
-                        '.DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'].' Billets
+                </form>';
+                }
+            }else{
+                // Formulaire demande de billet
+                echo'
+                <form action="index.php?ctl=Utilisateur&action=DemandeBillet" method="post">
+                    <div class="row p-1 m-2 text-center">
+                        <div class="col-12">
+                            <h2>Oh non... Tous les billets ont été reservé ! </h2>
+                        </div>
                     </div>
-                    <div class="col-md-3 py-md-5 py-2">
-                        Prix/billet <br>
-                        '.$prix_zone[$i]['prix'].' €
+
+                    <div class="row p-1 m-2">
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Chercher un billet</a>
+                        </div>
                     </div>
-                    <div class="col-md-2 py-md-5 py-2">
-                        Quantité
-                        <input type="number" id="quantity" name="quantity" min="1" max="15">
-                    </div>
-                    <div class="col-md-2 py-md-5 py-2">
-                        Réserver
-                        <button class="btn btn-primary" type="submit">Réserver</button>
-                    </div>
-                </div>
-            </form>';
+                </form>';
             }
             ?>
         </div>

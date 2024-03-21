@@ -133,7 +133,6 @@
         padding: 20px; /* Espace intérieur de la div */
         border-radius: 10px; /* Arrondi des bords */
         background-color: rgba(255, 255, 255, 0.4);
-        
     }
 
 
@@ -145,9 +144,10 @@
     .card {
         background-image: url('vue/image/fondblanc.jpg');
         background-size: cover;
-        max-width: 40vw; /* Définir la largeur maximale des billets */
+        max-width: 50vw; /* Définir la largeur maximale des billets */
         margin: 0 auto; /* Centrer les billets */
     }
+
     .equipe-img {
         max-width: 50px;
         max-height: 50px;
