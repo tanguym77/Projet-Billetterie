@@ -203,6 +203,12 @@ case 'vuelisteUser':
         break;
 
 
+        case 'FormModifierUtilisateur':
+            $result = DbOrganisateur::infoUser($_GET['id_utilisateur']);
+            include './vue/UI/Organisateur/Header.php';
+            include './vue/UI/Organisateur/FormModifierUtilisateur.php';
+            break;
+
         // Modifier un utilisateur
         case 'ModifierUtilisateur':
         DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password']);

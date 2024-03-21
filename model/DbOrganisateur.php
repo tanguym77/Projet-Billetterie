@@ -215,12 +215,12 @@ class DbOrganisateur{
 
 //  ========== MENU UTILISATEUR =============== //
 
-	public static function infoUser($id)
+	public static function infoUser($id_utilisateur)
 {
 	try {
-		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
+		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
 		$result = connectPdo::getObjPdo()->prepare($sql);
-		$result->bindValue(':id', $id);
+		$result->bindValue(':id_utilisateur', $id_utilisateur);
 		$result->execute();
 		$liste = $result->fetchAll();
 		return $liste;
