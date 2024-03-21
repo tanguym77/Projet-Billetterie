@@ -213,12 +213,14 @@ class DbOrganisateur{
 
 
 
-	public static function infoUser($id)
+//  ========== MENU UTILISATEUR =============== //
+
+	public static function infoUser($id_utilisateur)
 {
 	try {
-		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id";
+		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
 		$result = connectPdo::getObjPdo()->prepare($sql);
-		$result->bindValue(':id', $id);
+		$result->bindValue(':id_utilisateur', $id_utilisateur);
 		$result->execute();
 		$liste = $result->fetchAll();
 		return $liste;
@@ -286,7 +288,12 @@ public static function infoUserU($id)
         }
     }
 
-
+    // Modifier un utilisateur
+    public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $pwd)
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `nom` = (?), `prenom` = (?), `mail` = (?), `password` = (?) WHERE `id_utilisateur` = (?);");
+        $stmt->execute([$nom, $prenom, $mail, $pwd, $id_utilisateur]);
+    }
 
 	public static function deleteUser($id)
     {
@@ -301,6 +308,7 @@ public static function infoUserU($id)
         }
     }
 
+//  ========== FIN MENU UTILISATEUR =============== //
 
   
     

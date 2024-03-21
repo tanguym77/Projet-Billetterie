@@ -152,11 +152,17 @@ switch ($action) {
 
 //  ========== MENU UTILISATEURS =============== //
 
-    case 'vuelisteUser':
+case 'vuelisteUser':
+    if ($_SESSION['status'] == 'Administrateur') {
+        $listeUserU = DbOrganisateur::listeUtilisateurU();
+        $listeUserA = DbOrganisateur::listeUtilisateurA();
+        include './vue/UI/Organisateur/listeUser.php';
+    } else {
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);
         include './vue/UI/Organisateur/listeUser.php';
-        break;
+    }
+    break;
             
     case "editUser":
         $id = $_GET['id'];
@@ -197,25 +203,18 @@ switch ($action) {
         break;
 
 
+        case 'FormModifierUtilisateur':
+            $result = DbOrganisateur::infoUser($_GET['id_utilisateur']);
+            include './vue/UI/Organisateur/Header.php';
+            include './vue/UI/Organisateur/FormModifierUtilisateur.php';
+            break;
 
-        case "editUtilisateur":
-            {
+        // Modifier un utilisateur
+        case 'ModifierUtilisateur':
+        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password']);
+        header("Location: index.php?ctl=Organisateur&action=vuelisteUser");
+        break;
 
-                $id = $_GET['id'];
-                $status = $_GET['stat'];
-                if ($status == 0)
-                {
-                    $infoA = DbOrganisateur::infoUserA($id);
-                }
-                else
-                {
-                    $infoUserU = DbOrganisateur::infoUserU($id);
-                }
-
-                include './vue/UI/Organisateur/.php';
-                break;
-
-            }
 
 //  ========== FIN MENU UTILISATEURS =============== //
 
