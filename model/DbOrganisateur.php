@@ -230,6 +230,21 @@ class DbOrganisateur{
 	}
 }
 
+public static function infoUser2($id_utilisateur)
+{
+	try {
+		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
+		$result = connectPdo::getObjPdo()->prepare($sql);
+		$result->bindValue(':id_utilisateur', $id_utilisateur);
+		$result->execute();
+		$liste = $result->fetchAll();
+		return $liste;
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+		die("Erreur dans la BDD ");
+	}
+}
+
 public static function infoUserU($id)
     {
         try {

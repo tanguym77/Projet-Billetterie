@@ -204,6 +204,12 @@ case 'vuelisteUser':
         include './vue/UI/Organisateur/infoUser.php';
         break;
 
+        case "infoUser2":
+            $id = $_GET['id'];
+            $infoUtilisateur = DbOrganisateur::infoUser2($id);
+            include './vue/UI/Organisateur/Header.php'; 
+            include './vue/UI/Organisateur/infoUser.php';
+            break;
 
         case 'FormModifierUtilisateur':
             $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
