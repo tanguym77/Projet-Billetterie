@@ -203,25 +203,12 @@ case 'vuelisteUser':
         break;
 
 
+        // Modifier un utilisateur
+        case 'ModifierUtilisateur':
+        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password']);
+        header("Location: index.php?ctl=Organisateur&action=vuelisteUser");
+        break;
 
-        case "editUtilisateur":
-            {
-
-                $id = $_GET['id'];
-                $status = $_GET['stat'];
-                if ($status == 0)
-                {
-                    $infoA = DbOrganisateur::infoUserA($id);
-                }
-                else
-                {
-                    $infoUserU = DbOrganisateur::infoUserU($id);
-                }
-
-                include './vue/UI/Organisateur/.php';
-                break;
-
-            }
 
 //  ========== FIN MENU UTILISATEURS =============== //
 
