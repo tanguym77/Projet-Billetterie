@@ -1,18 +1,10 @@
 <body class="listmatch-bg">
 
-  <!-- Animation Camion -->
-  <div class="loop-wrapper my-5">
-    <div class="mountain"></div>
-    <div class="hill"></div>
-    <div class="tree"></div>
-    <div class="tree"></div>
-    <div class="tree"></div>
-    <div class="rock"></div>
-    <div class="truck"></div>
-    <div class="wheels"></div>
-  </div> 
+  <div class="text-center">
+    <img src="https://cdn.pixabay.com/animation/2023/05/25/21/10/21-10-50-_512.gif" alt="foot gif" style="height:20vh;">
+  </div>
 
-  <h1 class="my-5 p-5 text-center">Listes des matchs</h1>
+  <h1 class="my-5 p-5 text-center text-white">Listes des matchs</h1>
 
   <div class="row m-0 my-5">
     <!-- CARDS -->
@@ -22,7 +14,7 @@
     echo'
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h4 class="card-title">'.$result[$i][1].'</h4>
                     <p class="card-text">Équipes: 
                         <div class="equipe-container">

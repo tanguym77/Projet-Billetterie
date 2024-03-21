@@ -37,8 +37,6 @@ switch ($action) {
 //  ========== RESERVATIONS =============== //
 
     case 'Reserver':
-        var_dump($_SESSION);
-        var_dump($_POST);
         // L'utilisateur n'est pas connecté
         if ($_SESSION['nom']==null) {
             $_SESSION['evenement'] = $_POST['evenement'];
@@ -48,6 +46,8 @@ switch ($action) {
         include './vue/UI/Utilisateur/FormReservation.php';
         include './vue/Footer.php';
         break;
+
+    
 
 
 //  ========== FIN RESERVATIONS =============== //

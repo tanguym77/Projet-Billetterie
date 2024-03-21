@@ -144,7 +144,6 @@
     .card {
         background-image: url('vue/image/fondblanc.jpg');
         background-size: cover;
-        max-width: 50vw; /* Définir la largeur maximale des billets */
         margin: 0 auto; /* Centrer les billets */
     }
 
@@ -156,10 +155,13 @@
     .equipe-container {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     .listmatch-bg { 
-    background: #009688;
+        background-image: url('vue/image/herbe.jpg');
+        background-attachment: fixed;
+        background-size: cover;
     }
 
     .loop-wrapper {

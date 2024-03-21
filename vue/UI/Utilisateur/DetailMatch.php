@@ -90,7 +90,10 @@
                 // AFFICHAGE DES BILLETS DISPO PAR ZONE
                 echo'
                 <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
+
                     <input type="hidden" name="evenement" value="'.$_GET['evenement'].'">
+                    <input type="hidden" name="prix" value="'.$prix_zone[$i]['prix'].'">
+
                     <div class="row border p-1 m-2">
                         <div class="col-md-2 py-md-5">
                             Catégorie
@@ -106,7 +109,7 @@
                         </div>
                         <div class="col-md-2 py-md-5 py-2">
                             Quantité
-                            <input type="number" id="quantity" name="quantity" min="1" max="'.$dispo_zone.'" required>
+                            <input type="number" id="nb_billets" name="nb_billets" min="1" max="'.$dispo_zone.'" required>
                         </div>
                         <div class="col-md-2 py-md-5 py-2">
                             Réserver
