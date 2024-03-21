@@ -7,23 +7,23 @@
             <form action="index.php?ctl=Organisateur&action=ModifierUtilisateur" method="POST">
                 <div class="text-center row m-0 py-3">
                     <label class="col-6" for="nom">Nom </label>
-                    <input class="col-6" id="nom" name="nom" type="text" placeholder="Saisir un nom" value="<?php echo($user['nom']) ?>">
+                    <input class="col-6" id="nom" name="nom" type="text" placeholder="Saisir un nom" value="<?php echo(['nom']) ?>">
                 </div>
 
                 <div class="text-center row m-0 py-3">
                     <label class="col-6" for="prenom">Prénom </label>
-                    <input class="col-6" id="prenom" name="prenom" type="text" placeholder="Saisir un prénom" value="<?php echo($user['prenom']) ?>">
+                    <input class="col-6" id="prenom" name="prenom" type="text" placeholder="Saisir un prénom" value="<?php echo(['prenom']) ?>">
                 </div>
 
                 <div class="text-center row m-0 py-3">
                     <label class="col-6" for="mail">Adresse Mail</label>
-                    <input class="col-6" id="mail" name="mail" type="number" placeholder="Saisir un mail" value="<?php echo($user['mail']) ?>">
+                    <input class="col-6" id="mail" name="mail" type="number" placeholder="Saisir un mail" value="<?php echo(['mail']) ?>">
                 </div>
 
 
                 <div class="text-center row m-0 py-3">
                     <label class="col-6" for="password">Mot de passe </label>
-                    <input class="col-6" id="password" name="password" type="text" placeholder="Saisir un mot de passe" value="<?php echo($user['password']) ?>">
+                    <input class="col-6" id="password" name="password" type="text" placeholder="Saisir un mot de passe" value="<?php echo(['password']) ?>">
                 </div>
 
 
