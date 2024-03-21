@@ -6,13 +6,45 @@ $action = $_GET['action'];
 switch ($action) {
 
  //  ========== ACCUEIL =============== //
+
     case 'Accueil':
         // Récupération des billets
-        $result = DbOrganisateur::list_billets();
+        $result = DbOrganisateur::ListeEvenements();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
+
 //  ========== FIN ACCUEIL =============== //
+
+
+//  ========== MENU EVENEMENTS =============== //
+    // Affichages des matchs
+    case 'ListeEvenements':
+        $result = DbOrganisateur::ListeEvenements();
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/Evenements/ListeEvenements.php';
+        break;
+
+    // Formulaire de création de match
+    case 'CreerEvenement':
+        $equipes = DbOrganisateur::ListeEquipes();
+        $stades = DbOrganisateur::ListeStades();
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/Evenements/FormAjoutEvenement.php';
+        break;
+
+    case 'AjouterEvenement':
+        var_dump($_POST);
+        DbOrganisateur::AjouterEvenement($_POST['date_match'], $_POST['id_equipe_1'], $_POST['id_equipe_2'], $_POST['id_stade']);
+        header("Location: index.php?ctl=Organisateur&action=ListeEvenements");
+        break;
+
+    case 'SupprimerEvenement':
+        DbOrganisateur::SupprimerEvenement($_GET['id_evenement']);
+        header("Location: index.php?ctl=Organisateur&action=ListeEvenements");
+        break;
+
+//  ========== FIN MENU EVENEMENTS =============== //
 
 
 //  ========== MENU BILLETS =============== //
@@ -21,14 +53,14 @@ switch ($action) {
     case 'newTicket':
         $result = DbOrganisateur::GetEvenements();
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/formAjoutBillet.php';
+        include './vue/UI/Organisateur/Billets/FormAjoutBillet.php';
         break;
     
     // Création de billet -- Formulaire : 
     case 'ajout_billet_suite':
         $result = DbOrganisateur::info_zone($_POST['id_evenement']);
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/formAjoutBilletZone.php';
+        include './vue/UI/Organisateur/Billets/formAjoutBilletZone.php';
         break;
 
     // Création de billet -- Création dans db
@@ -46,13 +78,13 @@ switch ($action) {
     case 'ListeEquipes':
         $result = DbOrganisateur::ListeEquipes();
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/ListeEquipes.php';
+        include './vue/UI/Organisateur/Equipes/ListeEquipes.php';
         break;
 
     // Form ajout équipe
     case 'FormAjoutEquipe':
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/FormAjoutEquipe.php';
+        include './vue/UI/Organisateur/Equipes/FormAjoutEquipe.php';
         break;
 
     // Creation d'une équipe'
@@ -66,7 +98,7 @@ switch ($action) {
     case 'FormModifierEquipe':
         $result = DbOrganisateur::GetInfoEquipe($_GET['id_equipe']);
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/FormModifierEquipe.php';
+        include './vue/UI/Organisateur/Equipes/FormModifierEquipe.php';
         break;
 
     // Modifier une equipe
@@ -102,13 +134,13 @@ switch ($action) {
     case 'ListeStades':
         $result = DbOrganisateur::ListeStades();
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/ListeStades.php';
+        include './vue/UI/Organisateur/Stades/ListeStades.php';
         break;
 
     // Form Ajout stade
     case 'FormAjoutStade':
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/FormAjoutStade.php';
+        include './vue/UI/Organisateur/Stades/FormAjoutStade.php';
         break;
 
     // Creation de stade
@@ -138,7 +170,7 @@ switch ($action) {
     case 'FormModifierStade':
         $result = DbOrganisateur::GetInfoStade($_GET['id_stade']);
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/FormModifierStade.php';
+        include './vue/UI/Organisateur/Stades/FormModifierStade.php';
         break;
 
     // Modifier un stade

@@ -28,6 +28,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Gestions Evenements -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=ListeEvenements">Matchs</a>
+                </li>
                 <!-- CREER BILLETS -->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?ctl=Organisateur&action=newTicket">Créer Billet</a>
