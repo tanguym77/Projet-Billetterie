@@ -310,7 +310,6 @@ public static function infoUserU($id)
             // Prépare la requête de mise à jour avec des paramètres nommés
             $stmt = connectPdo::getObjPdo()->prepare("UPDATE utilisateur SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `password` = :password, `status` = :status WHERE `id_utilisateur` = :id_utilisateur");
     
-            // Exécute la requête en liant les valeurs des paramètres nommés
             $stmt->execute(array(
                 ':id_utilisateur' => $id_utilisateur,
                 ':nom' => $nom,
