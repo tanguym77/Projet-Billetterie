@@ -34,7 +34,6 @@ switch ($action) {
         break;
 
     case 'AjouterEvenement':
-        var_dump($_POST);
         DbOrganisateur::AjouterEvenement($_POST['date_match'], $_POST['id_equipe_1'], $_POST['id_equipe_2'], $_POST['id_stade']);
         header("Location: index.php?ctl=Organisateur&action=ListeEvenements");
         break;
