@@ -10986,6 +10986,10 @@ footer.footer .social-link:hover {
 
 .map {
   height: 30rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("./vue/image/Accueil/map.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .map iframe {
   pointer-events: none;
