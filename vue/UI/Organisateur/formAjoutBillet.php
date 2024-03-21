@@ -74,9 +74,8 @@
         <select name="id_evenement" id="id_evenement">
             <option value="">--Choisir un évènement--</option>
             <?php
-                $result = DbOrganisateur::list_match();
                 for ($i=0; $i < count($result); $i++) { 
-                    echo '<option value='.$result[$i][0].'>'.$result[$i][1].'</option>';
+                    echo '<option value='.$result[$i]['id_evenement'].'>'.$result[$i]['nom_match'].'</option>';
                 }
             ?>
         </select>

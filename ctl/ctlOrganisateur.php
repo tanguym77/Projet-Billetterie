@@ -19,6 +19,7 @@ switch ($action) {
 
     // Formulaire ajout de billet -- selection evenement
     case 'newTicket':
+        $result = DbOrganisateur::GetEvenements();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/formAjoutBillet.php';
         break;

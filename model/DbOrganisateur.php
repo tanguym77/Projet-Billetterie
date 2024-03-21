@@ -46,6 +46,14 @@ class DbOrganisateur{
 
 
 //  ========== MENU BILLETS =============== //
+    // Ajoute X billets dans la base pour un evenement
+	public static function GetEvenements()
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM evenement;");
+		$stmt->execute();
+		$result = $stmt->fetchall();
+		return $result;
+	}
 
 	// Ajoute X billets dans la base pour un evenement
 	public static function ajout_billet($nb_billets, $prix, $id_evenement, $id_zone)
