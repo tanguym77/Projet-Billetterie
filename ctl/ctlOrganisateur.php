@@ -188,10 +188,12 @@ case 'vuelisteUser':
     if ($_SESSION['status'] == 'Administrateur') {
         $listeUserU = DbOrganisateur::listeUtilisateurU();
         $listeUserA = DbOrganisateur::listeUtilisateurA();
+        include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/listeUser.php';
     } else {
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);
+        include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/listeUser.php';
     }
     break;
@@ -224,6 +226,7 @@ case 'vuelisteUser':
         if ($_SESSION['status'] == 'Administrateur') {
             $listeUserU = DbOrganisateur::listeUtilisateurU();
             $listeUserA = DbOrganisateur::listeUtilisateurA();
+            include './vue/UI/Organisateur/Header.php';
             include './vue/UI/Organisateur/listeUser.php';
         }
         break;
@@ -231,19 +234,26 @@ case 'vuelisteUser':
     case "infoUser":
         $id = $_GET['id'];
         $infoUtilisateur = DbOrganisateur::infoUser($id);
+        include './vue/UI/Organisateur/Header.php'; 
         include './vue/UI/Organisateur/infoUser.php';
         break;
 
+        case "infoUser2":
+            $id = $_GET['id'];
+            $infoUtilisateur = DbOrganisateur::infoUser2($id);
+            include './vue/UI/Organisateur/Header.php'; 
+            include './vue/UI/Organisateur/infoUser.php';
+            break;
 
         case 'FormModifierUtilisateur':
-            $result = DbOrganisateur::infoUser($_GET['id_utilisateur']);
+            $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
             include './vue/UI/Organisateur/Header.php';
             include './vue/UI/Organisateur/FormModifierUtilisateur.php';
             break;
 
         // Modifier un utilisateur
         case 'ModifierUtilisateur':
-        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password']);
+        DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['status']);
         header("Location: index.php?ctl=Organisateur&action=vuelisteUser");
         break;
 
