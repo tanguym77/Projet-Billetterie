@@ -200,6 +200,7 @@ case 'vuelisteUser':
     case "infoUser":
         $id = $_GET['id'];
         $infoUtilisateur = DbOrganisateur::infoUser($id);
+        include './vue/UI/Organisateur/Header.php'; 
         include './vue/UI/Organisateur/infoUser.php';
         break;
 
