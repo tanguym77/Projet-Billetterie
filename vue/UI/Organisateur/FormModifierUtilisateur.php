@@ -31,7 +31,9 @@
                 <input type="hidden" name="id_utilisateur" value="<?php echo $_GET['id_utilisateur']; ?>">
                 
 
-               
+                <div class="text-center row m-0 py-3">
+                    <input class="col-12" type="submit">
+                </div>
                 
             </form>
         </div>
