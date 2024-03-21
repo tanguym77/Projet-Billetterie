@@ -152,11 +152,17 @@ switch ($action) {
 
 //  ========== MENU UTILISATEURS =============== //
 
-    case 'vuelisteUser':
+case 'vuelisteUser':
+    if ($_SESSION['status'] == 'Administrateur') {
+        $listeUserU = DbOrganisateur::listeUtilisateurU();
+        $listeUserA = DbOrganisateur::listeUtilisateurA();
+        include './vue/UI/Organisateur/listeUser.php';
+    } else {
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);
         include './vue/UI/Organisateur/listeUser.php';
-        break;
+    }
+    break;
             
     case "editUser":
         $id = $_GET['id'];
