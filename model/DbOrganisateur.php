@@ -219,6 +219,21 @@ class DbOrganisateur{
 {
 	try {
 		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
+		$user = connectPdo::getObjPdo()->prepare($sql);
+		$user->bindValue(':id_utilisateur', $id_utilisateur);
+		$user->execute();
+		$liste = $user->fetch();
+		return $liste;
+	} catch (PDOException $e) {
+		echo $e->getMessage();
+		die("Erreur dans la BDD ");
+	}
+}
+
+public static function infoUser2($id_utilisateur)
+{
+	try {
+		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
 		$result = connectPdo::getObjPdo()->prepare($sql);
 		$result->bindValue(':id_utilisateur', $id_utilisateur);
 		$result->execute();
@@ -289,10 +304,23 @@ public static function infoUserU($id)
     }
 
     // Modifier un utilisateur
-    public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $pwd)
+    public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $password, $status)
     {
-        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `nom` = (?), `prenom` = (?), `mail` = (?), `password` = (?) WHERE `id_utilisateur` = (?);");
-        $stmt->execute([$nom, $prenom, $mail, $pwd, $id_utilisateur]);
+        try {
+            // Prépare la requête de mise à jour avec des paramètres nommés
+            $stmt = connectPdo::getObjPdo()->prepare("UPDATE utilisateur SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `password` = :password, `status` = :status WHERE `id_utilisateur` = :id_utilisateur");
+    
+            $stmt->execute(array(
+                ':id_utilisateur' => $id_utilisateur,
+                ':nom' => $nom,
+                ':prenom' => $prenom,
+                ':mail' => $mail,
+                ':password' => $password,
+                ':status' => $status
+            ));
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
     }
 
 	public static function deleteUser($id)
