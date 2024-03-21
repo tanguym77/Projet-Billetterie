@@ -53,11 +53,20 @@
                 </div>
             </div>
         </section>
+
+        <!-- Video -->
+        <section class="text-center">
+            <video style="width: 100vw;" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="vue/video/Doha_drone.mp4" type="video/mp4">
+            </video>
+        </section>
+
         <!-- Services-->
         <section class="content-section bg-primary text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Nos Services</h3>
+                    <br>
                     <h2 class="mb-5">Vous n'avez pas confiance ? Regardez ca !</h2>
                     <br>
                 </div>
@@ -98,7 +107,7 @@
             <div class="container px-4 px-lg-5 text-center ">
             <a class="btn btn-primary btn-xl">
                 <h2 class="mx-auto mb-5">
-                    pas d'inspi
+                Maintenant, à vous de jouer !
                 </h2>
                 </a>
             </div>
@@ -107,8 +116,9 @@
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">Portfolio</h3>
-                    <h2 class="mb-5">Recent Projects</h2>
+                    <h3 class="text-secondary mb-0">Pas de stresse, on vous a tout prévu...</h3>
+                    <br>
+                    <h2 class="mb-5">Pour votre Séjour à Doha, nous avons en stock <b>10 lieux</b> incontournable à vous suggérer :</h2>
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
@@ -176,6 +186,7 @@
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
