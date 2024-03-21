@@ -219,10 +219,10 @@ class DbOrganisateur{
 {
 	try {
 		$sql = "SELECT * FROM utilisateur WHERE id_utilisateur = :id_utilisateur";
-		$result = connectPdo::getObjPdo()->prepare($sql);
-		$result->bindValue(':id_utilisateur', $id_utilisateur);
-		$result->execute();
-		$liste = $result->fetchAll();
+		$user = connectPdo::getObjPdo()->prepare($sql);
+		$user->bindValue(':id_utilisateur', $id_utilisateur);
+		$user->execute();
+		$liste = $user->fetch();
 		return $liste;
 	} catch (PDOException $e) {
 		echo $e->getMessage();
