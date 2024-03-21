@@ -104,7 +104,7 @@
         </section>
         <!-- Callout-->
         <section class="content-section image-callout">
-            <div class="container px-4 px-lg-5 text-center ">
+            <div class="container px-4 px-lg-5 text-center my-5">
             <a class="btn btn-primary btn-xl">
                 <h2 class="mx-auto">
                 Maintenant, à vous de jouer !
