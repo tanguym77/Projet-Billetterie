@@ -18,6 +18,12 @@
 
 <div class="container">
     <h1 class="my-4 text-center">Matchs de football - Billets</h1>
+
+    <div class="text-center py-3">
+        <a class="btn btn-info col-3" href="index.php?ctl=Organisateur&action=CreerEvenement">Créer un match</a>
+    </div>
+    
+
     <div class="row">
         <!-- CARDS -->
         <?php

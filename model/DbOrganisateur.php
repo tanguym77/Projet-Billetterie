@@ -25,7 +25,7 @@ class DbOrganisateur{
 //  ========== MENU ACCUEIL =============== //
 
 	// Retourne les infos générales sur les matchs
-	public static function list_billets()
+	public static function ListeEvenements()
 	{
 		$stmt = connectPdo::getObjPdo()->prepare("SELECT id_evenement, nom_match, date_match, nom_stade FROM evenement e, stades s WHERE e.id_stade = s.id_stade;");
 		$stmt->execute();
@@ -36,13 +36,73 @@ class DbOrganisateur{
 	// Retourne les équipes d'un match
 	public static function list_equipes($id_evenement)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe FROM equipes e, jouer j WHERE j.id_equipe = e.id_equipe AND j.id_evenement = (?);");
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe, photo_equipe FROM equipes e, jouer j WHERE j.id_equipe = e.id_equipe AND j.id_evenement = (?);");
 		$stmt->execute([$id_evenement]);
 		$result = $stmt->fetchall();
 		return $result;
 	}
 
 //  ========== FIN MENU ACCUEIL =============== //
+
+//  ========== MENU EVENEMENTS =============== //
+
+    public static function InfoFormEvenement()
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM evenement;");
+        $stmt->execute();
+        $result = $stmt->fetchall();
+        return $result;
+    }
+
+    public static function AjouterEvenement($date_match, $id_equipe_1, $id_equipe_2, $id_stade)
+	{
+        //Création de l'évènement (match)
+            //Génération du nom
+            $LesEquipes = DbOrganisateur::NomDesEquipes($id_equipe_1, $id_equipe_2);
+            $nom_match = $LesEquipes[0]['nom_equipe']." VS ".$LesEquipes[1]['nom_equipe'];
+
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `evenement` (`nom_match`, `date_match`, `id_stade`) VALUES ( (?), (?), (?) );");
+        $stmt->execute([$nom_match, $date_match, $id_stade]);
+
+        // Attribution des équipes au match (table JOUER)
+        $id_evenement = DbOrganisateur::GetDernierEvenement()[0];
+
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `jouer` (`id_evenement`, `id_equipe`) VALUES ( (?) , (?) ); ");
+        $stmt->execute([$id_evenement, $id_equipe_1]);
+
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `jouer` (`id_evenement`, `id_equipe`) VALUES ( (?) , (?) ); ");
+        $stmt->execute([$id_evenement, $id_equipe_2]);
+
+	}
+
+    public static function NomDesEquipes($id_equipe_1, $id_equipe_2)
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT equipes.nom_equipe FROM equipes WHERE equipes.id_equipe = (?) OR equipes.id_equipe = (?);");
+        $stmt->execute([$id_equipe_1, $id_equipe_2]);
+        $result = $stmt->fetchall();
+        return $result;
+    }
+
+    public static function GetDernierEvenement()
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT id_evenement FROM evenement ORDER BY id_evenement DESC;");
+		$stmt->execute();
+		$result = $stmt->fetch();
+		return $result;
+	}
+
+    public static function SupprimerEvenement($id_evenement)
+	{
+        // Suppression des equipes dans jouer
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM jouer WHERE `jouer`.`id_evenement` = (?); ");
+        $stmt->execute([$id_evenement]);
+
+        //Suppression de l'evenement (match)
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM evenement WHERE `evenement`.`id_evenement` = (?); ");
+        $stmt->execute([$id_evenement]);
+	}
+
+//  ========== FIN MENU EVENEMENTS =============== //
 
 
 //  ========== MENU BILLETS =============== //
@@ -93,7 +153,6 @@ class DbOrganisateur{
         // Sauvegarde de la photo
         AjouterPhotoEquipe($photo_equipe);
 
-        var_dump($photo_equipe);
         $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `equipes` (`nom_equipe`, `photo_equipe`) VALUES ( (?) , (?) )");
         $stmt->execute([$nom_equipe, $photo_equipe]);
 	}
@@ -222,7 +281,7 @@ class DbOrganisateur{
 		$result = connectPdo::getObjPdo()->prepare($sql);
 		$result->bindValue(':id_utilisateur', $id_utilisateur);
 		$result->execute();
-		$liste = $result->fetchAll();
+		$liste = $result->fetch();
 		return $liste;
 	} catch (PDOException $e) {
 		echo $e->getMessage();
