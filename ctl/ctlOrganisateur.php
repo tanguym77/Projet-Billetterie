@@ -204,7 +204,7 @@ case 'vuelisteUser':
 
 
         case 'FormModifierUtilisateur':
-            $result = DbOrganisateur::infoUser($_GET['id_utilisateur']);
+            $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
             include './vue/UI/Organisateur/Header.php';
             include './vue/UI/Organisateur/FormModifierUtilisateur.php';
             break;
