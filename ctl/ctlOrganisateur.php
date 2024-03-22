@@ -59,7 +59,7 @@ switch ($action) {
     case 'ajout_billet_suite':
         $result = DbOrganisateur::info_zone($_POST['id_evenement']);
         include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Billets/formAjoutBilletZone.php';
+        include './vue/UI/Organisateur/Billets/FormAjoutBilletZone.php';
         break;
 
     // Création de billet -- Création dans db
