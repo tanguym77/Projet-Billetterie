@@ -8,8 +8,6 @@ switch ($action) {
  //  ========== ACCUEIL =============== //
 
     case 'Accueil':
-        // Récupération des billets
-        $result = DbOrganisateur::ListeEvenements();
         include './vue/UI/Organisateur/Header.php';
         include './vue/UI/Organisateur/Accueil.php';
         break;
@@ -38,6 +36,26 @@ switch ($action) {
         header("Location: index.php?ctl=Organisateur&action=ListeEvenements");
         break;
 
+    // Formulaire de modification d'un evenement
+    case 'FormModifierEvenement':
+        $result = DbOrganisateur::InfoFormEvenement($_GET['id_evenement']);
+        // Récupère les équipes du match puis les autres équipes (éviter doublon)
+        $equipes_match = DbOrganisateur::list_equipes($_GET['id_evenement']);
+        $equipes = DbOrganisateur::EquipesFiltre($_GET['id_evenement']);
+        // Récupère le stade du match puis les autres (éviter doublon)
+        $stade_match = DbOrganisateur::StadeMatch($_GET['id_evenement']);
+        $stades = DbOrganisateur::ListeStades();
+        include './vue/UI/Organisateur/Header.php';
+        include './vue/UI/Organisateur/Evenements/FormModifierEvenement.php';
+        break;
+
+    // Modifier un evenement
+    case 'AjouterEvenement':
+        DbOrganisateur::AjouterEvenement($_POST['date_match'], $_POST['id_equipe_1'], $_POST['id_equipe_2'], $_POST['id_stade']);
+        header("Location: index.php?ctl=Organisateur&action=ListeEvenements");
+        break;
+
+    // Supprimer un evenement
     case 'SupprimerEvenement':
         DbOrganisateur::SupprimerEvenement($_GET['id_evenement']);
         header("Location: index.php?ctl=Organisateur&action=ListeEvenements");

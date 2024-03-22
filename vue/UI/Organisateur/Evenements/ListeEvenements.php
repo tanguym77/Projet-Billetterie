@@ -46,7 +46,7 @@
                         </p>
                         <p class="card-text">Date: '.$result[$i]['date_match'].'</p>
                         <p class="card-text">Stade: '.$result[$i]['nom_stade'].'</p>
-                        <a class="btn btn-primary" href="index.php?ctl=Organisateur&action=ModifierEvenement&id_evenement='.$result[$i]['id_evenement'].'" >Modifier</a>
+                        <a class="btn btn-primary" href="index.php?ctl=Organisateur&action=FormModifierEvenement&id_evenement='.$result[$i]['id_evenement'].'" >Modifier</a>
                         <a class="btn btn-danger"  href="index.php?ctl=Organisateur&action=SupprimerEvenement&id_evenement='.$result[$i]['id_evenement'].'" >Supprimer</a>
                     </div>
                 </div>
