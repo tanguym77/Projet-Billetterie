@@ -45,8 +45,8 @@ switch ($action) {
         // Récupère le stade du match puis les autres (éviter doublon)
         $stade_match = DbOrganisateur::StadeMatch($_GET['id_evenement']);
         $stades = DbOrganisateur::ListeStades();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Evenements/FormModifierEvenement.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Evenements/FormModifierEvenement.php';
         break;
 
     // Modifier un evenement
@@ -238,21 +238,21 @@ case 'vuelisteUser':
         include './vue/Organisateur/infoUser.php';
         break;
 
-        case "infoUser2":
-            $id = $_GET['id'];
-            $infoUtilisateur = DbOrganisateur::infoUser2($id);
-            include './vue/Organisateur/Header.php'; 
-            include './vue/Organisateur/infoUser.php';
-            break;
+    case "infoUser2":
+        $id = $_GET['id'];
+        $infoUtilisateur = DbOrganisateur::infoUser2($id);
+        include './vue/Organisateur/Header.php'; 
+        include './vue/Organisateur/infoUser.php';
+        break;
 
-        case 'FormModifierUtilisateur':
-            $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
-            include './vue/Organisateur/Header.php';
-            include './vue/Organisateur/FormModifierUtilisateur.php';
-            break;
+    case 'FormModifierUtilisateur':
+        $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/FormModifierUtilisateur.php';
+        break;
 
-        // Modifier un utilisateur
-        case 'ModifierUtilisateur':
+    // Modifier un utilisateur
+    case 'ModifierUtilisateur':
         DbOrganisateur::ModifierUtilisateur($_POST['id_utilisateur'], $_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['status']);
         header("Location: index.php?ctl=Organisateur&action=vuelisteUser");
         break;

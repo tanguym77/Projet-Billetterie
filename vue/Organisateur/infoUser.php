@@ -29,6 +29,7 @@
     </style>
 </head>
 
+
 <body>
     <div class="container">
         <div class="btn-retour mt-2">
@@ -46,15 +47,14 @@
                 <br>
                 <div class="card bg-primary text-white"> <!-- Suppression de la classe "mb-3" pour réduire la taille -->
                     <div class="card-body">
-                        <?php foreach ($infoUtilisateur as $info) { ?>
-                            <p class="card-text"><strong><i class="fas fa-user"></i> Nom : </strong><?php echo $info['nom'] ?></p>
-                            <p class="card-text"><strong><i class="fas fa-user"></i> Prénom : </strong><?php echo $info['prenom'] ?></p>
-                            <p class="card-text"><strong><i class="fas fa-id-card-alt"></i> Identifiant : </strong><?php echo $info['mail'] ?></p>
-                            <?php if(strlen($info['mail']) > 0){ ?>
-                                <p class="card-text"><strong><i class="fas fa-at"></i> Email : </strong><?php echo $info['mail'] ?></p>
+                            <p class="card-text"><strong><i class="fas fa-user"></i> Nom : </strong><?php echo $infoUtilisateur['nom'] ?></p>
+                            <p class="card-text"><strong><i class="fas fa-user"></i> Prénom : </strong><?php echo $infoUtilisateur['prenom'] ?></p>
+                            <p class="card-text"><strong><i class="fas fa-id-card-alt"></i> Identifiant : </strong><?php echo $infoUtilisateur['mail'] ?></p>
+                            <?php if(strlen($infoUtilisateur['mail']) > 0){ ?>
+                                <p class="card-text"><strong><i class="fas fa-at"></i> Email : </strong><?php echo $infoUtilisateur['mail'] ?></p>
                             <?php } ?>
                             <p class="card-text"><strong><i class="fas fa-user-circle"></i> Statut : </strong><?php 
-                                switch($info['status']){
+                                switch($infoUtilisateur['status']){
                                     case "1":
                                         echo "Administrateur";
                                         break;
@@ -62,7 +62,6 @@
                                         echo "Utilisateur";
                                         break;
                                 } ?></p>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
