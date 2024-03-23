@@ -8,8 +8,8 @@ switch ($action) {
  //  ========== ACCUEIL =============== //
 
     case 'Accueil':
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Accueil.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Accueil.php';
         break;
 
 //  ========== FIN ACCUEIL =============== //

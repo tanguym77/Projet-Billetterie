@@ -37,6 +37,7 @@ switch ($action) {
 
             if($result != null){
                 // Récupération des informations de l'utilisateur
+                $_SESSION['id_utilisateur'] = $result['id_utilisateur'];
                 $_SESSION['nom'] = $result['nom'];
                 $_SESSION['prenom'] = $result['prenom'];
                 $_SESSION['mail'] = $result['mail'];

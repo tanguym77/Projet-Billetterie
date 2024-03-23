@@ -100,7 +100,7 @@
 
     /* Personnalisation du Slider */
     .slider-personnalise {
-        max-width: 64%; /* Ajustez cette valeur selon vos besoins */
+        max-width: 100%; /* Ajustez cette valeur selon vos besoins */
         margin: auto; /* Centrer le slider */
         overflow: hidden; /* Assurez-vous que rien ne dépasse du slider */
     }
@@ -121,7 +121,7 @@
     }
 
     .carousel-item {
-        transition: transform 0.5s ease-in-out; /* Ajustez la durée et le type de transition selon les besoins */
+        transition: transform 0.5s linear; /* Ajustez la durée et le type de transition selon les besoins */
     }
 
     .police {
@@ -141,27 +141,16 @@
 
 /* ========== STYLES DE LA PAGE LISTMATCH ========== */
 
-    .card {
-        background-image: url('vue/image/fondblanc.jpg');
-        background-size: cover;
-        margin: 0 auto; /* Centrer les billets */
-    }
-
     .equipe-img {
         max-width: 50px;
         max-height: 50px;
         margin-right: 10px;
     }
+
     .equipe-container {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .listmatch-bg { 
-        background-image: url('vue/image/herbe.jpg');
-        background-attachment: fixed;
-        background-size: cover;
     }
 
     .loop-wrapper {

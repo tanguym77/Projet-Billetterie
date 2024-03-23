@@ -4,7 +4,7 @@
     <img src="https://cdn.pixabay.com/animation/2023/05/25/21/10/21-10-50-_512.gif" alt="foot gif" style="height:20vh;">
   </div>
 
-  <h1 class="my-5 p-5 text-center text-white">Listes des matchs</h1>
+  <h1 class="my-5 p-5 text-center">Liste des matchs</h1>
 
   <div class="row m-0 my-5">
     <!-- CARDS -->
@@ -13,7 +13,7 @@
     $equipes = DbUtilisateur::list_equipes($result[$i][0]);
     echo'
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
+            <div class="card h-100 shadow">
                 <div class="card-body text-center">
                     <h4 class="card-title">'.$result[$i][1].'</h4>
                     <p class="card-text">Équipes: 
@@ -27,10 +27,10 @@
                             <span>'.$equipes[1][0].'</span>
                         </div>
                     </p>
-                    <p class="card-text">Date: '.$result[$i][2].'</p>
+                    <p class="card-text">Date: '.date('d/m/Y', strtotime($result[$i]['date_match'])).'</p>
                     <p class="card-text">Stade: '.$result[$i][3].'</p>
                 </div>
-                <a class="btn btn-primary m-2" href="index.php?ctl=Utilisateur&action=DetailMatch&evenement='.$result[$i][0].'">Réserver</a>
+                <a class="btn btn-primary m-2" href="index.php?ctl=Utilisateur&action=DetailMatch&evenement='.$result[$i][0].'">Acheter des billets</a>
             </div>
         </div>
         ';

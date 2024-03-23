@@ -15,14 +15,15 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="styles_accueil.css" rel="stylesheet" />
-        <link href="styles.css" rel="stylesheet" />
+        <link href="./vue/styles_accueil.css" rel="stylesheet" />
+        <link href="./vue/styles.css" rel="stylesheet" />
 
 		<style>
         .navbar-brand img {
-            height: 50px; /* Ajustez la hauteur de l'image selon vos besoins */
+            height: 50px;
         }
         </style>
+
     </head>
     
     <body id="page-top">
@@ -31,7 +32,7 @@
         <!-- Header-->
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
-                <h1 class="mb-1">Billeterie Asian cup Qatar 2023</h1>
+                <h1 class="mb-1">Billeterie Asian cup Qatar 2024</h1>
                 <h3 class="mb-5"><em>La référence pour la gestion de vos billets</em></h3>
                 <a class="btn btn-primary btn-xl" href="index.php?ctl=Utilisateur&action=ListMatch">Un p'tit match ?</a>
             </div>
@@ -251,7 +252,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="scripts.js"></script>
+        <script src="./vue/scripts.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

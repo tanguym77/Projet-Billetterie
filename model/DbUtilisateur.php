@@ -79,18 +79,68 @@ class DbUtilisateur{
 	}
 //  ==========  FIN DETAIL MATCH =============== //
 
+
+//  ==========  RESERVATION =============== //
+
+	// Retourne un billet pour un evenement et une zone
+	public static function GetUnBillet($id_evenement, $id_zone)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT id_billet FROM billets WHERE billets.id_evenement = (?) AND billets.id_zone = (?) AND id_billet NOT IN (SELECT id_billet FROM reserver);");
+        $stmt->execute([$id_evenement, $id_zone]);
+        $result = $stmt->fetch();
+        return $result;
+	}
+
+	// Réserver X billets
+	public static function ReserverUnBillet($id_utilisateur, $id_billet, $date)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `reserver` (`id_utilisateur`, `id_billet`, `date_reservation`) VALUES ( (?) , (?) , (?) );");
+        $stmt->execute([$id_utilisateur, $id_billet, $date]);
+	}
+
+
+
+//  ==========  RESERVATION =============== //
+
+
+//  ==========  MES BILLETS =============== //
+	// Retourne un billet pour un evenement et une zone
+	public static function MesBillets($id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT evenement.id_evenement, evenement.nom_match, evenement.date_match, reserver.id_billet, reserver.date_reservation, stades.nom_stade FROM reserver, billets, evenement , stades WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_stade = stades.id_stade AND reserver.id_utilisateur = (?) ;");
+		$stmt->execute([$id_utilisateur]);
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+
+	// Récupère les infos pour une ligne
+	public static function GetInfoBillet($id_evenement, $id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT reserver.id_billet, reserver.date_reservation, billets.prix FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?) AND reserver.id_utilisateur = (?) ;");
+		$stmt->execute([$id_evenement, $id_utilisateur]);
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+
+	public static function InfoBillet($id_billet)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT billets.id_billet, evenement.nom_match, evenement.date_match, stades.nom_stade, zones.libelle_zone, billets.prix, utilisateur.nom, utilisateur.prenom FROM utilisateur, reserver, billets, evenement, stades, zones WHERE utilisateur.id_utilisateur = reserver.id_utilisateur AND reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND billets.id_zone = zones.id_zone AND evenement.id_stade = stades.id_stade AND stades.id_stade = zones.id_stade AND reserver.id_billet = (?) ;");
+		$stmt->execute([$id_billet]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
+	public static function GetLesIdBillets($id_evenement, $id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT reserver.id_billet FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND billets.id_evenement = (?) AND reserver.id_utilisateur = (?) ;");
+		$stmt->execute([$id_evenement, $id_utilisateur]);
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+
+//  ==========  FIN MES BILLETS =============== //
     
 
-    
-    
-
-    
-
-    
-
-    
-
-    
 }
 
 ?>

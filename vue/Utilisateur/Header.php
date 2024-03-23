@@ -10,7 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
         <!-- STYLE CUSTOM -->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="./vue/styles.css">
 
         <!-- ICONS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -36,17 +36,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!-- LIEN 1 -->
+                <!-- Accueil -->
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                 </li>
-                <!-- LIEN 2 -->
+                <!-- Voir les Matchs -->
                 <li class="nav-item">
                     <a class="nav-link active" href="index.php?ctl=Utilisateur&action=ListMatch">Voir les matchs</a>
                 </li>
-                <!-- LIEN 3 -->
+                <!-- Voir MES BILLETS -->
                 <li class="nav-item">
-                    <?php if (isset($_SESSION['prenom'])) {echo('<a class="nav-link active" href="#">Vendre vos billets</a>');} ?>
+                    <?php if (isset($_SESSION['prenom'])) {echo('<a class="nav-link active" href="index.php?ctl=Utilisateur&action=MesBillets" >Mes Billets</a>');} ?>
                 </li>
             </ul>
             <!-- CONNEXION DECONNEXION -->

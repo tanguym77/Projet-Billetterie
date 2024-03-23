@@ -10,14 +10,14 @@
     <!-- INFO GENERALES -->
     <div class="row m-0 p-5">
             <div class="col-4 p-2 text-center">
-                <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[0]['photo_equipe'].'" alt="Équipe B">' ?>
+                <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[0]['photo_equipe'].'" alt="Équipe 1">' ?>
             </div>
             <div class="col-4 text-center mt-2">
                 <?php echo'<h2>'.$result[0]['nom_match'].'</h2>' ?>
-                <i class="bi bi-calendar-check"></i> <?php echo($result[1]['date_match']);?>
+                <i class="bi bi-calendar-check"></i> <?php echo(date('d/m/Y', strtotime($result[0]['date_match']))) ?>
             </div>
             <div class="col-4 p-2 text-center">
-            <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[1]['photo_equipe'].'" alt="Équipe B">' ?>
+            <?php echo'<img class="equipe-img" src="uploads/equipes/'.$result[1]['photo_equipe'].'" alt="Équipe 2">' ?>
             </div>
     </div>
 
@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <h3>A Propos de l'événement</h3>
             <p>
-            Réservez vos billets dès maintenant pour le match <?php echo($result[1]['nom_match']);?> au <?php echo($result[1]['nom_stade']);?>, où ils participeront le <?php echo($result[1]['date_match']);?>. Sécurisez votre place en sélectionnant votre catégorie de billet préférée et en complétant le processus de commande via notre système de réservation online sûr et convivial.
+            Réservez vos billets dès maintenant pour le match <?php echo($result[1]['nom_match']);?> au <?php echo($result[1]['nom_stade']);?>, où ils participeront le <?php echo(date('d/m/Y', strtotime($result[0]['date_match']))) ?>. Sécurisez votre place en sélectionnant votre catégorie de billet préférée et en complétant le processus de commande via notre système de réservation online sûr et convivial.
             </p>
             <p>
             Rejoignez d'autres fans pour cette expérience palpitante et faites partie de l'action ! Le processus de réservation simple et sécurisé de La plateforme vous permet de gagner du temps et de vous concentrer sur la préparation du match. Une fois que vous avez réservé vos billets, ils seront facilement envoyés à votre adresse e-mail, garantissant une expérience sans tracas.
@@ -79,20 +79,22 @@
         <div class="col-md-7 m-1 text-center">
 
             <?php
-            
             // Test Billet existe
             $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
             if ($dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
                 $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
             
-            
                 // AFFICHAGE DES BILLETS DISPO PAR ZONE
                 echo'
                 <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
 
-                    <input type="hidden" name="evenement" value="'.$_GET['evenement'].'">
-                    <input type="hidden" name="prix" value="'.$prix_zone[$i]['prix'].'">
+                    <input type="hidden" name="evenement"    value="'.$_GET['evenement'].'">
+                    <input type="hidden" name="prix"         value="'.$prix_zone[$i]['prix'].'">
+                    <input type="hidden" name="libelle_zone" value="'.$info_zone[$i]['libelle_zone'].'">
+                    <input type="hidden" name="id_zone"      value="'.$info_zone[$i]['id_zone'].'">
+                    <input type="hidden" name="nom_match"    value="'.$result[0]['nom_match'].'">
+                    <input type="hidden" name="date_match"    value="'.$result[0]['date_match'].'">
 
                     <div class="row border p-1 m-2">
                         <div class="col-md-2 py-md-5">
@@ -111,9 +113,8 @@
                             Quantité
                             <input type="number" id="nb_billets" name="nb_billets" min="1" max="'.$dispo_zone.'" required>
                         </div>
-                        <div class="col-md-2 py-md-5 py-2">
-                            Réserver
-                            <button class="btn btn-primary" type="submit">Réserver</a>
+                        <div class="col-md-2 py-md-5 py-2 my-auto mt-3">
+                            <button class="btn btn-primary" type="submit">Acheter</a>
                         </div>
                     </div>
                 </form>';
@@ -144,9 +145,9 @@
     <div class="row m-0 my-5 px-5">
     <hr>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center my-5">
             <div class="row m-0 justify-content-center">
-                <div class="col-md-2 border rounded fs-1 my-auto p-0">
+                <div class="col-md-2 col-1 border rounded fs-1 my-auto p-0">
                     <i class="bi bi-truck"></i>
                 </div>
                 <div class="col-md-8">
@@ -156,9 +157,9 @@
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center my-5">
             <div class="row m-0 justify-content-center">
-                <div class="col-md-2 border rounded fs-1 my-auto p-0">
+                <div class="col-md-2 col-1 border rounded fs-1 my-auto p-0">
                     <i class="bi bi-safe"></i>
                 </div>
                 <div class="col-md-8">
@@ -168,9 +169,9 @@
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center my-5">
             <div class="row m-0 justify-content-center">
-                <div class="col-md-2 border rounded fs-1 my-auto p-0">
+                <div class="col-md-2 col-1 border rounded fs-1 my-auto p-0">
                     <i class="bi bi-shield-lock"></i>
                 </div>
                 <div class="col-md-8">

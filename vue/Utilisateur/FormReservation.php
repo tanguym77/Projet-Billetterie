@@ -1,5 +1,5 @@
 <section>
-    <h1 class="text-center my-5">Réservation</h1>
+    <h1 class="text-center my-5">Achat de billets</h1>
 
     <div class="row m-0 my-5 justify-content-center">
         <div class="col-md-6 p-5">
@@ -105,7 +105,7 @@
 <!-- RECAP -->
 <section>
     <div class="row m-0 justify-content-center">
-        <div class="col-md-6 p-5">
+        <div class="col-md-6 px-5">
             <div class="border rounded p-3 shadow">
                 <?php 
                     // Initialisation
@@ -114,6 +114,9 @@
                     
                 ?>
                 <h3>Récapitulatif de la commande :</h3>
+                <p>Match : <?php echo($_POST['nom_match'])?></p>
+                <p>Catégorie : <?php echo($_POST['libelle_zone'])?></p>
+                <p>Date : <?php echo(date('d/m/Y', strtotime($_POST['date_match'])))?></p>
                 <hr>
                 <!-- Prix HT Unitaire -->
                 <div class="row m-0">
@@ -152,13 +155,21 @@
                     </div>
                 </div>
 
+                <hr>
+
                 <!-- PAYER -->
-                <div class="row m-0 justify-content-between">
+                <div class="row m-0 justify-content-between mt-4">
                     <div class="col-md-6 text-center">
                     <a href="javascript:history.go(-1)" class="btn btn-secondary px-5">Annuler</a>
                     </div>
                     <div class="col-md-6 text-center">
-                        <button class="btn btn-success px-5" type="submit">&nbsp Payer &nbsp</button>
+                        <form action="index.php?ctl=Utilisateur&action=Payer" method="post">
+                            <input type="hidden" name="id_evenement" value="<?php echo($_POST['evenement'])?>">
+                            <input type="hidden" name="id_zone" value="<?php echo($_POST['id_zone'])?>">
+                            <input type="hidden" name="quantite" value="<?php echo($nb_billets)?>">
+                            <button class="btn btn-success px-5" type="submit">&nbsp Payer &nbsp</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
