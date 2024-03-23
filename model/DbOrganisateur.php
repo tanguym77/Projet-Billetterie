@@ -316,7 +316,7 @@ public static function infoUser2($id_utilisateur)
 		$result = connectPdo::getObjPdo()->prepare($sql);
 		$result->bindValue(':id_utilisateur', $id_utilisateur);
 		$result->execute();
-		$liste = $result->fetch();
+		$liste = $result->fetchAll();
 		return $liste;
 	} catch (PDOException $e) {
 		echo $e->getMessage();
