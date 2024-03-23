@@ -10,8 +10,8 @@ switch ($action) {
     case 'Accueil':
         // Récupération des billets
         $result = DbOrganisateur::ListeEvenements();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Accueil.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Accueil.php';
         break;
 
 //  ========== FIN ACCUEIL =============== //
@@ -21,16 +21,16 @@ switch ($action) {
     // Affichages des matchs
     case 'ListeEvenements':
         $result = DbOrganisateur::ListeEvenements();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Evenements/ListeEvenements.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Evenements/ListeEvenements.php';
         break;
 
     // Formulaire de création de match
     case 'CreerEvenement':
         $equipes = DbOrganisateur::ListeEquipes();
         $stades = DbOrganisateur::ListeStades();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Evenements/FormAjoutEvenement.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Evenements/FormAjoutEvenement.php';
         break;
 
     case 'AjouterEvenement':
@@ -51,15 +51,15 @@ switch ($action) {
     // Formulaire ajout de billet -- selection evenement
     case 'newTicket':
         $result = DbOrganisateur::GetEvenements();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Billets/FormAjoutBillet.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Billets/FormAjoutBillet.php';
         break;
     
     // Création de billet -- Formulaire : 
     case 'ajout_billet_suite':
         $result = DbOrganisateur::info_zone($_POST['id_evenement']);
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Billets/formAjoutBilletZone.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Billets/formAjoutBilletZone.php';
         break;
 
     // Création de billet -- Création dans db
@@ -76,14 +76,14 @@ switch ($action) {
     // Affichage des équipes
     case 'ListeEquipes':
         $result = DbOrganisateur::ListeEquipes();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Equipes/ListeEquipes.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Equipes/ListeEquipes.php';
         break;
 
     // Form ajout équipe
     case 'FormAjoutEquipe':
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Equipes/FormAjoutEquipe.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Equipes/FormAjoutEquipe.php';
         break;
 
     // Creation d'une équipe'
@@ -96,8 +96,8 @@ switch ($action) {
     // Form Modifier Equipe
     case 'FormModifierEquipe':
         $result = DbOrganisateur::GetInfoEquipe($_GET['id_equipe']);
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Equipes/FormModifierEquipe.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Equipes/FormModifierEquipe.php';
         break;
 
     // Modifier une equipe
@@ -132,14 +132,14 @@ switch ($action) {
     // Affichage des stades
     case 'ListeStades':
         $result = DbOrganisateur::ListeStades();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Stades/ListeStades.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Stades/ListeStades.php';
         break;
 
     // Form Ajout stade
     case 'FormAjoutStade':
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Stades/FormAjoutStade.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Stades/FormAjoutStade.php';
         break;
 
     // Creation de stade
@@ -168,8 +168,8 @@ switch ($action) {
     // Form Modifier Stade
     case 'FormModifierStade':
         $result = DbOrganisateur::GetInfoStade($_GET['id_stade']);
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/Stades/FormModifierStade.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/Stades/FormModifierStade.php';
         break;
 
     // Modifier un stade
@@ -187,32 +187,15 @@ case 'vuelisteUser':
     if ($_SESSION['status'] == 'Administrateur') {
         $listeUserU = DbOrganisateur::listeUtilisateurU();
         $listeUserA = DbOrganisateur::listeUtilisateurA();
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/listeUser.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/listeUser.php';
     } else {
         $id = isset($_GET['id']) ? $_GET['id'] : null; // Vérifie si l'ID est présent dans la requête GET
         DbOrganisateur::infoUser($id);
-        include './vue/UI/Organisateur/Header.php';
-        include './vue/UI/Organisateur/listeUser.php';
+        include './vue/Organisateur/Header.php';
+        include './vue/Organisateur/listeUser.php';
     }
     break;
-            
-    case "editUser":
-        $id = $_GET['id'];
-        $status = $_GET['s'];
-        if ($status == 0){
-            $infoI = DbOrganisateur::infoUserU($id);
-        }else{
-            $infoUserU = DbOrganisateur::infoUserA($id);
-        }
-        include './vue/UI/Utilisateur/vueEdituser.php';
-        break;
-            
-    case "vueUtilisateur":
-        $listeUserU = DbOrganisateur::listeUserU();
-        //$listeUserA = DbOrganisateur::listeUserA();
-        include './vue/UI/Utilisateur/listeUser.php';
-        break;
     
     case "deleteUser":
         $id = $_GET['id'];
@@ -225,29 +208,29 @@ case 'vuelisteUser':
         if ($_SESSION['status'] == 'Administrateur') {
             $listeUserU = DbOrganisateur::listeUtilisateurU();
             $listeUserA = DbOrganisateur::listeUtilisateurA();
-            include './vue/UI/Organisateur/Header.php';
-            include './vue/UI/Organisateur/listeUser.php';
+            include './vue/Organisateur/Header.php';
+            include './vue/Organisateur/listeUser.php';
         }
         break;
             
     case "infoUser":
         $id = $_GET['id'];
         $infoUtilisateur = DbOrganisateur::infoUser($id);
-        include './vue/UI/Organisateur/Header.php'; 
-        include './vue/UI/Organisateur/infoUser.php';
+        include './vue/Organisateur/Header.php'; 
+        include './vue/Organisateur/infoUser.php';
         break;
 
         case "infoUser2":
             $id = $_GET['id'];
             $infoUtilisateur = DbOrganisateur::infoUser2($id);
-            include './vue/UI/Organisateur/Header.php'; 
-            include './vue/UI/Organisateur/infoUser.php';
+            include './vue/Organisateur/Header.php'; 
+            include './vue/Organisateur/infoUser.php';
             break;
 
         case 'FormModifierUtilisateur':
             $user = DbOrganisateur::infoUser($_GET['id_utilisateur']);
-            include './vue/UI/Organisateur/Header.php';
-            include './vue/UI/Organisateur/FormModifierUtilisateur.php';
+            include './vue/Organisateur/Header.php';
+            include './vue/Organisateur/FormModifierUtilisateur.php';
             break;
 
         // Modifier un utilisateur

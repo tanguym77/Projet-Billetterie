@@ -6,25 +6,25 @@ switch ($action) {
 
     // L'Utilisateur accès au formulaire de connexion
     case 'FormLogin':
-        include('./vue/UI/Utilisateur/Header.php');
-        include('./vue/FormLogin.php');
+        include('./vue/Utilisateur/Header.php');
+        include('./vue/Utilisateur/FormLogin.php');
         break;
 
     // L'Utilisateur accès au formulaire d'inscription
     case 'FormRegister':
-        include('./vue/UI/Utilisateur/Header.php');
-        include('./vue/FormRegister.php');
+        include('./vue/Utilisateur/Header.php');
+        include('./vue/Utilisateur/FormRegister.php');
         break;
         
     // L'Utilisateur accès au formulaire d'inscription
     case 'Profil':
         if($_SESSION['status']==0){
-            include('./vue/UI/Utilisateur/Header.php');
+            include('./vue/Utilisateur/Header.php');
         }else{
-            include('./vue/UI/Organisateur/Header.php');
+            include('./vue/Organisateur/Header.php');
         }
        
-        include('./vue/Profil.php');
+        include('./vue/Utilisateur/Profil.php');
         break;
 
     // L'Utilisateur se connecte
@@ -48,7 +48,7 @@ switch ($action) {
                 }
                 // L'utilisateur n'est pas admin
                 else{
-                    // L'utilisateur souhaitais réserver un match
+                    // L'utilisateur allait réserver un match
                     if (isset($_SESSION['evenement'])) {
                         header("Location: index.php?ctl=Utilisateur&action=DetailMatch&evenement=".$_SESSION['evenement']);
                     }else{
@@ -76,8 +76,8 @@ switch ($action) {
             }
         }
         
-        include('./vue/UI/Utilisateur/Header.php');
-        include('./vue/FormLogin.php');
+        include('./vue/Utilisateur/Header.php');
+        include('./vue/Utilisateur/FormLogin.php');
         break;
     
     // L'Utilisateur s'inscrit (template)
@@ -99,12 +99,9 @@ switch ($action) {
                 break;
             }
         }
-
-            
-
         session_unset();
-        include('./vue/UI/Utilisateur/Header.php');
-        include('./vue/FormLogin.php');
+        include('./vue/Utilisateur/Header.php');
+        include('./vue/Utilisateur/FormLogin.php');
         break;
             
         
