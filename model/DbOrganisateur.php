@@ -36,7 +36,7 @@ class DbOrganisateur{
 	// Retourne les équipes d'un match
 	public static function list_equipes($id_evenement)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT nom_equipe, photo_equipe FROM equipes e, jouer j WHERE j.id_equipe = e.id_equipe AND j.id_evenement = (?);");
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT equipes.id_equipe, equipes.nom_equipe, equipes.photo_equipe FROM equipes, jouer WHERE jouer.id_equipe = equipes.id_equipe AND jouer.id_evenement = (?);");
 		$stmt->execute([$id_evenement]);
 		$result = $stmt->fetchall();
 		return $result;
@@ -46,11 +46,29 @@ class DbOrganisateur{
 
 //  ========== MENU EVENEMENTS =============== //
 
-    public static function InfoFormEvenement()
+    public static function InfoFormEvenement($id_evenement)
     {
-        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM evenement;");
-        $stmt->execute();
-        $result = $stmt->fetchall();
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM evenement WHERE id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    // Renvoi les équipes qui ne font pas parti d'un évènement
+    public static function EquipesFiltre($id_evenement)
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM equipes WHERE equipes.nom_equipe NOT IN (SELECT equipes.nom_equipe FROM equipes, jouer WHERE equipes.id_equipe = jouer.id_equipe AND jouer.id_evenement = (?) );");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    // Renvoi le stade d'un evenement (stade)
+    public static function StadeMatch($id_evenement)
+    {
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT stades.id_stade, stades.nom_stade FROM stades, evenement WHERE stades.id_stade = evenement.id_stade AND evenement.id_evenement = (?);");
+        $stmt->execute([$id_evenement]);
+        $result = $stmt->fetch();
         return $result;
     }
 
@@ -146,6 +164,8 @@ class DbOrganisateur{
         $result = $stmt->fetchall();
         return $result;
     }
+
+
 
     // Ajouter une équipe + sauvegarder la photo
     public static function AjouterEquipe($nom_equipe, $photo_equipe)
