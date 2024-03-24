@@ -53,7 +53,7 @@
         <div class="content-section-heading">
             <h2 class="text-secondary mb-0"><u>Nos Services</u></h2>
             <br>
-            <h4 class="mb-5">Vous n'avez pas confiance ? Regardez ca !</h4>
+            <p class="mb-5">Grâce à notre plateforme de réservation de tickets de football, profitez d'une expérience de réservation simplifiée et sécurisée, vous permettant d'accéder rapidement aux matchs de votre choix. <br><br> Avec une interface conviviale et des options de paiement flexibles, réservez vos billets en toute confiance et vivez pleinement votre passion pour le football.</p>
             <br>
         </div>
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -215,7 +215,8 @@
     </div>
 </section>
 
-<section class="row m-0 mx-auto" style="height: 30rem; width:50vw">
+<!-- MAP -->
+<section class="row m-0 mx-auto" style="height: 30rem; width:70vw">
         <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Doha,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
 </section>
 

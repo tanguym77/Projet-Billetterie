@@ -14,9 +14,9 @@
     }
 ?>
 
-<section class="p-5" style="height:80vh">
+<section>
     <!-- Titre -->
-    <div class="row text-center p-5 m-5">
+    <div class="row m-0 text-center p-5 m-5">
         <h1>Mes Billets</h1>
     </div>
 
@@ -24,18 +24,18 @@
 
     if ($LesMatchs!=null) {
     echo'
-    <div class="row justify-content-center">
-        <div class="col-3 text-start">
+    <div class="row m-0 justify-content-center">
+        <div class="col-3 col-md-3 text-center">
             <h4>Match</h4>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-3 col-md-3 text-center">
             <h4>Stade</h4>
         </div>
-        <div class="col-3 text-center">
-            <h4>Date du match</h4>
+        <div class="col-3 col-md-3 text-center">
+            <h4 class="d-none d-md-inline">Date du match</h4>
         </div>
         <div class="col-3 text-end pe-5">
-            <h4>Télécharger les E-Billets</h4>
+            <h4 class="d-none d-md-inline">Télécharger les E-Billets</h4>
         </div>
         <div class="accordion" id="accordionExample">';
     
@@ -76,7 +76,7 @@
                                      Prix
                                 </div>
                                 <div class="col-3 my-auto">
-                                    Télécharger votre E-Billet &nbsp
+                                    Télécharger votre E-Billet
                                 </div>
                             </div><hr>';
 
@@ -89,10 +89,10 @@
                                 echo'
                                 <div class="row text-center">
                                     <div class="col-3 my-auto">
-                                        Billet n° '.$InfoBillet[$y]['id_billet'].'
+                                    <span class="d-none d-md-inline"> Billet n° </span>  '.$InfoBillet[$y]['id_billet'].'
                                     </div>
                                     <div class="col-3 my-auto">
-                                        Acheté le '.$InfoBillet[$y]['date_reservation'].'
+                                        <span class="d-none d-md-inline"> Acheté le </span> '.$InfoBillet[$y]['date_reservation'].'
                                     </div>
                                     <div class="col-3 my-auto">
                                         '.$InfoBillet[$y]['prix'].' €
