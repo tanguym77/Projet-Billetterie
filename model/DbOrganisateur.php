@@ -386,22 +386,19 @@ public static function infoUserU($id)
     public static function ModifierUtilisateur($id_utilisateur, $nom, $prenom, $mail, $password, $status)
     {
         try {
-            if ($status == 0 || $status == 1) {
-                
-                $statut_texte = ($status == 0) ? "Utilisateur" : "Administrateur";
-                
-                $stmt = connectPdo::getObjPdo()->prepare("UPDATE utilisateur SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `password` = :password, `status` = :status_texte WHERE `id_utilisateur` = :id_utilisateur");
-        
-                $stmt->execute(array(
-                    ':id_utilisateur' => $id_utilisateur,
-                    ':nom' => $nom,
-                    ':prenom' => $prenom,
-                    ':mail' => $mail,
-                    ':password' => $password,
-                    ':status_texte' => $statut_texte
-                ));
-            } else {
-                echo "Erreur : Le statut doit être égal à 0 ou 1.";
+            // Prépare la requête de mise à jour avec des paramètres nommés
+            $stmt = connectPdo::getObjPdo()->prepare("UPDATE utilisateur SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `password` = :password, `status` = :status WHERE `id_utilisateur` = :id_utilisateur");
+    if($status == 0 || $status == 1){
+            $stmt->execute(array(
+                ':id_utilisateur' => $id_utilisateur,
+                ':nom' => $nom,
+                ':prenom' => $prenom,
+                ':mail' => $mail,
+                ':password' => $password,
+                ':status' => $status
+            ));
+        } else {
+            echo "Erreur : Le statut doit être égal à 0 ou 1.";
             }
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
