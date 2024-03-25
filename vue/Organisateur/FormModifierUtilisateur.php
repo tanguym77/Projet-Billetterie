@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Modifier un Utilisateur</title>
 </head>
 <body>
 
-    <h2 class="text-center py-3">Modifier un Utilisateur</h2>
+    <h2 class="text-center py-3"><i class="fas fa-user-edit"></i>Modifier un Utilisateur</h2>
     <div class="row m-0 justify-content-center p-5">
 
         <div class="col-md-6 border rounded p-5">
