@@ -36,9 +36,20 @@
                 </div>
 
                 <div class="text-center row m-0 py-3">
-                    <label class="col-6" for="status">Statut </label>
-                    <input class="col-6" id="status" name="status" type="text" placeholder="Statut" value="<?php echo $user['status']; ?>">
-                </div>
+    <label class="col-6" for="status">Statut </label>
+    <input class="col-6" id="status" name="status" type="text" placeholder="Statut" value="<?php 
+        switch($user['status']) {
+            case "1":
+                echo "Administrateur";
+                break;
+            case "0":
+                echo "Utilisateur";
+                break;
+            default:
+                echo "Statut inconnu";
+        }
+    ?>">
+</div>
 
                 <input type="hidden" name="id_utilisateur" value="<?php echo $_GET['id_utilisateur']; ?>">
 
