@@ -36,20 +36,14 @@
                 </div>
 
                 <div class="text-center row m-0 py-3">
-    <label class="col-6" for="status">Statut </label>
-    <input class="col-6" id="status" name="status" type="text" placeholder="Statut" value="<?php 
-        switch($user['status']) {
-            case "1":
-                echo "Administrateur";
-                break;
-            case "0":
-                echo "Utilisateur";
-                break;
-            default:
-                echo "Statut inconnu";
-        }
-    ?>">
-</div>
+                    <label class="col-6">Statut </label>
+                    <div class="col-6">
+                        <input id="admin" name="status" type="radio" value="1" <?php echo $user['status'] == "1" ? "checked" : ""; ?>>
+                        <label for="admin">Administrateur</label>
+                        <input id="user" name="status" type="radio" value="0" <?php echo $user['status'] == "0" ? "checked" : ""; ?>>
+                        <label for="user">Utilisateur</label>
+                    </div>
+                </div>
 
                 <input type="hidden" name="id_utilisateur" value="<?php echo $_GET['id_utilisateur']; ?>">
 
@@ -65,7 +59,6 @@
         const passwordInput = document.getElementById('password');
         const showPasswordCheckbox = document.getElementById('showPassword');
 
-       
         function togglePasswordVisibility() {
             if (showPasswordCheckbox.checked) {
                 passwordInput.type = 'text';
@@ -74,10 +67,8 @@
             }
         }
 
-        
         showPasswordCheckbox.addEventListener('change', togglePasswordVisibility);
 
-       
         togglePasswordVisibility();
     </script>
 </body>
