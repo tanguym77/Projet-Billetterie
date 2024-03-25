@@ -399,7 +399,7 @@ public static function infoUserU($id)
             ));
         } else {
             echo "Erreur : Le statut doit être égal à 0 ou 1.";
-        }
+            }
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
         }
