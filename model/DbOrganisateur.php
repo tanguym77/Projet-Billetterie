@@ -388,7 +388,7 @@ public static function infoUserU($id)
         try {
             // Prépare la requête de mise à jour avec des paramètres nommés
             $stmt = connectPdo::getObjPdo()->prepare("UPDATE utilisateur SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `password` = :password, `status` = :status WHERE `id_utilisateur` = :id_utilisateur");
-    
+    if($status == 0 || $status == 1){
             $stmt->execute(array(
                 ':id_utilisateur' => $id_utilisateur,
                 ':nom' => $nom,
@@ -397,6 +397,9 @@ public static function infoUserU($id)
                 ':password' => $password,
                 ':status' => $status
             ));
+        } else {
+            echo "Erreur : Le statut doit être égal à 0 ou 1.";
+            }
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
         }
