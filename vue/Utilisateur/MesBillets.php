@@ -15,6 +15,18 @@
 ?>
 
 <section>
+
+    <!-- Success achat de billets -->
+    <?php 
+    if (isset($_GET['success']) && $_GET['success']==1) {
+        echo'
+        <div class="alert alert-success alert-dismissible fade show m-5" role="alert">
+            <strong>Achat validé !</strong> Le reçu a été envoyé à votre adresse mail.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>';
+    }
+    
+    ?>
     <!-- Titre -->
     <div class="row m-0 text-center p-5 m-5">
         <h1>Mes Billets</h1>
@@ -117,13 +129,13 @@
 
     }else {
        echo'
-       <div class="row justify-content-center">
+       <div class="row m-0 justify-content-center">
             <div class="col-6 text-center">
                 <h4>On dirait que vous n’avez pas encore acheté de billet...</h4>
             </div>
         </div>
 
-        <div class="row justify-content-center mt-3">
+        <div class="row m-0 justify-content-center mt-3">
             <div class="col-6 text-center">
                 <h5>Achetez votre billet dès maintenant !</h5>
                 <a href="index.php?ctl=Utilisateur&action=ListMatch" class="btn btn-outline-success mt-1">Acheter un billet</a>

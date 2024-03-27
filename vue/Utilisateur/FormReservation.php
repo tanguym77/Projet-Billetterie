@@ -17,20 +17,20 @@
                     <div class="accordion-body text-center">
                         <!-- NOM -->
                         <div class="form-floating mb-3">
-                            <input type="nom" name="nom" class="form-control" id="floatingInput" value="<?php echo($_SESSION['nom']) ?>" disabled>
-                            <label for="floatingInput">Nom</label>
+                            <input type="nom" name="nom" class="form-control" id="floatingInput1" value="<?php echo($_SESSION['nom']) ?>" disabled>
+                            <label for="floatingInput1">Nom</label>
                         </div>
 
                         <!-- PRENOM -->
                         <div class="form-floating mb-3">
-                            <input type="prenom" name="prenom" class="form-control" id="floatingInput" value="<?php echo($_SESSION['prenom']) ?>" disabled>
-                            <label for="floatingInput">Prenom</label>
+                            <input type="prenom" name="prenom" class="form-control" id="floatingInput2" value="<?php echo($_SESSION['prenom']) ?>" disabled>
+                            <label for="floatingInput2">Prenom</label>
                         </div>
 
                         <!-- Mail -->
                         <div class="form-floating mb-3">
-                            <input type="mail" name="mail" class="form-control" id="floatingInput" value="<?php echo($_SESSION['mail']) ?>" disabled>
-                            <label for="floatingInput">Email</label>
+                            <input type="mail" name="mail" class="form-control" id="floatingInput3" value="<?php echo($_SESSION['mail']) ?>" disabled>
+                            <label for="floatingInput3">Email</label>
                         </div>
 
                     </div>
@@ -115,8 +115,10 @@
                 ?>
                 <h3>Récapitulatif de la commande :</h3>
                 <p>Match : <?php echo($_POST['nom_match'])?></p>
+                <p> <?php echo($_POST['nom_stade'])?> </p>
                 <p>Catégorie : <?php echo($_POST['libelle_zone'])?></p>
                 <p>Date : <?php echo(date('d/m/Y', strtotime($_POST['date_match'])))?></p>
+
                 <hr>
                 <!-- Prix HT Unitaire -->
                 <div class="row m-0">
@@ -166,6 +168,14 @@
                         <form action="index.php?ctl=Utilisateur&action=Payer" method="post">
                             <input type="hidden" name="id_evenement" value="<?php echo($_POST['evenement'])?>">
                             <input type="hidden" name="id_zone" value="<?php echo($_POST['id_zone'])?>">
+
+                            <!-- Info pour le mail -->
+                            <input type="hidden" name="nom_match" value="<?php echo($_POST['nom_match']) ?>">
+                            <input type="hidden" name="libelle_zone" value="<?php echo($_POST['libelle_zone']) ?>">
+                            <input type="hidden" name="date_match" value="<?php echo(date('d/m/Y', strtotime($_POST['date_match']))) ?>">
+                            <input type="hidden" name="prix" value="<?php echo(round( ($prix*$nb_billets) * 1.055)) ?>">
+                            <input type="hidden" name="nom_stade" value="<?php echo($_POST['nom_stade']) ?>">
+                            
                             <input type="hidden" name="quantite" value="<?php echo($nb_billets)?>">
                             <button class="btn btn-success px-5" type="submit">&nbsp Payer &nbsp</button>
                         </form>

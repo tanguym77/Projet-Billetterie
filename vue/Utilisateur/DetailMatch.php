@@ -84,40 +84,44 @@
             if ($dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
                 $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
-            
-                // AFFICHAGE DES BILLETS DISPO PAR ZONE
-                echo'
-                <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
+                
+                    if ($dispo_zone >= 1) {
+                        // AFFICHAGE DES BILLETS DISPO PAR ZONE
+                        echo'
+                        <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
 
-                    <input type="hidden" name="evenement"    value="'.$_GET['evenement'].'">
-                    <input type="hidden" name="prix"         value="'.$prix_zone[$i]['prix'].'">
-                    <input type="hidden" name="libelle_zone" value="'.$info_zone[$i]['libelle_zone'].'">
-                    <input type="hidden" name="id_zone"      value="'.$info_zone[$i]['id_zone'].'">
-                    <input type="hidden" name="nom_match"    value="'.$result[0]['nom_match'].'">
-                    <input type="hidden" name="date_match"    value="'.$result[0]['date_match'].'">
+                            <input type="hidden" name="evenement"    value="'.$_GET['evenement'].'">
+                            <input type="hidden" name="prix"         value="'.$prix_zone[$i]['prix'].'">
+                            <input type="hidden" name="libelle_zone" value="'.$info_zone[$i]['libelle_zone'].'">
+                            <input type="hidden" name="id_zone"      value="'.$info_zone[$i]['id_zone'].'">
+                            <input type="hidden" name="nom_match"    value="'.$result[0]['nom_match'].'">
+                            <input type="hidden" name="date_match"   value="'.$result[0]['date_match'].'">
+                            <input type="hidden" name="nom_stade"    value="'.$result[1]['nom_stade'].'">
 
-                    <div class="row border p-1 m-2">
-                        <div class="col-md-2 py-md-5">
-                            Catégorie
-                            <b>'.$info_zone[$i]['libelle_zone'].'</b>
-                        </div>
-                        <div class="col-md-3 py-md-5 py-2">
-                            Disponible <br>
-                            '.$dispo_zone.' Billets
-                        </div>
-                        <div class="col-md-3 py-md-5 py-2">
-                            Prix/billet <br>
-                            '.$prix_zone[$i]['prix'].' €
-                        </div>
-                        <div class="col-md-2 py-md-5 py-2">
-                            Quantité
-                            <input type="number" id="nb_billets" name="nb_billets" min="1" max="'.$dispo_zone.'" required>
-                        </div>
-                        <div class="col-md-2 py-md-5 py-2 my-auto mt-3">
-                            <button class="btn btn-primary" type="submit">Acheter</a>
-                        </div>
-                    </div>
-                </form>';
+                            <div class="row border p-1 m-2">
+                                <div class="col-md-2 py-md-5">
+                                    Catégorie
+                                    <b>'.$info_zone[$i]['libelle_zone'].'</b>
+                                </div>
+                                <div class="col-md-3 py-md-5 py-2">
+                                    Disponible <br>
+                                    '.$dispo_zone.' Billets
+                                </div>
+                                <div class="col-md-3 py-md-5 py-2">
+                                    Prix/billet <br>
+                                    '.$prix_zone[$i]['prix'].' €
+                                </div>
+                                <div class="col-md-2 py-md-5 py-2">
+                                    Quantité
+                                    <input type="number" id="nb_billets" name="nb_billets" min="1" max="'.$dispo_zone.'" required>
+                                </div>
+                                <div class="col-md-2 py-md-5 py-2 my-auto mt-3">
+                                    <button class="btn btn-primary" type="submit">Acheter</a>
+                                </div>
+                            </div>
+                        </form>';
+                    }
+                
                 }
             }else{
                 // Formulaire demande de billet

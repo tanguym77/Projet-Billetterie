@@ -47,13 +47,19 @@ switch ($action) {
         include './vue/Utilisateur/Footer.php';
         break;
 
+    // Achat d'un billet et envoi d'un mail
     case 'Payer':
         $date = date("Y-m-d");
         for ($i=0; $i < $_POST['quantite']; $i++) { 
             $UnBillet = DbUtilisateur::GetUnBillet($_POST['id_evenement'], $_POST['id_zone']);
             DbUtilisateur::ReserverUnBillet($_SESSION['id_utilisateur'], $UnBillet['id_billet'], $date);
         }
-        header("Location: index.php?ctl=Utilisateur&action=MesBillets");
+        // On envoi le mail de validation après l'achat
+        
+        EnvoyerMail($_SESSION['mail'], $_SESSION['prenom'], $_SESSION['nom'], $_POST['nom_match'], $_POST['nom_stade'], $_POST['libelle_zone'], $_POST['date_match'], $_POST['quantite'], $_POST['prix']);
+        
+        
+        header("Location: index.php?ctl=Utilisateur&action=MesBillets&success=1");
         break;
 
 //  ========== FIN RESERVATIONS =============== //
@@ -62,7 +68,6 @@ switch ($action) {
 //  ========== MENU MES BILLETS =============== //
     case 'MesBillets':
         // Récupération des billets de l'utilisateur
-        
         $LesBillets = DbUtilisateur::MesBillets($_SESSION['id_utilisateur']);
         include './vue/Utilisateur/Header.php';
         include './vue/Utilisateur/MesBillets.php';
@@ -143,4 +148,41 @@ switch ($action) {
         $pdf->SetFont('Arial','B',15);
         $pdf->Cell(100,10,"Bon Match !",0,0,'C');
     }
+
+    function EnvoyerMail($mail, $prenom, $nom, $nom_match, $nom_stade, $libelle_zone, $date_match, $quantite, $prix){
+
+        $destinataire = $mail;
+        $expediteur = 'marmier-tanguy@alwaysdata.net';
+
+        $objet = "Billetterie - Vos billets";
+
+        $headers  = 'MIME-Version: 1.0' . "\n"; 
+        $headers .= 'Content-type: text/html; charset=ISO-8859-1'."\n"; 
+        $headers .= 'To: '.$destinataire."\n";
+        $headers .= 'From:<'.$expediteur.'>'."\n"; 
+
+        $message =  
+        '<div style="width: 100%;">'.
+
+            '<div style="text-align: center; font-weight: bold">'.
+                '<h1>'.'Vos billets pour le match '.$nom_match.'</h1>'.
+                '<h5>'.'Au '.$nom_stade.' le '.$date_match.'</h5>'.
+            '</div><br>'.
+            
+            '<div style="text-align: center;">'.
+                '<p>'.'Acheteur : '.$nom.' '.$prenom.'</p>'.
+                '<p>'.'Vous avez acheté : '.$quantite.' billet(s) pour la '.$libelle_zone.'</p>'.
+                '<p>'.'Montant : '.$prix.'€'.'</p>'.
+            '</div><br>'.
+
+            '<div style="text-align: center; font-weight: bold">'.
+                '<p>'.'Récupérez vos billets dès maintenant en vous connectant à la billetterie !'.'</p>'.
+                '<i>'.' (Rubrique "Mes Billets") '.'</i><br><br>'.
+                '<a href="https://marmier-tanguy.alwaysdata.net/">'.'Récupérer mes billets'.'</a>'.
+            '</div>'.
+
+        '</div>';
+        
+    }
+        
 ?>

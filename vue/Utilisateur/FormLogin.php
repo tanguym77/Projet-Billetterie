@@ -48,6 +48,10 @@
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
                                 <button class="btn btn-primary btn-lg px-5" type="submit">Connexion</button>
                             </form>
+
+                            <div class="my-2">
+                                <a href="index.php?ctl=Connexion&action=FormRegister">Créer un compte</a>
+                            </div>
                             
                             <!-- Message erreur -->
                             <?php
