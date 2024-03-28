@@ -11,16 +11,20 @@
 
     for ($i=0; $i < count($result); $i++) {
     $equipes = DbUtilisateur::list_equipes($result[$i]['id_evenement']);
-    $ischecked = (DbUtilisateur::IsEvenementCheck($result[$i]['id_evenement'], $_SESSION['id_utilisateur']));
-    $checked = ($ischecked != null) ? "checked" : "" ;
-
+    
     echo'
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100 shadow">
                 <div class="card-body text-center">
-                    <h4 class="card-title">'.$result[$i]['nom_match'].'</h4>
-                    <p> Chercher des billets <input type="checkbox" class="checksearch pt-1" data-id="'.$result[$i]['id_evenement'].'" '.$checked.'> </p>
+                    <h4 class="card-title">'.$result[$i]['nom_match'].'</h4>';
 
+                    if (isset($_SESSION['id_utilisateur'])) {
+                        $ischecked = (DbUtilisateur::IsEvenementCheck($result[$i]['id_evenement'], $_SESSION['id_utilisateur']));
+                        $checked = ($ischecked != null) ? "checked" : "" ;
+                        echo'<p> Chercher des billets <input type="checkbox" class="checksearch pt-1" data-id="'.$result[$i]['id_evenement'].'" '.$checked.'> </p>';
+                    }
+                    
+                    echo'
                     <p class="card-text">Équipes: 
                         <div class="equipe-container">
                             <img class="equipe-img" src="uploads/equipes/'.$equipes[0]['photo_equipe'].'" alt="Équipe A">
