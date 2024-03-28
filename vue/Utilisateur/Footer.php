@@ -31,9 +31,9 @@
     </div>
 
     <div class="col-md-4 py-3 justify-content-end text-center">
-      <a class="text-body-secondary px-2" href="#"><i class="bi bi-twitter-x fs-3"></i></a>
-      <a class="text-body-secondary px-2" href="#"><i class="bi bi-instagram fs-3"></i></a>
-      <a class="text-body-secondary px-2" href="#"><i class="bi bi-facebook fs-3"></i></a>
+      <a class="text-body-secondary px-2" href="https://twitter.com/fortnitegame/"><i class="bi bi-twitter-x fs-3"></i></a>
+      <a class="text-body-secondary px-2" href="https://www.instagram.com/OGTrumpQueen/"><i class="bi bi-instagram fs-3"></i></a>
+      <a class="text-body-secondary px-2" href="https://fr-fr.facebook.com/Otterlifes/"><i class="bi bi-facebook fs-3"></i></a>
   </div>
   </div>
 </footer>
