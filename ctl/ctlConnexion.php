@@ -83,13 +83,15 @@ switch ($action) {
     
     // L'Utilisateur s'inscrit (template)
     case 'ChangeProfil':
-        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password'])){
+        if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['old_password'])){
             $mdp=DbConnection::userPassword($_SESSION['mail']);
-            if($mdp=$_POST['password']){
+            if($mdp=$_POST['old_password']){
+                if($_POST['new_password']!=NULL){
+                    $changeUser=DbConnection::changeProfil3($_POST['new_password'],$mdp);
+                }
                 if($_SESSION['mail']==$_POST['email']){
                     $changeUser=DbConnection::changeProfil2($_POST['nom'],$_POST['prenom'],$mdp);
                 }   
-                
                 else {
                     $changeUser=DbConnection::changeProfil($_POST['nom'],$_POST['prenom'],$_POST['email'],$mdp);
                 }

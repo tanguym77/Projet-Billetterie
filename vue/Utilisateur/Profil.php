@@ -75,7 +75,10 @@
                                     <input type="email" name="email" class="form-control form-control-lg" value=<?php echo($_SESSION['mail'])?> required/>
                                 </div>
                                 <div class="form-outline form-white mb-4">
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="entrez votre mot de passe" required/>
+                                    <input type="password" name="new_password" class="form-control form-control-lg" placeholder="entrez un nouveau mot de passe (optionel)"/>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" name="old_password" class="form-control form-control-lg" placeholder="entrez votre mot de passe" required/>
                                 </div>
                                     <!-- <p class="small mb-3 pb-lg-2"><a href="#!">Mot de passe oublié ?</a></p> -->
                                 <button class="btn btn-primary btn-lg px-5" type="submit">--> Modifier vos informations <--</button>

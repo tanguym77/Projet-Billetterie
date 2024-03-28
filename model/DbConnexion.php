@@ -40,6 +40,13 @@ class DbConnection{
 		$result = $stmt->fetch();
 		return $result;
 	}
+	public static function changeProfil3($new_mdp,$old_mdp)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("UPDATE `utilisateur` SET `utilisateur`.`password` = (?) WHERE `utilisateur`.`password` = (?)");
+		$stmt->execute([$new_mdp,$old_mdp]);
+		$result = $stmt->fetch();
+		return $result;
+	}
 
 	public static function verifEmail($email)
 	{
