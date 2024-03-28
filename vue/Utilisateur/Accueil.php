@@ -164,9 +164,10 @@
                             <p>Un complexe culturel qui propose des expositions artistiques, des événements culturels, des restaurants, et des plages artificielles. C'est un excellent endroit pour explorer la diversité culturelle du Qatar.</p>
                         </div>
                     </div>
+                    
                     <div class="carousel-item" data-bs-interval="5000">
                         <img src="vue/image/fort-zubarah.webp" class="d-block w-100" style="height: 50vh;">
-                        <div class="carousel-caption d-none d-md-blockm mb-3 py-1 bg-dark rounded" style="opacity:0.8">
+                        <div class="carousel-caption d-none d-md-block mb-3 py-1 bg-dark rounded" style="opacity:0.8">
                             <h5>Al Zubarah Fort</h5>
                             <p>Situé à environ 100 km au nord-ouest de Doha, ce fort historique est classé au patrimoine mondial de l'UNESCO. Il offre un aperçu fascinant de l'histoire de la région et de son patrimoine architectural.</p>
                         </div>
