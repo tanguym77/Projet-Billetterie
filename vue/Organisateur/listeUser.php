@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
         }
