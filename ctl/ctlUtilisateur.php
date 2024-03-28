@@ -31,6 +31,11 @@ switch ($action) {
         include './vue/Utilisateur/Footer.php';
         break;
 
+    // On ajoute +1 ou -1 pour le nombre de personne qui cherche une place
+    case 'ChercherPlace':
+        DbUtilisateur::ChercherPlace($_POST['EvenementId'], $_POST['isChecked']);
+        break;
+
 //  ========== FIN MENU VOIR LES MATCHS =============== //
 
 
@@ -86,9 +91,17 @@ switch ($action) {
         GenererPdf(null, $NbPdf, $LesIdBillets);
         break;
 
+    case 'Vendre':
+        DbUtilisateur::MettreEnVente($_POST['billetId'], $_POST['isChecked']);
+        break;
+
 //  ========== FIN MENU MES BILLETS =============== //
 
         
+
+
+
+//  ========== LES FONCTIONS =============== //
 }
 
     function GenererPdf($IdBillet, $NbPdf, $LesIdBillets){

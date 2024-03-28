@@ -78,39 +78,47 @@
                 ';
                             echo'
                             <div class="row text-center">
-                                <div class="col-3 my-auto">
+                                <div class="col-2 my-auto">
                                     Numéro de billet
                                 </div>
                                 <div class="col-3 my-auto">
                                     Date d’achat
                                 </div>
-                                <div class="col-3 my-auto">
+                                <div class="col-2 my-auto">
                                      Prix
                                 </div>
                                 <div class="col-3 my-auto">
                                     Télécharger votre E-Billet
                                 </div>
+                                <div class="col-2 my-auto">
+                                    Vendre
+                                </div>
                             </div><hr>';
 
                             
-
+                            
 
                             $InfoBillet = DbUtilisateur::GetInfoBillet($LesIdEvenement[$i],$_SESSION['id_utilisateur']);
                             for ($y=0; $y < count($InfoBillet); $y++) {
-                                
+                                $is_check = ($InfoBillet[$y]['en_vente']==1) ? "checked" : "" ;
                                 echo'
                                 <div class="row text-center">
-                                    <div class="col-3 my-auto">
+                                    <div class="col-2 my-auto">
                                     <span class="d-none d-md-inline"> Billet n° </span>  '.$InfoBillet[$y]['id_billet'].'
                                     </div>
                                     <div class="col-3 my-auto">
                                         <span class="d-none d-md-inline"> Acheté le </span> '.$InfoBillet[$y]['date_reservation'].'
                                     </div>
-                                    <div class="col-3 my-auto">
+                                    <div class="col-2 my-auto">
                                         '.$InfoBillet[$y]['prix'].' €
                                     </div>
-                                    <div class="col-3 my-auto">
+                                    <div class="col-3 form-check my-auto">
                                         <a target="_blank" href="index.php?ctl=Utilisateur&action=GenererUnPdf&id_billet='.$InfoBillet[$y]['id_billet'].' "> <i class="bi bi-filetype-pdf fs-4"></i> </a>
+                                        
+                                    </div>
+
+                                    <div class="col-2 my-auto">
+                                        <input type="checkbox" class="checkvente" data-id="'.$InfoBillet[$y]['id_billet'].'" '.$is_check.'>
                                     </div>
                                 </div>';
                             }
@@ -146,3 +154,25 @@
     ?>
     
 </section>
+
+<script>
+    // Sélectionnez toutes les checkboxes avec la classe "checkvente"
+    var checkboxes = document.querySelectorAll(".checkvente");
+
+    // Parcourez chaque checkbox et ajoutez un gestionnaire d'événement de changement
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener("change", function() {
+            // Récupérer l'identifiant du billet à partir de l'attribut data-id
+            var billetId = this.getAttribute("data-id");
+
+            // Vérifier si la checkbox est cochée ou non
+            var isChecked = this.checked;
+            
+            // Envoyer une requête AJAX au serveur avec l'identifiant du billet et l'état de la checkbox
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "index.php?ctl=Utilisateur&action=Vendre", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("billetId=" + billetId + "&isChecked=" + isChecked); // Envoyer l'identifiant du billet et l'état de la checkbox au serveur
+        });
+    });
+</script>
