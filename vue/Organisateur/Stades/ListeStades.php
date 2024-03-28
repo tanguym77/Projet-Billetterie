@@ -1,6 +1,7 @@
 <body>
 
     <div class="row m-0 p-5">
+    <h2 class="my-4 text-center">Stades de football</h2>
 
         <div class="text-center py-3">
             <a class="btn btn-primary" href="index.php?ctl=Organisateur&action=FormAjoutStade">Ajouter un stade</a>
