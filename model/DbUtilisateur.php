@@ -57,8 +57,8 @@ class DbUtilisateur{
         return $result;
     }
 
-    // Retourne le nombre de billets réservés pour un évènement
-    public static function billets_reserve($id_evenement){
+    // Retourne le nombre de billets vendus pour un évènement
+    public static function billets_vendus($id_evenement){
         $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
 		$stmt->execute([$id_evenement]);
 		$result = $stmt->fetch();
@@ -92,10 +92,10 @@ class DbUtilisateur{
 	}
 
     // Retourne le nombre de place dispo d'une zone
-	public static function dispo_zone($id_zone, $id_evenement, $id_utilisateur)
+	public static function dispo_zone($id_zone, $id_evenement)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet)+(SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND reserver.en_vente = 1 AND billets.id_evenement = (?) AND reserver.id_utilisateur != (?) )) AS Categorie_dispo FROM billets WHERE billets.id_billet NOT IN (SELECT reserver.id_billet FROM reserver) AND billets.id_zone = (?) AND billets.id_evenement = (?) ;");
-        $stmt->execute([$id_evenement, $id_utilisateur, $id_zone, $id_evenement]);
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet) - (SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_zone = (?) AND billets.id_evenement = (?) ) ) AS Categorie_dispo FROM billets WHERE billets.id_zone = (?) AND billets.id_evenement = (?) ;");
+        $stmt->execute([$id_zone, $id_evenement, $id_zone, $id_evenement]);
         $result = $stmt->fetch();
         return $result;
 	}

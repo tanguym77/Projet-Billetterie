@@ -22,7 +22,7 @@ switch ($action) {
 
     case 'DetailMatch':
         $result = DbUtilisateur::info_matchs($_GET['evenement']); // Info générales
-        $billets_reserve = DbUtilisateur::billets_reserve($_GET['evenement']);
+        $billets_vendus = DbUtilisateur::billets_vendus($_GET['evenement']);
         $billets_dispo = DbUtilisateur::billets_dispo($_GET['evenement'], $_SESSION['id_utilisateur']);
         $info_zone = DbUtilisateur::info_zone($_GET['evenement']);
         $prix_zone = DbUtilisateur::prix_zone($_GET['evenement']);

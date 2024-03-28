@@ -53,7 +53,7 @@
                 <div class="col-md-4 text-center">
                     <i class="bi bi-cart3 fs-1 bg-info rounded p-2"></i>
                     <br><br>
-                    <p><b><?php echo($billets_reserve[0]);?></b></p>
+                    <p><b><?php echo($billets_vendus[0]);?></b></p>
                     <p>Billets déjà vendus sur ce match</p>
                 </div>
             </div>
@@ -81,10 +81,10 @@
             <?php
             
             // Test Billet existe
-            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'], $_SESSION['id_utilisateur'])['Categorie_dispo'];
+            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
             if ($dispo_zone==0 || $dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
-                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'], $_SESSION['id_utilisateur'])['Categorie_dispo'];
+                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
                 
                     if ($dispo_zone >= 1) {
                         $existe = true;
