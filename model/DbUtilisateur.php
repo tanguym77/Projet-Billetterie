@@ -23,7 +23,29 @@ class DbUtilisateur{
 		return $result;
 	}
 
-//  ========== FIN MENU ACCUEIL =============== //
+	// On ajoute +1 ou -1 pour le nombre de personne qui cherche une place
+	public static function ChercherPlace($id_evenement, $isChecked)
+	{
+		// Récupérer le nombre de personnes qui cherchent une place
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT evenement.chercher_places FROM evenement WHERE evenement.id_evenement = (?)");
+		$stmt->execute([$id_evenement]);
+		$chercher_place = $stmt->fetch();
+
+		// Convertir l'état de la checkbox en 0 ou 1
+		$isChecked = $isChecked == 'true' ? 1 : 0;
+
+		if ($isChecked == 1) {
+			$chercher_place['chercher_places'] += 1;
+		}else{
+			$chercher_place['chercher_places'] -= 1;
+		}
+
+		$stmt = connectPdo::getObjPdo()->prepare("UPDATE `evenement` SET `chercher_places` = (?) WHERE `evenement`.`id_evenement` = (?) ;");
+        $stmt->execute([$chercher_place['chercher_places'], $id_evenement]);
+
+	}
+
+//  ========== FIN VOIR LES MATCHS =============== //
 
     
 //  ==========  DETAIL MATCH =============== //
@@ -116,7 +138,7 @@ class DbUtilisateur{
 	// Récupère les infos pour une ligne
 	public static function GetInfoBillet($id_evenement, $id_utilisateur)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT reserver.id_billet, reserver.date_reservation, billets.prix FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?) AND reserver.id_utilisateur = (?) ;");
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT reserver.id_billet, reserver.date_reservation, billets.prix, reserver.en_vente FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?) AND reserver.id_utilisateur = (?) ;");
 		$stmt->execute([$id_evenement, $id_utilisateur]);
 		$result = $stmt->fetchAll();
 		return $result;
@@ -136,6 +158,16 @@ class DbUtilisateur{
 		$stmt->execute([$id_evenement, $id_utilisateur]);
 		$result = $stmt->fetchAll();
 		return $result;
+	}
+
+	// Mettre en vente un billet
+	public static function MettreEnVente($billetId, $isChecked)
+	{
+		// Convertir l'état de la checkbox en 0 ou 1
+		$isChecked = $isChecked == 'true' ? 1 : 0;
+
+        $stmt = connectPdo::getObjPdo()->prepare("UPDATE `reserver` SET `en_vente` = (?) WHERE `reserver`.`id_billet` = (?) ");
+        $stmt->execute([$isChecked, $billetId]);
 	}
 
 //  ==========  FIN MES BILLETS =============== //
