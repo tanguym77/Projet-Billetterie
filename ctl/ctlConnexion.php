@@ -89,7 +89,7 @@ switch ($action) {
                 if($_POST['new_password']!=NULL){
                     $changeUser=DbConnection::changeProfil3($_POST['new_password'],$mdp);
                 }
-                if($_SESSION['mail']==$_POST['email']){
+                else if($_SESSION['mail']==$_POST['email']){
                     $changeUser=DbConnection::changeProfil2($_POST['nom'],$_POST['prenom'],$mdp);
                 }   
                 else {
