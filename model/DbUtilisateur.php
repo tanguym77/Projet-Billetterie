@@ -66,9 +66,9 @@ class DbUtilisateur{
     }
 
     // Retourne le nombre de billets dispo d'un evenement
-    public static function billets_dispo($id_evenement){
-        $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(billets.id_billet)-(SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets, evenement WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?)) AS billets_dispo FROM billets, evenement WHERE billets.id_evenement = evenement.id_evenement AND evenement.id_evenement = (?);");
-		$stmt->execute([$id_evenement,$id_evenement]);
+    public static function billets_dispo($id_evenement, $id_utilisateur){
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet)+(SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND reserver.en_vente = 1 AND billets.id_evenement = (?) AND reserver.id_utilisateur != (?) ))-(SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = (?) ) AS billets_dispo FROM billets WHERE billets.id_evenement = (?) ;");
+		$stmt->execute([$id_evenement,$id_utilisateur,$id_evenement,$id_evenement]);
 		$result = $stmt->fetch();
 		return $result;
     }
@@ -92,10 +92,10 @@ class DbUtilisateur{
 	}
 
     // Retourne le nombre de place dispo d'une zone
-	public static function dispo_zone($id_zone, $id_evenement)
+	public static function dispo_zone($id_zone, $id_evenement, $id_utilisateur)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(billets.id_billet) AS Categorie_dispo FROM billets WHERE billets.id_billet NOT IN (SELECT reserver.id_billet FROM reserver) AND billets.id_zone = (?) AND billets.id_evenement = (?);");
-        $stmt->execute([$id_zone, $id_evenement]);
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet)+(SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND reserver.en_vente = 1 AND billets.id_evenement = (?) AND reserver.id_utilisateur != (?) )) AS Categorie_dispo FROM billets WHERE billets.id_billet NOT IN (SELECT reserver.id_billet FROM reserver) AND billets.id_zone = (?) AND billets.id_evenement = (?) ;");
+        $stmt->execute([$id_evenement, $id_utilisateur, $id_zone, $id_evenement]);
         $result = $stmt->fetch();
         return $result;
 	}
@@ -103,6 +103,15 @@ class DbUtilisateur{
 
 
 //  ==========  RESERVATION =============== //
+
+	// Retourne un billet pour un evenement et une zone
+	public static function GetUnBilletEnVente($id_evenement, $id_zone, $id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT reserver.id_billet, reserver.id_utilisateur FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = (?) AND billets.id_zone = (?) AND reserver.en_vente = 1 AND reserver.id_utilisateur != (?);");
+        $stmt->execute([$id_evenement, $id_zone, $id_utilisateur]);
+        $result = $stmt->fetch();
+        return $result;
+	}
 
 	// Retourne un billet pour un evenement et une zone
 	public static function GetUnBillet($id_evenement, $id_zone)
@@ -113,11 +122,18 @@ class DbUtilisateur{
         return $result;
 	}
 
-	// Réserver X billets
+	// Réserver un billets
 	public static function ReserverUnBillet($id_utilisateur, $id_billet, $date)
 	{
         $stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `reserver` (`id_utilisateur`, `id_billet`, `date_reservation`) VALUES ( (?) , (?) , (?) );");
         $stmt->execute([$id_utilisateur, $id_billet, $date]);
+	}
+
+	// Supprimer un billet dans le cas d'un changement de main
+	public static function SupprimerUnBillet($id_utilisateur, $id_billet)
+	{
+        $stmt = connectPdo::getObjPdo()->prepare("DELETE FROM reserver WHERE `reserver`.`id_utilisateur` = (?) AND `reserver`.`id_billet` = (?)");
+        $stmt->execute([$id_utilisateur, $id_billet]);
 	}
 
 

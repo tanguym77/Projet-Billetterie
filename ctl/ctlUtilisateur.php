@@ -23,7 +23,7 @@ switch ($action) {
     case 'DetailMatch':
         $result = DbUtilisateur::info_matchs($_GET['evenement']); // Info générales
         $billets_reserve = DbUtilisateur::billets_reserve($_GET['evenement']);
-        $billets_dispo = DbUtilisateur::billets_dispo($_GET['evenement']);
+        $billets_dispo = DbUtilisateur::billets_dispo($_GET['evenement'], $_SESSION['id_utilisateur']);
         $info_zone = DbUtilisateur::info_zone($_GET['evenement']);
         $prix_zone = DbUtilisateur::prix_zone($_GET['evenement']);
         include './vue/Utilisateur/Header.php';
@@ -55,14 +55,19 @@ switch ($action) {
     // Achat d'un billet et envoi d'un mail
     case 'Payer':
         $date = date("Y-m-d");
-        for ($i=0; $i < $_POST['quantite']; $i++) { 
-            $UnBillet = DbUtilisateur::GetUnBillet($_POST['id_evenement'], $_POST['id_zone']);
-            DbUtilisateur::ReserverUnBillet($_SESSION['id_utilisateur'], $UnBillet['id_billet'], $date);
+        for ($i=0; $i < $_POST['quantite']; $i++) {
+            // On regarde si on peut acheter un billet à une autre personne
+            $UnBillet = DbUtilisateur::GetUnBilletEnVente($_POST['id_evenement'], $_POST['id_zone'], $_SESSION['id_utilisateur']);
+            if ($UnBillet != null) {
+                DbUtilisateur::SupprimerUnBillet($UnBillet['id_utilisateur'], $UnBillet['id_billet']);
+                DbUtilisateur::ReserverUnBillet($_SESSION['id_utilisateur'], $UnBillet['id_billet'], $date);
+            }else{
+                $UnBillet = DbUtilisateur::GetUnBillet($_POST['id_evenement'], $_POST['id_zone']);
+                DbUtilisateur::ReserverUnBillet($_SESSION['id_utilisateur'], $UnBillet['id_billet'], $date);
+            }
         }
         // On envoi le mail de validation après l'achat
-        
         EnvoyerMail($_SESSION['mail'], $_SESSION['prenom'], $_SESSION['nom'], $_POST['nom_match'], $_POST['nom_stade'], $_POST['libelle_zone'], $_POST['date_match'], $_POST['quantite'], $_POST['prix']);
-        
         
         header("Location: index.php?ctl=Utilisateur&action=MesBillets&success=1");
         break;

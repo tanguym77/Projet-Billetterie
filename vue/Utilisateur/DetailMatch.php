@@ -81,10 +81,10 @@
             <?php
             
             // Test Billet existe
-            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'], $_SESSION['id_utilisateur'])['Categorie_dispo'];
             if ($dispo_zone==0 || $dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
-                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'], $_SESSION['id_utilisateur'])['Categorie_dispo'];
                 
                     if ($dispo_zone >= 1) {
                         $existe = true;
