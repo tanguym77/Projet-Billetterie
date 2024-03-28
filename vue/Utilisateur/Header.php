@@ -51,9 +51,18 @@
                     </li>
                 </ul>
                 <!-- CONNEXION DECONNEXION -->
-                <audio controls>
+                <!-- <audio controls>
 	            <source src="vue/video/marseillaise.mp3" type="audio/mpeg">
-                </audio>                
+                </audio>-->  
+                
+                <a href="vue/video/marseillaise.mp3" target="id_iframe" title="cliquez UNE SEULE FOIS !">
+  <img src="vue/image/trophee.png" alt="Logo" style="width:50px;height:50px;">
+</a><br>
+<!-- DIV n'apparaissant pas -->
+<div style="width:1px;height:0px;overflow:hidden;">
+  <iframe id="id_iframe" name="id_iframe" src=""></iframe>
+</div>
+                            
                 <!--<a class="navbar-brand d-none d-md-block" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>-->
 
                 <span class="navbar-text">
