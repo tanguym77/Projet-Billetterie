@@ -51,7 +51,10 @@
                     </li>
                 </ul>
                 <!-- CONNEXION DECONNEXION -->
-                <a class="navbar-brand d-none d-md-block" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>
+                <audio controls>
+	            <source src="vue/video/marseillaise.mp3" type="audio/mpeg">
+                </audio>                
+                <!--<a class="navbar-brand d-none d-md-block" href="https://www.youtube.com/watch?v=04854XqcfCY" target="_blank"><img src="vue/image/trophee.png"  alt="Logo"></a>-->
 
                 <span class="navbar-text">
                     <?php if (!isset($_SESSION['prenom'])) {echo('<a class="btn btn-info" href="index.php?ctl=Connexion&action=FormLogin">LOGIN</a>');} ?>
