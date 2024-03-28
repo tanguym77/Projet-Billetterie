@@ -1,7 +1,18 @@
 <body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <div class="row m-0 p-5">
+
+
+    <center>
+    <div class="btn-retour mt-2">
+        <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour </a>
+    </div>
+    </center>
+    
+    <span>
     <h2 class="my-4 text-center">Stades de football</h2>
+</span>
 
         <div class="text-center py-3">
             <a class="btn btn-primary" href="index.php?ctl=Organisateur&action=FormAjoutStade">Ajouter un stade</a>
