@@ -47,7 +47,7 @@
                 <div class="col-md-4 text-center">
                     <i class="bi bi-receipt fs-1 bg-info rounded p-2"></i>
                     <br><br>
-                    <p><b><?php echo($billets_dispo[0]);?></b></p>
+                    <p><b><?php echo($billets_dispo);?></b></p>
                     <p>Billets restants pour ce match</p>
                 </div>
                 <div class="col-md-4 text-center">
@@ -72,19 +72,19 @@
     <!-- PHOTO TERRAIN + RESERVER -->
     <div class="row m-0 justify-content-around">
         <div class="col-md-3 text-center my-auto">
-            <img class="img-fluid" src="./uploads/stades/Lusail.png" alt="stade">
+            <img class="img-fluid rounded" src="./uploads/stades/Lusail.png" alt="stade">
         </div>
 
         <!-- CATEGORIES -->
         <div class="col-md-7 m-1 text-center">
 
             <?php
-            
             // Test Billet existe
-            $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+            $dispo_zone = DbUtilisateur::dispo_zone($_SESSION['id_utilisateur'], $info_zone[0]['id_zone'], $_GET['evenement']);
             if ($dispo_zone==0 || $dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
-                $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
+                
+                $dispo_zone = DbUtilisateur::dispo_zone($_SESSION['id_utilisateur'], $info_zone[$i]['id_zone'], $_GET['evenement']);
                 
                     if ($dispo_zone >= 1) {
                         $existe = true;
@@ -100,7 +100,7 @@
                             <input type="hidden" name="date_match"   value="'.$result[0]['date_match'].'">
                             <input type="hidden" name="nom_stade"    value="'.$result[1]['nom_stade'].'">
 
-                            <div class="row border p-1 m-2">
+                            <div class="row border p-1 m-2 rounded">
                                 <div class="col-md-2 py-md-5">
                                     Catégorie
                                     <b>'.$info_zone[$i]['libelle_zone'].'</b>

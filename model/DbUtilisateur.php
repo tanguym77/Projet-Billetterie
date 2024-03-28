@@ -68,9 +68,17 @@ class DbUtilisateur{
 
     // Retourne le nombre de billets dispo d'un evenement
     public static function billets_dispo($id_evenement, $id_utilisateur){
-        $stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet)+(SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND reserver.en_vente = 1 AND billets.id_evenement = (?) AND reserver.id_utilisateur != (?) ))-(SELECT COUNT(reserver.id_billet) AS billets_reserve FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = (?) ) AS billets_dispo FROM billets WHERE billets.id_evenement = (?) ;");
-		$stmt->execute([$id_evenement,$id_utilisateur,$id_evenement,$id_evenement]);
-		$result = $stmt->fetch();
+		// On récupère le nombre max
+        $stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(*) FROM billets WHERE billets.id_evenement = (?) ;");
+		$stmt->execute([$id_evenement]);
+		$result1 = $stmt->fetch();
+
+		// On enlève les billets qui ont été acheté sauf en vente
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(*) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND reserver.en_vente = 1 AND billets.id_evenement = (?) AND reserver.id_utilisateur = (?) ;");
+		$stmt->execute([$id_evenement, $id_utilisateur]);
+		$result2 = $stmt->fetch();
+
+		$result = $result1[0] - $result2[0];
 		return $result;
     }
 
@@ -93,11 +101,18 @@ class DbUtilisateur{
 	}
 
     // Retourne le nombre de place dispo d'une zone
-	public static function dispo_zone($id_zone, $id_evenement)
+	public static function dispo_zone($id_utilisateur, $id_zone, $id_evenement)
 	{
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT (COUNT(billets.id_billet) - (SELECT COUNT(reserver.id_billet) FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_zone = (?) AND billets.id_evenement = (?) ) ) AS Categorie_dispo FROM billets WHERE billets.id_zone = (?) AND billets.id_evenement = (?) ;");
-        $stmt->execute([$id_zone, $id_evenement, $id_zone, $id_evenement]);
-        $result = $stmt->fetch();
+		// Billets vides
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(*) AS Categorie_Dispo FROM billets WHERE billets.id_evenement = (?) AND billets.id_zone = (?) AND billets.id_billet NOT IN (SELECT reserver.id_billet FROM reserver WHERE reserver.en_vente = 1 );");
+        $stmt->execute([$id_evenement, $id_zone]);
+        $result1 = $stmt->fetch();
+		// Billets mis en vente sauf utilisateur
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(*) AS Categorie_Dispo FROM reserver, billets WHERE reserver.id_billet = billets.id_billet AND billets.id_evenement = (?) AND billets.id_zone = (?) AND reserver.id_utilisateur = (?) ;");
+        $stmt->execute([$id_evenement, $id_zone, $id_utilisateur]);
+        $result2 = $stmt->fetch();
+
+		$result = $result1[0] + $result2[0];
         return $result;
 	}
 
