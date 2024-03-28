@@ -62,9 +62,11 @@
     </div>
 
     <!-- Bouton de retour -->
+    <center>
     <div class="btn-retour">
         <a class="btn btn-secondary" href="javascript:history.go(-1)"><i class="fas fa-arrow-circle-left"></i> Retour</a>
     </div>
+    </center>
 
     <br>
 

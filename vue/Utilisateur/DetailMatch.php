@@ -79,13 +79,15 @@
         <div class="col-md-7 m-1 text-center">
 
             <?php
+            
             // Test Billet existe
             $dispo_zone = DbUtilisateur::dispo_zone($info_zone[0]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
-            if ($dispo_zone!=0) {
+            if ($dispo_zone==0 || $dispo_zone!=0) {
                 for ($i=0; $i < count($info_zone); $i++) {
                 $dispo_zone = DbUtilisateur::dispo_zone($info_zone[$i]['id_zone'], $_GET['evenement'])['Categorie_dispo'];
                 
                     if ($dispo_zone >= 1) {
+                        $existe = true;
                         // AFFICHAGE DES BILLETS DISPO PAR ZONE
                         echo'
                         <form action="index.php?ctl=Utilisateur&action=Reserver" method="post">
@@ -123,7 +125,9 @@
                     }
                 
                 }
-            }else{
+            }
+            
+            if (!isset($existe)) {
                 // Formulaire demande de billet
                 echo'
                 <form action="index.php?ctl=Utilisateur&action=DemandeBillet" method="post">
