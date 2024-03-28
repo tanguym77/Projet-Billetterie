@@ -41,7 +41,7 @@
                 <div class="col-md-4 text-center">
                     <i class="bi bi-people fs-1 bg-info rounded p-2"></i>
                     <br><br>
-                    <p><b>28</b></p>
+                    <p><b><?php echo($nb_search[0]);?></b></p>
                     <p>Personnes recherchent actuellement des billets pour ce match</p>
                 </div>
                 <div class="col-md-4 text-center">

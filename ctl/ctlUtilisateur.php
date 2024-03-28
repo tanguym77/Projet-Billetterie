@@ -26,6 +26,7 @@ switch ($action) {
         $billets_dispo = DbUtilisateur::billets_dispo($_GET['evenement'], $_SESSION['id_utilisateur']);
         $info_zone = DbUtilisateur::info_zone($_GET['evenement']);
         $prix_zone = DbUtilisateur::prix_zone($_GET['evenement']);
+        $nb_search = DbUtilisateur::nb_search($_GET['evenement'], $_SESSION['id_utilisateur']);
         include './vue/Utilisateur/Header.php';
         include './vue/Utilisateur/DetailMatch.php';
         include './vue/Utilisateur/Footer.php';
@@ -33,7 +34,7 @@ switch ($action) {
 
     // On ajoute +1 ou -1 pour le nombre de personne qui cherche une place
     case 'ChercherPlace':
-        DbUtilisateur::ChercherPlace($_POST['EvenementId'], $_POST['isChecked']);
+        DbUtilisateur::ChercherPlace($_SESSION['id_utilisateur'], $_POST['EvenementId'], $_POST['isChecked']);
         break;
 
 //  ========== FIN MENU VOIR LES MATCHS =============== //

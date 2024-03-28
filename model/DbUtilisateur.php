@@ -14,6 +14,14 @@ class DbUtilisateur{
 		return $result;
 	}
 
+	public static function IsEvenementCheck($id_evenement, $id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT * FROM chercher_billets WHERE chercher_billets.id_evenement = (?) AND chercher_billets.id_utilisateur = (?) ;");
+		$stmt->execute([$id_evenement, $id_utilisateur]);
+		$result = $stmt->fetch();
+		return $result;
+	}
+
     // Retourne les équipes d'un match
 	public static function list_equipes($id_evenement)
 	{
@@ -24,25 +32,18 @@ class DbUtilisateur{
 	}
 
 	// On ajoute +1 ou -1 pour le nombre de personne qui cherche une place
-	public static function ChercherPlace($id_evenement, $isChecked)
+	public static function ChercherPlace($id_utilisateur, $id_evenement, $isChecked)
 	{
-		// Récupérer le nombre de personnes qui cherchent une place
-		$stmt = connectPdo::getObjPdo()->prepare("SELECT evenement.chercher_places FROM evenement WHERE evenement.id_evenement = (?)");
-		$stmt->execute([$id_evenement]);
-		$chercher_place = $stmt->fetch();
-
 		// Convertir l'état de la checkbox en 0 ou 1
 		$isChecked = $isChecked == 'true' ? 1 : 0;
 
 		if ($isChecked == 1) {
-			$chercher_place['chercher_places'] += 1;
+			$stmt = connectPdo::getObjPdo()->prepare("INSERT INTO `chercher_billets` (`id_evenement`, `id_utilisateur`) VALUES ( (?), (?) ) ;");
+        	$stmt->execute([$id_evenement, $id_utilisateur]);
 		}else{
-			$chercher_place['chercher_places'] -= 1;
+			$stmt = connectPdo::getObjPdo()->prepare("DELETE FROM chercher_billets WHERE `chercher_billets`.`id_evenement` = (?) AND `chercher_billets`.`id_utilisateur` = (?) ;");
+        	$stmt->execute([$id_evenement, $id_utilisateur]);
 		}
-
-		$stmt = connectPdo::getObjPdo()->prepare("UPDATE `evenement` SET `chercher_places` = (?) WHERE `evenement`.`id_evenement` = (?) ;");
-        $stmt->execute([$chercher_place['chercher_places'], $id_evenement]);
-
 	}
 
 //  ========== FIN VOIR LES MATCHS =============== //
@@ -99,6 +100,16 @@ class DbUtilisateur{
         $result = $stmt->fetch();
         return $result;
 	}
+
+	// Retourne le nombre de personne qui cherchent un ticket pour ce match
+	public static function nb_search($id_evenement, $id_utilisateur)
+	{
+		$stmt = connectPdo::getObjPdo()->prepare("SELECT COUNT(*) FROM chercher_billets WHERE chercher_billets.id_evenement = (?) AND chercher_billets.id_utilisateur != (?);");
+        $stmt->execute([$id_evenement, $id_utilisateur]);
+        $result = $stmt->fetch();
+        return $result;
+	}
+
 //  ==========  FIN DETAIL MATCH =============== //
 
 
