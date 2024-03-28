@@ -20,7 +20,7 @@
   <div class="row m-0 justify-content-between py-3">
 
     <div class="col-md-4 py-3 justify-content-start my-auto">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+      <a href="index.php" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
         <img src="vue/image/ballon-de-football.png"  alt="Logo" height="30">
       </a>
       <span class="mb-3 mb-md-0 text-body-secondary">©2024 Billeterie Asian Cup Qatar</span>
