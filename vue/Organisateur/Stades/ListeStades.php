@@ -18,7 +18,6 @@
             margin-top: 10px;
         }
     </style>
-<body>
 
 <div class="container">
     <center>
